@@ -20,7 +20,7 @@ var stateHandlers = {
             //  Change state to START_MODE
             this.handler.state = constants.states.START_MODE;
 
-            var message = 'Welcome to AWS Podcast. You can say, play the audio to begin the podcast.';
+            var message = 'Welcome to the AWS Podcast. You can say, play the audio to begin the podcast.';
             var reprompt = 'You can say, play the audio, to begin.';
 
             this.response.speak(message).listen(reprompt);
@@ -30,7 +30,7 @@ var stateHandlers = {
             controller.play.call(this);
         },
         'AMAZON.HelpIntent' : function () {
-            var message = 'Welcome to AWS Podcast. You can say, play the audio, to begin the podcast.';
+            var message = 'Welcome to the AWS Podcast. You can say, play the audio, to begin the podcast.';
             this.response.speak(message).listen(message);
             this.emit(':responseReady');
         },
@@ -71,7 +71,7 @@ var stateHandlers = {
             var reprompt;
             if (this.attributes['playbackFinished']) {
                 this.handler.state = constants.states.START_MODE;
-                message = 'Welcome to AWS Podcast. You can say, play the audio to begin the podcast.';
+                message = 'Welcome to the AWS Podcast. You can say, play the audio to begin the podcast.';
                 reprompt = 'You can say, play the audio, to begin.';
             } else {
                 this.handler.state = constants.states.RESUME_DECISION_MODE;
@@ -96,7 +96,7 @@ var stateHandlers = {
         'AMAZON.ShuffleOffIntent' : function () { controller.shuffleOff.call(this) },
         'AMAZON.StartOverIntent' : function () { controller.startOver.call(this) },
         'AMAZON.HelpIntent' : function () {
-            var message = 'You are listening to AWS Podcast. You can say, Next or Previous to navigate through the playlist. ' +
+            var message = 'You are listening to the AWS Podcast. You can say, Next or Previous to navigate through the playlist. ' +
                 'At any time, you can say Pause to pause the audio and Resume to resume.';
             this.response.speak(message).listen(message);
             this.emit(':responseReady');
