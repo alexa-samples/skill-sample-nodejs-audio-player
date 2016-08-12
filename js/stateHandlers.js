@@ -27,6 +27,17 @@ var stateHandlers = {
             this.emit(':responseReady');
         },
         'PlayAudio' : function () {
+            if (!this.attributes['playOrder']) {
+                // Initialize Attributes if undefined.
+                this.attributes['playOrder'] = Array.apply(null, {length: audioData.length}).map(Number.call, Number);
+                this.attributes['index'] = 0;
+                this.attributes['offsetInMilliseconds'] = 0;
+                this.attributes['loop'] = true;
+                this.attributes['shuffle'] = false;
+                this.attributes['playbackIndexChanged'] = true;
+                //  Change state to START_MODE
+                this.handler.state = constants.states.START_MODE;
+            }
             controller.play.call(this);
         },
         'AMAZON.HelpIntent' : function () {
