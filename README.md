@@ -15,23 +15,24 @@ You can change the name of these resources to whatever you like later, but for n
         ![create_role_3](https://cloud.githubusercontent.com/assets/7671574/17451101/0e3c5ff4-5b19-11e6-90f6-0210dae6f9dc.png "AWS Create Role Screenshot 3")
 
     2. Create an AWS Lambda function named AudioPlayerLambdaFunction being sure to select the role created above and configuring "Alexa Skills Kit" as the "Trigger".
-    ![alt text](https://s3.amazonaws.com/lantern-public-assets/audio-player-assets/aws-lambda-role.PNG "AWS Lambda Role")
+        ![alt text](https://s3.amazonaws.com/lantern-public-assets/audio-player-assets/aws-lambda-ask-trigger.PNG "AWS Lambda Trigger")
 
-    ![alt text](https://s3.amazonaws.com/lantern-public-assets/audio-player-assets/aws-lambda-ask-trigger.PNG "AWS Lambda Trigger")
     3. Zip the contents in `src/js` and upload in "Lambda function code".
+        ![alt text](https://s3.amazonaws.com/lantern-public-assets/audio-player-assets/aws-lambda-role.PNG "AWS Lambda Role")
+
     4. Review and create the Lambda function.
+
     5. After creation, take note of the ARN on the upper right, which you'll configure in the Developer Console below.
 
 2. Create or login to an [Amazon Developer account](https://developer.amazon.com).  In the Developer Console:
-    **TODO Change to Prod Account Screenshots**
-    1. [Create an Alexa Skill](https://developer.amazon.com/public/solutions/alexa/alexa-skills-kit/docs/developing-an-alexa-skill-as-a-lambda-function) named MySkill and using the invocation name "my skill" and select 'Yes' for Audio Player support.
-     ![alt text](https://s3.amazonaws.com/lantern-public-assets/audio-player-assets/developer-portal-skill-information.PNG "Developer Portal Skill Information")
+    1. [Create an Alexa Skill](https://developer.amazon.com/public/solutions/alexa/alexa-skills-kit/docs/developing-an-alexa-skill-as-a-lambda-function) named  Audio Player and using the invocation name Audio Player and select 'Yes' for Audio Player support.
+     ![alt text](https://s3.amazonaws.com/lantern-public-assets/audio-player-assets/prod-skill-info.png "Developer Portal Skill Information")
 
-    2. Copy the contents of `src/InteractionModel` into the Interaction Model tab.
-    ![alt text](https://s3.amazonaws.com/lantern-public-assets/audio-player-assets/developer-portal-interaction-model.PNG "Developer Portal Interaction Model")
+    2. Copy the contents of `src/speechAssets` into the Interaction Model tab.
+    ![alt text](https://s3.amazonaws.com/lantern-public-assets/audio-player-assets/prod-interaction-model.png "Developer Portal Interaction Model")
 
     3. Copy the Lambda ARN from above in the Configuration tab.
-     ![alt text](https://s3.amazonaws.com/lantern-public-assets/audio-player-assets/developer-portal-configuration.PNG "Developer Portal Configuration")
+     ![alt text](https://s3.amazonaws.com/lantern-public-assets/audio-player-assets/prod-configuration.png "Developer Portal Configuration")
 
     4. You can start testing the skill on your device or on the simulator now, but you can go ahead and fill in the Publishing Information and accept the Privacy & Compliance information to submit the skill for certification.
 
@@ -80,7 +81,7 @@ this.response.audioPlayerClearQueue(clearBehavior);
 ```
 
 
-In response to AudioPlayer directives, you receive **AudioPlayer Requests**. You can learn more about the [AudioPlayer Interface here](https://drive.corp.amazon.com/view/DevComm/ask-docs/custom-audioplayer-interface-reference.html). (**TODO Change hyperlink**)
+In response to AudioPlayer directives, you receive **AudioPlayer Requests**. You can learn more about the [AudioPlayer Interface](https://drive.corp.amazon.com/view/DevComm/ask-docs/custom-audioplayer-interface-reference.html) here.
 
 ## Audio Assets
 
