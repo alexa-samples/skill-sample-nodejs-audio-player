@@ -13,10 +13,10 @@ zip -r ../audio-player.zip *
 ```
 2. Create or login to an [AWS account](https://aws.amazon.com/). In the AWS Console:
 
-    1. Create an AWS Role in IAM with access to Lambda and DynamoDB.
+    1. Create an AWS Role in IAM with access to Lambda, CloudWatch Logs and DynamoDB.
         ![create_role_1](https://cloud.githubusercontent.com/assets/7671574/17451098/09f64f40-5b19-11e6-82ee-b82c98387052.png "AWS Create Role Screenshot 1")
         ![create_role_2](https://cloud.githubusercontent.com/assets/7671574/17451100/0c3ef928-5b19-11e6-9aca-8cd353106396.png "AWS Create Role Screenshot 2")
-        ![create_role_3](https://cloud.githubusercontent.com/assets/7671574/17451101/0e3c5ff4-5b19-11e6-90f6-0210dae6f9dc.png "AWS Create Role Screenshot 3")
+        ![create_role_3](https://cloud.githubusercontent.com/assets/7671574/18011103/7b05f2b2-6b68-11e6-8dc3-3aa9ead6d83e.png "AWS Create Role Screenshot 3")
 
     2. Create an AWS Lambda function named AudioPlayerLambdaFunction being sure to select the role created above, configuring "Alexa Skills Kit" as the "Trigger" and using the zip file created above as the source.
         ![alt text](https://s3.amazonaws.com/lantern-public-assets/audio-player-assets/aws-lambda-role.PNG "AWS Lambda Role")
