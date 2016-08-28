@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" version="2.0">
+    <channel>
+        <title>Example Alexa Podcast</title>
+        <description>The latest info on alexa</description>
+        <link>http://bespoken.tools</link>
+        <language>en-us</language>
+        <copyright>Copyright 2016</copyright>
+        <lastBuildDate>Sun, 28 Aug 2016 11:30:00 -0500</lastBuildDate>
+        <pubDate>Sun, 28 Aug 2016 11:30:00 -0500</pubDate>
+        <docs>http://blogs.law.harvard.edu/tech/rss</docs>
+        <webMaster>jpk@xappmedia.com</webMaster>
+
+        <itunes:author>jpk @ bespoken.tools </itunes:author>
+        <itunes:subtitle> Alexa Podcast is a podcast about Alexa </itunes:subtitle>
+        <itunes:summary> Alexa Podcast Summary </itunes:summary>
+
+        <itunes:owner>
+            <itunes:name>John K</itunes:name>
+            <itunes:email>jpk@xappmedia.com</itunes:email>
+        </itunes:owner>
+
+        <itunes:explicit>No</itunes:explicit>
+
+        <itunes:image href="http://www.podcast411.com/img/411_itunes.jpg"/>
+
+        <itunes:category text="Technology">
+            <itunes:category text="Podcasting"/>
+        </itunes:category>
+
+        <item>
+            <title>First Podcast - Using the Alexa Streaming API </title>
+            <link>http://podcast411.com/forums/viewtopic.php?t=451</link>
+            <guid>https://s3.amazonaws.com/bespoken/streaming/16683-WatchVideo.m4a</guid>
+            <description> Welcome the first show on Alexa Streaming </description>
+            <enclosure url="https://s3.amazonaws.com/bespoken/streaming/16683-WatchVideo.m4a" length="11779397" type="audio/mp4"/>
+            <category>Podcasts</category>
+            <pubDate>Sun, 28 Aug 2016 11:30:00 -0500</pubDate>
+            <itunes:author>John @ bespoken.tools</itunes:author>
+
+            <itunes:explicit>No</itunes:explicit>
+            <itunes:subtitle>Welcome to the show it is August 28th and this is our first show
+                show.  Today will be information on how to use streaming with Alexa </itunes:subtitle>
+            <itunes:summary> Welcome to the show it is August 28th and this is our first show
+                show.  Today will be information on how to use streaming with Alexa </itunes:summary>
+            <itunes:duration>00:24:30</itunes:duration>
+            <itunes:keywords>Alexa, Bespoken</itunes:keywords>
+        </item>
+
+        <item>
+            <title>First Podcast - Using the Alexa Streaming API </title>
+            <link>http://podcast411.com/forums/viewtopic.php?t=451</link>
+            <guid>https://s3.amazonaws.com/bespoken/streaming/16683-WatchVideo.m4a</guid>
+            <description> Welcome the first show on Alexa Streaming </description>
+            <enclosure url="https://s3.amazonaws.com/bespoken/streaming/16683-WatchVideo2.m4a" length="11779397" type="audio/mp4"/>
+            <category>Podcasts</category>
+            <pubDate>Sun, 28 Aug 2016 11:30:00 -0500</pubDate>
+            <itunes:author>John @ bespoken.tools</itunes:author>
+
+            <itunes:explicit>No</itunes:explicit>
+            <itunes:subtitle>Welcome to the show it is August 28th and this is our first show
+                show.  Today will be information on how to use streaming with Alexa </itunes:subtitle>
+            <itunes:summary> Welcome to the show it is August 28th and this is our first show
+                show.  Today will be information on how to use streaming with Alexa </itunes:summary>
+            <itunes:duration>00:24:30</itunes:duration>
+            <itunes:keywords>Alexa, Bespoken</itunes:keywords>
+        </item>
+
+    </channel>
+
+</rss>

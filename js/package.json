@@ -13,8 +13,12 @@
   ],
   "author": "Amazon.com",
   "license": "See license in ../LICENSE.txt",
+  "devDependencies": {
+    "mocha": "2.5.3"
+  },
   "dependencies": {
-    "alexa-sdk": "^1.0.4"
+    "alexa-sdk": "^1.0.4",
+    "xml2js": "0.4.15"
   },
   "repository" : {
     "type" : "git",

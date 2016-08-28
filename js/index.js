@@ -1,5 +1,6 @@
 'use strict';
 
+var AWS = require('aws-sdk');
 var Alexa = require('alexa-sdk');
 var constants = require('./constants');
 var stateHandlers = require('./stateHandlers');
@@ -17,7 +18,11 @@ exports.handler = function(event, context, callback){
         audioEventHandlers
     );
 
-    if (event.context.System.device.supportedInterfaces.AudioPlayer === undefined) {
+    // Configure this JSON file with your correct credential
+    // AWS.config.loadFromPath("config.json");
+    AWS.config.loadFromPath("config.jpk.json");
+
+    if (event.context !== undefined && event.context.System.device.supportedInterfaces.AudioPlayer === undefined) {
         alexa.emit(':tell', 'Sorry, this skill is not supported on this device');
     }
     else {
