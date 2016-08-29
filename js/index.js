@@ -5,6 +5,7 @@ var Alexa = require('alexa-sdk');
 var constants = require('./constants');
 var stateHandlers = require('./stateHandlers');
 var audioEventHandlers = require('./audioEventHandlers');
+var AudioManager = require('./audioManager');
 
 exports.handler = function(event, context, callback){
     var alexa = Alexa.handler(event, context);
@@ -26,6 +27,8 @@ exports.handler = function(event, context, callback){
         alexa.emit(':tell', 'Sorry, this skill is not supported on this device');
     }
     else {
-        alexa.execute();
+        AudioManager.load("URL", "https://s3.amazonaws.com/bespoken/streaming/rssFeed.xml", function () {
+            alexa.execute();
+        });
     }
 };
