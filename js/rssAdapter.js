@@ -1,7 +1,7 @@
 var fs = require('fs');
 var http = require('http');
 var https = require('https');
-var url = require('url')
+var url = require('url');
 var xml2js = require('xml2js');
 
 var RSSAdapter = function () {};
@@ -52,7 +52,7 @@ RSSAdapter.fromURL = function(rssUrlString, callback) {
         response.on('end', function () {
             RSSAdapter.fromString(payload, callback);
         });
-    }
+    };
 
     caller.request(options, httpCallback).end();
 };

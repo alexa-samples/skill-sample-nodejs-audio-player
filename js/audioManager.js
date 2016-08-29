@@ -39,7 +39,7 @@ var AudioManager = {
             return this.audioAssetArray;
         }
     }
-}
+};
 
 module.exports = AudioManager;
 
