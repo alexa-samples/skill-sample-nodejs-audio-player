@@ -17,7 +17,8 @@ exports.handler = function(event, context, callback){
         audioEventHandlers
     );
 
-    if (event.context.System.device.supportedInterfaces.AudioPlayer === undefined) {
+    var audioPlayerInterface = ((((event.context || {}).System || {}).device || {}).supportedInterfaces || {}).AudioPlayer;
+    if (audioPlayerInterface === undefined) {
         alexa.emit(':tell', 'Sorry, this skill is not supported on this device');
     }
     else {
