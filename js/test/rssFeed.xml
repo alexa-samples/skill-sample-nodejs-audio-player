@@ -29,11 +29,11 @@
         </itunes:category>
 
         <item>
-            <title>First Podcast - Using the Alexa Streaming API </title>
+            <title>Podcast 140</title>
             <link>http://podcast411.com/forums/viewtopic.php?t=451</link>
             <guid>https://s3.amazonaws.com/bespoken/streaming/16683-WatchVideo.m4a</guid>
             <description> Welcome the first show on Alexa Streaming </description>
-            <enclosure url="https://s3.amazonaws.com/bespoken/streaming/16683-WatchVideo.m4a" length="11779397" type="audio/mp4"/>
+            <enclosure url="https://feeds.soundcloud.com/stream/275202399-amazon-web-services-306355661-amazon-web-services.mp3" length="11779397" type="audio/mpeg"/>
             <category>Podcasts</category>
             <pubDate>Sun, 28 Aug 2016 11:30:00 -0500</pubDate>
             <itunes:author>John @ bespoken.tools</itunes:author>
@@ -48,11 +48,49 @@
         </item>
 
         <item>
-            <title>First Podcast - Using the Alexa Streaming API </title>
+            <title>Podcast 139</title>
             <link>http://podcast411.com/forums/viewtopic.php?t=451</link>
             <guid>https://s3.amazonaws.com/bespoken/streaming/16683-WatchVideo.m4a</guid>
             <description> Welcome the first show on Alexa Streaming </description>
-            <enclosure url="https://s3.amazonaws.com/bespoken/streaming/16683-WatchVideo2.m4a" length="11779397" type="audio/mp4"/>
+            <enclosure url="https://feeds.soundcloud.com/stream/274166909-amazon-web-services-306355661-aws-podcast-episode-139.mp3" length="11779397" type="audio/mpeg"/>
+            <category>Podcasts</category>
+            <pubDate>Sun, 28 Aug 2016 11:30:00 -0500</pubDate>
+            <itunes:author>John @ bespoken.tools</itunes:author>
+
+            <itunes:explicit>No</itunes:explicit>
+            <itunes:subtitle>Welcome to the show it is August 28th and this is our first show
+                show.  Today will be information on how to use streaming with Alexa </itunes:subtitle>
+            <itunes:summary> Welcome to the show it is August 28th and this is our first show
+                show.  Today will be information on how to use streaming with Alexa </itunes:summary>
+            <itunes:duration>00:24:30</itunes:duration>
+            <itunes:keywords>Alexa, Bespoken</itunes:keywords>
+        </item>
+
+        <item>
+            <title>Podcast 138</title>
+            <link>http://podcast411.com/forums/viewtopic.php?t=451</link>
+            <guid>https://s3.amazonaws.com/bespoken/streaming/16683-WatchVideo.m4a</guid>
+            <description> Welcome the first show on Alexa Streaming </description>
+            <enclosure url="https://feeds.soundcloud.com/stream/273105224-amazon-web-services-306355661-aws-podcast-episode-138.mp3" length="11779397" type="audio/mpeg"/>
+            <category>Podcasts</category>
+            <pubDate>Sun, 28 Aug 2016 11:30:00 -0500</pubDate>
+            <itunes:author>John @ bespoken.tools</itunes:author>
+
+            <itunes:explicit>No</itunes:explicit>
+            <itunes:subtitle>Welcome to the show it is August 28th and this is our first show
+                show.  Today will be information on how to use streaming with Alexa </itunes:subtitle>
+            <itunes:summary> Welcome to the show it is August 28th and this is our first show
+                show.  Today will be information on how to use streaming with Alexa </itunes:summary>
+            <itunes:duration>00:24:30</itunes:duration>
+            <itunes:keywords>Alexa, Bespoken</itunes:keywords>
+        </item>
+
+        <item>
+            <title>Podcast 137</title>
+            <link>http://podcast411.com/forums/viewtopic.php?t=451</link>
+            <guid>https://s3.amazonaws.com/bespoken/streaming/16683-WatchVideo.m4a</guid>
+            <description> Welcome the first show on Alexa Streaming </description>
+            <enclosure url="https://feeds.soundcloud.com/stream/272089501-amazon-web-services-306355661-aws-podcast-episode-137.mp3" length="11779397" type="audio/mpeg"/>
             <category>Podcasts</category>
             <pubDate>Sun, 28 Aug 2016 11:30:00 -0500</pubDate>
             <itunes:author>John @ bespoken.tools</itunes:author>

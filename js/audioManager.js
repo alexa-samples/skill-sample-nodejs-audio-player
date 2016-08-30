@@ -11,16 +11,17 @@ var AudioManager = {
     audioAssetArray: null, // Will be array of audio items
 
     load: function (audioSourceType, audioSource, callback) {
-        let self = this;
         this.audioSourceType = audioSourceType;
         this.audioSource = audioSource;
 
-        if (this.audioAssetArray === null) {
+        if (AudioManager.audioAssetArray === null) {
+            console.log("Loading Audio Assets");
             if (this.audioSourceType === 'static') {
-                this.audioAssetArray = require('./audioAssets');
+                AudioManager.audioAssetArray = require('./audioAssets');
+                callback();
             } else {
                 require('./rssAdapter').fromURL(this.audioSource, function (error, audioArray) {
-                    self.audioAssetArray = audioArray;
+                    AudioManager.audioAssetArray = audioArray;
                     callback();
                 });
             }
@@ -30,13 +31,12 @@ var AudioManager = {
 
     },
 
-
     audioAssets: function () {
-        if (this.audioAssetArray === null) {
+        if (AudioManager.audioAssetArray === null) {
             // This should not happen - should already be loaded on startup
             return [];
         } else {
-            return this.audioAssetArray;
+            return AudioManager.audioAssetArray;
         }
     }
 };
