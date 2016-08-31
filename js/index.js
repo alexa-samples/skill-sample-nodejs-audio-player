@@ -25,7 +25,7 @@ exports.handler = function(event, context, callback){
 
     // Configure this JSON file with your correct credential
     //  Look at config.example.json to see how this should look
-    AWS.config.loadFromPath("config.json");
+    AWS.config.loadFromPath("js/config.json");
 
     var requestType = event.request.type;
     // Let's look at the request being sent
