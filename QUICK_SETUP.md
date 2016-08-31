@@ -55,8 +55,15 @@ A. Via the Test tab, enable the skill for testing:
 Then send an intent to your skill:
 ![alt text](https://raw.githubusercontent.com/bespoken/skill-sample-nodejs-audio-player/mainline/docs/images/FirstTest.png "Enter Play the podcast and hit Play")
 
-## Voila!
-Enjoy! We love feedback - talk to us on Gitter at:  
+You will also see the output from your skill in the terminal window where the **bst proxy** is running:  
+![alt text](https://raw.githubusercontent.com/bespoken/skill-sample-nodejs-audio-player/mainline/docs/images/FirstTestOutput.png "Output from run")  
+
+## Enjoy!
+You can run wild with it now - make changes and see them show up instantaneously.  
+
+You can even test from your Alexa device - give it a try!  
+
+We love feedback - talk to us on Gitter at:  
 https://gitter.im/bespoken/bst
 
 
