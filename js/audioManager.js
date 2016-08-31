@@ -19,8 +19,13 @@ var AudioManager = {
             if (this.audioSourceType === 'static') {
                 AudioManager.audioAssetArray = require('./audioAssets');
                 callback();
-            } else {
+            } else if (audioSourceType === 'url') {
                 require('./rssAdapter').fromURL(this.audioSource, function (error, audioArray) {
+                    AudioManager.audioAssetArray = audioArray;
+                    callback();
+                });
+            } else if (audioSourceType === 'file') {
+                require('./rssAdapter').fromFile(this.audioSource, function (error, audioArray) {
                     AudioManager.audioAssetArray = audioArray;
                     callback();
                 });

@@ -29,7 +29,7 @@
         </itunes:category>
 
         <item>
-            <title>Podcast 140</title>
+            <title>Episode 140</title>
             <link>http://podcast411.com/forums/viewtopic.php?t=451</link>
             <guid>https://s3.amazonaws.com/bespoken/streaming/16683-WatchVideo.m4a</guid>
             <description> Welcome the first show on Alexa Streaming </description>
@@ -48,7 +48,7 @@
         </item>
 
         <item>
-            <title>Podcast 139</title>
+            <title>Episode 139</title>
             <link>http://podcast411.com/forums/viewtopic.php?t=451</link>
             <guid>https://s3.amazonaws.com/bespoken/streaming/16683-WatchVideo.m4a</guid>
             <description> Welcome the first show on Alexa Streaming </description>
@@ -67,7 +67,7 @@
         </item>
 
         <item>
-            <title>Podcast 138</title>
+            <title>Episode 138</title>
             <link>http://podcast411.com/forums/viewtopic.php?t=451</link>
             <guid>https://s3.amazonaws.com/bespoken/streaming/16683-WatchVideo.m4a</guid>
             <description> Welcome the first show on Alexa Streaming </description>
@@ -86,11 +86,49 @@
         </item>
 
         <item>
-            <title>Podcast 137</title>
+            <title>Episode 137</title>
             <link>http://podcast411.com/forums/viewtopic.php?t=451</link>
             <guid>https://s3.amazonaws.com/bespoken/streaming/16683-WatchVideo.m4a</guid>
             <description> Welcome the first show on Alexa Streaming </description>
             <enclosure url="https://feeds.soundcloud.com/stream/272089501-amazon-web-services-306355661-aws-podcast-episode-137.mp3" length="11779397" type="audio/mpeg"/>
+            <category>Podcasts</category>
+            <pubDate>Sun, 28 Aug 2016 11:30:00 -0500</pubDate>
+            <itunes:author>John @ bespoken.tools</itunes:author>
+
+            <itunes:explicit>No</itunes:explicit>
+            <itunes:subtitle>Welcome to the show it is August 28th and this is our first show
+                show.  Today will be information on how to use streaming with Alexa </itunes:subtitle>
+            <itunes:summary> Welcome to the show it is August 28th and this is our first show
+                show.  Today will be information on how to use streaming with Alexa </itunes:summary>
+            <itunes:duration>00:24:30</itunes:duration>
+            <itunes:keywords>Alexa, Bespoken</itunes:keywords>
+        </item>
+
+        <item>
+            <title>Episode 136</title>
+            <link>http://podcast411.com/forums/viewtopic.php?t=451</link>
+            <guid>https://s3.amazonaws.com/bespoken/streaming/16683-WatchVideo.m4a</guid>
+            <description> Welcome the first show on Alexa Streaming </description>
+            <enclosure url="https://feeds.soundcloud.com/stream/271026549-amazon-web-services-306355661-aws-podcast-episode-136.mp3" length="11779397" type="audio/mpeg"/>
+            <category>Podcasts</category>
+            <pubDate>Sun, 28 Aug 2016 11:30:00 -0500</pubDate>
+            <itunes:author>John @ bespoken.tools</itunes:author>
+
+            <itunes:explicit>No</itunes:explicit>
+            <itunes:subtitle>Welcome to the show it is August 28th and this is our first show
+                show.  Today will be information on how to use streaming with Alexa </itunes:subtitle>
+            <itunes:summary> Welcome to the show it is August 28th and this is our first show
+                show.  Today will be information on how to use streaming with Alexa </itunes:summary>
+            <itunes:duration>00:24:30</itunes:duration>
+            <itunes:keywords>Alexa, Bespoken</itunes:keywords>
+        </item>
+
+        <item>
+            <title>Episode 135</title>
+            <link>http://podcast411.com/forums/viewtopic.php?t=451</link>
+            <guid>https://s3.amazonaws.com/bespoken/streaming/16683-WatchVideo.m4a</guid>
+            <description> Welcome the first show on Alexa Streaming </description>
+            <enclosure url="https://feeds.soundcloud.com/stream/270241244-amazon-web-services-306355661-aws-podcast-episode-135.mp3" length="11779397" type="audio/mpeg"/>
             <category>Podcasts</category>
             <pubDate>Sun, 28 Aug 2016 11:30:00 -0500</pubDate>
             <itunes:author>John @ bespoken.tools</itunes:author>
