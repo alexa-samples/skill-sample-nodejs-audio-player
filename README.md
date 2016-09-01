@@ -43,18 +43,18 @@ The URL that is printed out will be used in the next step.
 
 4) Create or login to an [Amazon Developer account](https://developer.amazon.com).  In the Developer Console:  
 
-A. [Create an Alexa Skill](https://developer.amazon.com/public/solutions/alexa/alexa-skills-kit/docs/developing-an-alexa-skill-as-a-lambda-function) named MySkill and using the invocation name "my skill" and select 'Yes' for Audio Player support.
+[Create an Alexa Skill](https://developer.amazon.com/public/solutions/alexa/alexa-skills-kit/docs/developing-an-alexa-skill-as-a-lambda-function) named MySkill and using the invocation name "my skill" and select 'Yes' for Audio Player support:
 ![alt text](https://s3.amazonaws.com/lantern-public-assets/audio-player-assets/prod-skill-info.png "Developer Portal Skill Information")
 
-B. Copy the contents of `speechAssets/intentSchema.json` and `speechAssets/Utterances.txt` into the intent schema and sample utterances fields on the Interaction Model tab.
+Copy the contents of `speechAssets/intentSchema.json` and `speechAssets/Utterances.txt` into the intent schema and sample utterances fields on the Interaction Model tab:
 &nbsp;&nbsp;&nbsp;&nbsp;![alt text](https://s3.amazonaws.com/lantern-public-assets/audio-player-assets/prod-interaction-model.png "Developer Portal Interaction Model")
     
-C. Set the URL from above in the Configuration tab.
+Set the URL from above in the Configuration tab:
 ![alt text](https://raw.githubusercontent.com/bespoken/skill-sample-nodejs-audio-player/mainline/docs/images/SkillConfigurationScreenshot.png "Developer Portal Configuration")
         
 5) Try it out  
 
-A. Via the Test tab, enable the skill for testing:
+Via the Test tab, enable the skill for testing:
 ![alt text](https://raw.githubusercontent.com/bespoken/skill-sample-nodejs-audio-player/mainline/docs/images/EnableTesting.png "Enable Testing")
 
 Then send an intent to your skill:
