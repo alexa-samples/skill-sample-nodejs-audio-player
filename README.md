@@ -34,7 +34,7 @@ bst proxy lambda index.js
 
 The proxy will print out some basic information:
 ```
-BST: v0.6.5  Node: v6.3.0
+BST: v0.6.12  Node: v6.3.0
 
 Your URL for Alexa Skill configuration:
 https://proxy.bespoken.tools?node-id=83118179-ae4a-4132-8c15-82af566efa2b
