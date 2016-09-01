@@ -2,8 +2,8 @@
 
 If you would like to get started working with this project quickly, to see how the new streaming works, just follow these directions.  
 
-You can return to the [main README] (https://github.com/bespoken/skill-sample-nodejs-audio-player/README_DEPLOY.md) 
-when you want to do a production deployment. These steps will allow you to get quickly setup and then do "frictionless iterations" on your code.
+You can take a look at the [deploy README] (https://github.com/bespoken/skill-sample-nodejs-audio-player/README_DEPLOY.md) 
+if/when you want to make the skill available publicly. These steps will allow you to get quickly setup and then do "frictionless iterations" on your code.
 
 ## Running the Sample
 
