@@ -7,14 +7,11 @@ var stateHandlers = require('./stateHandlers');
 var audioEventHandlers = require('./audioEventHandlers');
 var AudioManager = require('./audioManager');
 
-AudioManager.load("static", "test/rssFeed.xml", function () {
-    console.log("AudioDataLoaded");
-});
-
 exports.handler = function(event, context, callback){
     var alexa = Alexa.handler(event, context);
     alexa.appId = constants.appId;
     alexa.dynamoDBTableName = constants.dynamoDBTableName;
+
     alexa.registerHandlers(
         stateHandlers.startModeIntentHandlers,
         stateHandlers.playModeIntentHandlers,
@@ -23,8 +20,8 @@ exports.handler = function(event, context, callback){
         audioEventHandlers
     );
 
-    // Configure this JSON file with your correct credential
-    //  Look at config.example.json to see how this should look
+    // Configure this JSON file with your correct credentials
+    //  Make a copy of config.example.json and substitute in the correct credentials for accessing Dynamo
     AWS.config.loadFromPath("js/config.json");
 
     var requestType = event.request.type;
@@ -45,6 +42,9 @@ exports.handler = function(event, context, callback){
         alexa.emit(':tell', 'Sorry, this skill is not supported on this device');
     }
     else {
-        alexa.execute();
+        // The resources are loaded once and then cached, but this is done asynchronously
+        AudioManager.load("file", "js/test/rssFeed.xml", function () {
+            alexa.execute();
+        });
     }
 };
