@@ -61,6 +61,7 @@ Then send an intent to your skill:
 ![alt text](https://raw.githubusercontent.com/bespoken/skill-sample-nodejs-audio-player/mainline/docs/images/FirstTest.png "Enter Play the podcast and hit Play")
 
 You will also see the output from your skill in the terminal window where the **bst proxy** is running:  
+
 ![alt text](https://raw.githubusercontent.com/bespoken/skill-sample-nodejs-audio-player/mainline/docs/images/FirstTestOutput.png "Output from run")  
 
 Pretty cool, right?!
