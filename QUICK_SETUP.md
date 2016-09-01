@@ -15,6 +15,7 @@ npm install
 ```
 
 2) Install **Bespoken Tools**  
+
 The Bespoken Tools (aka bst) make it easy to debug and develop your skills locally.  
 
 The proxy tool, which we will be using, works by redirecting traffic from the Alexa service directly to your development laptop or machine.
@@ -24,10 +25,13 @@ npm install bespoken-tools -g
 ```
 
 3) Run **bst proxy** to get setup  
-From the directory where you cloned the project, run:
+
+From the directory where you cloned the project, switch to the "js" folder and run the bst proxy:
+```bash
+cd js
+bst proxy lambda index.js
 ```
-bst proxy lambda js/index.js
-```
+
 The proxy will print out some basic information:
 ```
 BST: v0.6.5  Node: v6.3.0
@@ -49,6 +53,7 @@ C. Set the URL from above in the Configuration tab.
 ![alt text](https://raw.githubusercontent.com/bespoken/skill-sample-nodejs-audio-player/mainline/docs/images/SkillConfigurationScreenshot.png "Developer Portal Configuration")
         
 5) Try it out  
+
 A. Via the Test tab, enable the skill for testing:
 ![alt text](https://raw.githubusercontent.com/bespoken/skill-sample-nodejs-audio-player/mainline/docs/images/EnableTesting.png "Enable Testing")
 
@@ -61,6 +66,7 @@ You will also see the output from your skill in the terminal window where the **
 Pretty cool, right?!
 
 ## Enjoy!
+
 You can run wild with it now - make changes and see them show up instantaneously.  
 
 You can even test from your Alexa device - give it a try!  

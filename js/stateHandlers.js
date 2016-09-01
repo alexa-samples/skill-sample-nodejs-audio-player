@@ -214,7 +214,7 @@ var controller = function () {
              *  Issuing AudioPlayer.Stop directive to stop the audio.
              *  Attributes already stored when AudioPlayer.Stopped request received.
              */
-            // this.response.audioPlayerStop();
+            this.response.audioPlayerStop();
             this.emit(':responseReady');
         },
         playNext: function () {

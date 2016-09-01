@@ -18,6 +18,7 @@
   },
   "dependencies": {
     "alexa-sdk": "^1.0.4",
+    "mockery": "^1.7.0",
     "xml2js": "0.4.15"
   },
   "repository" : {
