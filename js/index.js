@@ -24,20 +24,6 @@ exports.handler = function(event, context, callback){
         audioEventHandlers
     );
 
-    var requestType = event.request.type;
-    // Let's look at the request being sent
-    console.log('Request: ' + requestType);
-    console.log(JSON.stringify(event.request, null, 2));
-
-    // As well as peek at the response
-    var wrappedFunction = context.succeed.bind(context);
-    context.succeed = function (payload) {
-        wrappedFunction(payload);
-        if (payload !== undefined) {
-            console.log("Response: " + JSON.stringify(payload, null, 2));
-        }
-    };
-
     if (event.context !== undefined && event.context.System.device.supportedInterfaces.AudioPlayer === undefined) {
         alexa.emit(':tell', 'Sorry, this skill is not supported on this device');
     }
