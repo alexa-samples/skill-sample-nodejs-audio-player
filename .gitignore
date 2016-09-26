@@ -1,3 +1,5 @@
 node_modules
 .idea
 *.zip
+js/config.jpk.json
+js/config.json
