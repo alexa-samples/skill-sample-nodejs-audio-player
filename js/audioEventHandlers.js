@@ -7,6 +7,7 @@ var constants = require('./constants');
 // Binding audio handlers to PLAY_MODE State since they are expected only in this mode.
 var audioEventHandlers = Alexa.CreateStateHandler(constants.states.PLAY_MODE, {
     'PlaybackStarted' : function () {
+        console.log("PlaybackStarted");
         /*
          * AudioPlayer.PlaybackStarted Directive received.
          * Confirming that requested audio file began playing.
@@ -18,6 +19,7 @@ var audioEventHandlers = Alexa.CreateStateHandler(constants.states.PLAY_MODE, {
         this.emit(':saveState', true);
     },
     'PlaybackFinished' : function () {
+        console.log("PlaybackFinished");
         /*
          * AudioPlayer.PlaybackFinished Directive received.
          * Confirming that audio file completed playing.
@@ -28,6 +30,7 @@ var audioEventHandlers = Alexa.CreateStateHandler(constants.states.PLAY_MODE, {
         this.emit(':saveState', true);
     },
     'PlaybackStopped' : function () {
+        console.log("PlaybackStopped");
         /*
          * AudioPlayer.PlaybackStopped Directive received.
          * Confirming that audio file stopped playing.
@@ -39,6 +42,7 @@ var audioEventHandlers = Alexa.CreateStateHandler(constants.states.PLAY_MODE, {
         this.emit(':saveState', true);
     },
     'PlaybackNearlyFinished' : function () {
+        console.log("PlaybackNearlyFinished");
         /*
          * AudioPlayer.PlaybackNearlyFinished Directive received.
          * Using this opportunity to enqueue the next audio
@@ -89,16 +93,19 @@ module.exports = audioEventHandlers;
 
 function getToken() {
     // Extracting token received in the request.
+    console.log("getToken");
     return this.event.request.token;
 }
 
 function getIndex() {
     // Extracting index from the token received in the request.
+    console.log("getIndex");
     var tokenValue = parseInt(this.event.request.token);
     return this.attributes['playOrder'].indexOf(tokenValue);
 }
 
 function getOffsetInMilliseconds() {
+    console.log("getOffsetInMilliseconds");
     // Extracting offsetInMilliseconds received in the request.
     return this.event.request.offsetInMilliseconds;
 }
