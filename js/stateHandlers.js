@@ -15,8 +15,11 @@ var stateHandlers = {
         'LaunchRequest' : function () {
             console.log('LaunchRequest start');
 
-            // get list of tracks - TODO get today
-            httpGet('http://www.nightfly.fm/display/30.2478168,-97.7724371/2017-08-26', function(body) {
+            // get list of tracks - TODO 1: get today's date for endpoint
+            // TODO 2: how to handle 0 events?
+            // TODO 3: what if http get fails?
+            // TODO 4: clean up all messaging to be Nightfly specific
+            httpGet('http://www.nightfly.fm/display/30.2478168,-97.7724371/2018-08-22', function(body) {
                 console.log("body=" + body);
                 var events = JSON.parse(body);
                 console.log("events= " + events);
@@ -246,6 +249,9 @@ var controller = function () {
             console.log("play playOrder", this.attributes['playOrder']);
             console.log("play index", this.attributes['index']);
             var podcast = this.attributes['events'][this.attributes['playOrder'][this.attributes['index']]];
+
+            // TODO what if podcast is null?
+
             var offsetInMilliseconds = this.attributes['offsetInMilliseconds'];
             // Since play behavior is REPLACE_ALL, enqueuedToken attribute need to be set to null.
             this.attributes['enqueuedToken'] = null;
@@ -421,6 +427,7 @@ function httpGet(url, callback) {
                 callback(body);
             }
         } else {
+            // fail happened
             console.log('httpGet error:', error);
         }
     });
