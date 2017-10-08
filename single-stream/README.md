@@ -1,4 +1,4 @@
-# Single Stream Audio Skil (My Radio)
+# Single Stream Audio Skill (My Radio)
 
 This skill demonstrates how to create a single stream audio skill.  Single stream skills are typically used by radio stations to provide a convenient and quick access to their live stream.
 
@@ -23,7 +23,7 @@ This is a NodeJS Lambda function and skill defintion to be used by [ASK CLI](htt
 You need to initialize ASK CLI with 
 
 ```bash
-ask init
+$ ask init
 ```
 
 You need an [AWS account](https://aws.amazon.com) and an [Amazon developer account](https://developer.amazon.com) to create an Alexa Skill.
@@ -31,9 +31,8 @@ You need an [AWS account](https://aws.amazon.com) and an [Amazon developer accou
 You need to download NodeJS dependencies :
 
 ```bash
-cd lambda && npm install
-cd src && npm install
-cd ../.
+$ (cd lambda && npm instal)
+$ (cd lambda/src && npm install)
 ```
 
 ### Required changes before to deploy
@@ -72,8 +71,7 @@ This code is using [Mocha](https://mochajs.org/) and [Chai](http://chaijs.com/) 
 Execute your test by typing 
 
 ```bash
-cd lambda
-npm test
+$ (cd lambda && npm test)
 ```
 
 ### Deployment
@@ -85,7 +83,7 @@ Lambda function will be creadted in ```us-east-1``` (Northern Virginia) by defau
 You deploy the skill and the lambda function in one step :
 
 ```bash
-ask deploy 
+$ ask deploy 
 ```
 
 You can test your deployment by FIRST ENABLING the TEST switch on your skill in the Alexa Developer Console.
