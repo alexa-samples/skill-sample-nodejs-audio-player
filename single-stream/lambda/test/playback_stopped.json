@@ -1,0 +1,39 @@
+{
+  "version": "1.0",
+  "context": {
+    "AudioPlayer": {
+      "offsetInMilliseconds": 272197,
+      "token": "https://audio1.maxi80.com",
+      "playerActivity": "STOPPED"
+    },
+    "Display": {},
+    "System": {
+      "application": {
+        "applicationId": "amzn1.ask.skill.123"
+      },
+      "user": {
+        "userId": "amzn1.ask.account.123"
+      },
+      "device": {
+        "deviceId": "amzn1.ask.device.123",
+        "supportedInterfaces": {
+          "AudioPlayer": {},
+          "Display": {
+            "templateVersion": "1.0",
+            "markupVersion": "1.0"
+          },
+          "VideoApp": {}
+        }
+      },
+      "apiEndpoint": "https://api.amazonalexa.com"
+    }
+  },
+  "request": {
+    "type": "AudioPlayer.PlaybackStopped",
+    "requestId": "amzn1.echo-api.request.123",
+    "timestamp": "2017-07-08T09:49:39Z",
+    "locale": "en-GB",
+    "token": "https://audio1.maxi80.com",
+    "offsetInMilliseconds": 272197
+  }
+}
