@@ -64,6 +64,13 @@ var audioData = {
 };
 ```
 
+3. ```./models/*.json```
+
+Change the model defintion to replace the invocation name (it defaults to "my radio") and the sample phrase for each intent.  
+
+Repeat the operation for each locale you are planning to support.
+
+
 ### Local Tests
 
 This code is using [Mocha](https://mochajs.org/) and [Chai](http://chaijs.com/) to test the responses returned by your skill.  Before to deploy, be sure to have no test failures.
