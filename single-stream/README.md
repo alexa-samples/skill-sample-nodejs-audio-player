@@ -14,7 +14,7 @@ Alexa, stop
 
 ## Installation
 
-You will need to change a few configuration files before to create the skill and upload the lambda code.
+You will need to change a few configuration files before creating the skill and upload the lambda code.
 
 ### Pre-requisites
 
@@ -31,7 +31,7 @@ You need an [AWS account](https://aws.amazon.com) and an [Amazon developer accou
 You need to download NodeJS dependencies :
 
 ```bash
-$ (cd lambda && npm instal)
+$ (cd lambda && npm install)
 $ (cd lambda/src && npm install)
 ```
 
@@ -47,7 +47,7 @@ $ (cd lambda/src && npm install)
 
 2. ```./lambda/src/audioAssets.js```
 
-   Modify each value in the audioAssets.js file to provide your skill at runtime the correct value : your radio name, decsription, icon and, obviosuly, URL of your stream (https only).
+   Modify each value in the audioAssets.js file to provide your skill at runtime the correct value : your radio name, description, icon and, obviosuly, URL of your stream (https only).
 
    To learn more about Alexa App cards, see https://developer.amazon.com/docs/custom-skills/include-a-card-in-your-skills-response.html
 
@@ -66,7 +66,7 @@ var audioData = {
 
 3. ```./models/*.json```
 
-Change the model defintion to replace the invocation name (it defaults to "my radio") and the sample phrase for each intent.  
+Change the model defintion to replace the invocation name (it defaults to "my radio") and the sample phrases for each intent.  
 
 Repeat the operation for each locale you are planning to support.
 
