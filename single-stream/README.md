@@ -18,7 +18,7 @@ You will need to change a few configuration files before creating the skill and 
 
 ### Pre-requisites
 
-This is a NodeJS Lambda function and skill defintion to be used by [ASK CLI](https://developer.amazon.com/docs/smapi/quick-start-alexa-skills-kit-command-line-interface.html).
+This is a NodeJS Lambda function and skill definition to be used by [ASK CLI](https://developer.amazon.com/docs/smapi/quick-start-alexa-skills-kit-command-line-interface.html).
 
 You need to initialize ASK CLI with 
 
