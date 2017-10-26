@@ -9,45 +9,6 @@ The Alexa Skills Kit now allows developers to build skills that play long-form a
 
 To follow this tutorial, work through the [instructions](https://github.com/alexa/skill-sample-nodejs-audio-player/blob/master/multiple-streams/instructions/1-voice-user-interface.md) to create your audio player skill.
 
-
-<a href="https://github.com/alexa/skill-sample-nodejs-audio-player/blob/master/single-stream/instructions/1-voice-user-interface.md"><img src="https://m.media-amazon.com/images/G/01/mobile-apps/dex/alexa/alexa-skills-kit/tutorials/general/buttons/button_get_started._TTH_.png" /></a>
-
-<img height="1" width="1" src="https://www.facebook.com/tr?id=1847448698846169&ev=PageView&noscript=1"/>
-
-
-
-## How to Run the Sample
-
-1. Clone the project and package the skill:
-```bash
-git clone https://github.com/alexa/skill-sample-nodejs-audio-player.git
-cd skill-sample-nodejs-audio-player/multiple-streams/js
-npm install
-zip -r ../audio-player.zip *
-```
-2. Create or login to an [AWS account](https://aws.amazon.com/). In the AWS Console:
-
-    1. Create an AWS Role in IAM with access to Lambda, CloudWatch Logs and DynamoDB.
-        ![create_role_1](https://cloud.githubusercontent.com/assets/7671574/17451098/09f64f40-5b19-11e6-82ee-b82c98387052.png "AWS Create Role Screenshot 1")
-        ![create_role_2](https://cloud.githubusercontent.com/assets/7671574/17451100/0c3ef928-5b19-11e6-9aca-8cd353106396.png "AWS Create Role Screenshot 2")
-        ![create_role_3](https://cloud.githubusercontent.com/assets/7671574/18011103/7b05f2b2-6b68-11e6-8dc3-3aa9ead6d83e.png "AWS Create Role Screenshot 3")
-
-    2. Create an AWS Lambda function named AudioPlayerLambdaFunction being sure to select the role created above, configuring "Alexa Skills Kit" as the "Trigger" and using the zip file created above as the source.
-        ![alt text](https://s3.amazonaws.com/lantern-public-assets/audio-player-assets/aws-lambda-role.PNG "AWS Lambda Role")
-        ![alt text](https://s3.amazonaws.com/lantern-public-assets/audio-player-assets/aws-lambda-ask-trigger.PNG "AWS Lambda Trigger")
-    3. After creation, take note of the ARN on the upper right, which you'll configure in the Developer Console below.
-
-3. Create or login to an [Amazon Developer account](https://developer.amazon.com).  In the Developer Console:
-
-    1. [Create an Alexa Skill](https://developer.amazon.com/public/solutions/alexa/alexa-skills-kit/docs/developing-an-alexa-skill-as-a-lambda-function) named MySkill and using the invocation name "my skill" and select 'Yes' for Audio Player support.
-        ![alt text](https://s3.amazonaws.com/lantern-public-assets/audio-player-assets/prod-skill-info.png "Developer Portal Skill Information")
-    2. Copy the contents of `speechAssets/intentSchema.json` and `speechAssets/Utterances.txt` into the intent schema and sample utterances fields on the Interaction Model tab.
-        ![alt text](https://s3.amazonaws.com/lantern-public-assets/audio-player-assets/prod-interaction-model.png "Developer Portal Interaction Model")
-    3. Copy the Lambda ARN from above in the Configuration tab.
-        ![alt text](https://s3.amazonaws.com/lantern-public-assets/audio-player-assets/prod-configuration.png "Developer Portal Configuration")
-
-4. You can start using the skill on your device or in the simulator using the invocation phrase "Alexa, ask my skill to play".
-
 ## How it Works
 
 Alexa Skills Kit now includes a set of output directives and input events that allow you to control the playback of audio files or streams.  There are a few important concepts to get familiar with:
@@ -68,3 +29,7 @@ The sample project plays a pre-defined list of audio content defined in `js/audi
 * `audioEventHandlers.js` is where the skill handles AudioPlayer events.  These events are only expected in the PLAY_MODE state and are used to track the user's progress through the content.
 
 You can learn more about the new [AudioPlayer interface](https://developer.amazon.com/public/solutions/alexa/alexa-skills-kit/docs/custom-audioplayer-interface-reference) and [PlaybackController interface](https://developer.amazon.com/public/solutions/alexa/alexa-skills-kit/docs/custom-playbackcontroller-interface-reference).
+
+<a href="https://github.com/alexa/skill-sample-nodejs-audio-player/blob/master/single-stream/instructions/1-voice-user-interface.md"><img src="https://m.media-amazon.com/images/G/01/mobile-apps/dex/alexa/alexa-skills-kit/tutorials/general/buttons/button_get_started._TTH_.png" /></a>
+
+<img height="1" width="1" src="https://www.facebook.com/tr?id=1847448698846169&ev=PageView&noscript=1"/>

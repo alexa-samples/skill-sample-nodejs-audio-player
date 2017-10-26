@@ -5,6 +5,14 @@
 
 In the [first step of this guide](https://github.com/alexa/skill-sample-nodejs-audio-player/blob/master/multiple-streams/instructions/1-voice-user-interface.md), we built the Voice User Interface (VUI) for our Alexa skill.  On this page, we will be creating an AWS Lambda function using [Amazon Web Services](http://aws.amazon.com).  You can [read more about what a Lambda function is](http://aws.amazon.com/lambda), but for the purposes of this guide, what you need to know is that AWS Lambda is where our code lives.  When a user asks Alexa to use our skill, it is our AWS Lambda function that interprets the appropriate interaction, and provides the conversation back to the user.
 
+First, clone the project and package the skill:
+```bash
+git clone https://github.com/alexa/skill-sample-nodejs-audio-player.git
+cd skill-sample-nodejs-audio-player/multiple-streams/js
+npm install
+zip -r ../audio-player.zip *
+```
+
 1.  **Go to http://aws.amazon.com and sign in to the console.** If you don't already have an account, you will need to create one.  [If you don't have an AWS account, check out this quick walkthrough for setting it up](/set-up-aws.md).
 
     <a href="https://console.aws.amazon.com/console/home" target="_new"><img src="https://m.media-amazon.com/images/G/01/mobile-apps/dex/alexa/alexa-skills-kit/tutorials/general/2-1-sign-in-to-the-console._TTH_.png" /></a>
@@ -35,7 +43,7 @@ In the [first step of this guide](https://github.com/alexa/skill-sample-nodejs-a
 
     <img src="https://m.media-amazon.com/images/G/01/mobile-apps/dex/alexa/alexa-skills-kit/tutorials/general/2-7-configure-your-function._TTH_.png" />
 
-8.  **Copy and paste the [provided code](https://github.com/alexa/skill-sample-nodejs-howto/blob/master/lambda/custom/index.js) into the Lambda function code box.**  We have provided the code for this skill on [GitHub](https://github.com/alexa/skill-sample-nodejs-howto/blob/master/lambda/custom/index.js).  Delete the contents of the code box, and paste the contents of the new code.
+8.  **Select "Upload a .ZIP file" as your Code Entry Type** Then click "Upload" and select the zip file you created with the command above.
 
 9.  **Set up your Lambda function role.**  If you haven't done this before, we have a [detailed walkthrough for setting up your first role for Lambda](https://github.com/alexa/skill-sample-nodejs-howto/blob/master/lambda-role.md).  If you have done this before, set your **Existing role** value to "lambda_basic_execution."
 
