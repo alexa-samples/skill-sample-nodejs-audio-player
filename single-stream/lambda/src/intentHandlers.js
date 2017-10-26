@@ -4,7 +4,7 @@ var Alexa = require('alexa-sdk');
 var audioData = require('./audioAssets');
 var constants = require('./constants');
 
-var stateHandlers = {
+var intentHandlers = {
     'LaunchRequest': function () {
         this.emit('PlayAudio');
     },
@@ -59,7 +59,7 @@ var stateHandlers = {
     'PauseCommandIssued': function () { controller.stop.call(this, this.t('STOP_MSG')) }
 }
 
-module.exports = stateHandlers;
+module.exports = intentHandlers;
 
 var controller = function () {
     return {

@@ -2,7 +2,7 @@
 
 var alexa              = require('alexa-sdk');
 var constants          = require('./constants');
-var stateHandlers      = require('./stateHandlers');
+var stateHandlers      = require('./intentHandlers');
 var audioEventHandlers = require('./audioEventHandlers');
 var languageStrings    = require('./strings');
 
