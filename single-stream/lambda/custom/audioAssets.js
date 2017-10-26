@@ -1,6 +1,6 @@
 'use strict';
 
-var audioData = {
+const audioData = {
     title: 'My Radio',
     subtitle: 'Less bla bla, more la la',
     cardContent: "Visit our web site https://www.myradio.com",
