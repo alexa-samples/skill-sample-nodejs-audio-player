@@ -1,5 +1,5 @@
-# Build An Alexa Minecraft Helper Skill
-[![Voice User Interface](https://m.media-amazon.com/images/G/01/mobile-apps/dex/alexa/alexa-skills-kit/tutorials/navigation/1-locked._TTH_.png)](https://github.com/alexa/skill-sample-nodejs-howto/blob/master/instructions/1-voice-user-interface.md)[![Lambda Function](https://m.media-amazon.com/images/G/01/mobile-apps/dex/alexa/alexa-skills-kit/tutorials/navigation/2-locked._TTH_.png)](https://github.com/alexa/skill-sample-nodejs-howto/blob/master/instructions/2-lambda-function.md)[![Connect VUI to Code](https://m.media-amazon.com/images/G/01/mobile-apps/dex/alexa/alexa-skills-kit/tutorials/navigation/3-locked._TTH_.png)](https://github.com/alexa/skill-sample-nodejs-howto/blob/master/instructions/3-connect-vui-to-code.md)[![Testing](https://m.media-amazon.com/images/G/01/mobile-apps/dex/alexa/alexa-skills-kit/tutorials/navigation/4-locked._TTH_.png)](https://github.com/alexa/skill-sample-nodejs-howto/blob/master/instructions/4-testing.md)[![Customization](https://m.media-amazon.com/images/G/01/mobile-apps/dex/alexa/alexa-skills-kit/tutorials/navigation/5-locked._TTH_.png)](https://github.com/alexa/skill-sample-nodejs-howto/blob/master/instructions/5-customization.md)[![Publication](https://m.media-amazon.com/images/G/01/mobile-apps/dex/alexa/alexa-skills-kit/tutorials/navigation/6-on._TTH_.png)](https://github.com/alexa/skill-sample-nodejs-howto/blob/master/instructions/6-publication.md)
+# Build An Alexa Radio Player Skill
+[![Voice User Interface](https://m.media-amazon.com/images/G/01/mobile-apps/dex/alexa/alexa-skills-kit/tutorials/navigation/1-locked._TTH_.png)](https://github.com/alexa/skill-sample-nodejs-audio-player/blob/master/single-stream/instructions/1-voice-user-interface.md)[![Lambda Function](https://m.media-amazon.com/images/G/01/mobile-apps/dex/alexa/alexa-skills-kit/tutorials/navigation/2-locked._TTH_.png)](https://github.com/alexa/skill-sample-nodejs-audio-player/blob/master/single-stream/instructions/2-lambda-function.md)[![Connect VUI to Code](https://m.media-amazon.com/images/G/01/mobile-apps/dex/alexa/alexa-skills-kit/tutorials/navigation/3-locked._TTH_.png)](https://github.com/alexa/skill-sample-nodejs-audio-player/blob/master/single-stream/instructions/3-connect-vui-to-code.md)[![Testing](https://m.media-amazon.com/images/G/01/mobile-apps/dex/alexa/alexa-skills-kit/tutorials/navigation/4-locked._TTH_.png)](https://github.com/alexa/skill-sample-nodejs-audio-player/blob/master/single-stream/instructions/4-testing.md)[![Customization](https://m.media-amazon.com/images/G/01/mobile-apps/dex/alexa/alexa-skills-kit/tutorials/navigation/5-locked._TTH_.png)](https://github.com/alexa/skill-sample-nodejs-audio-player/blob/master/single-stream/instructions/5-customization.md)[![Publication](https://m.media-amazon.com/images/G/01/mobile-apps/dex/alexa/alexa-skills-kit/tutorials/navigation/6-on._TTH_.png)](https://github.com/alexa/skill-sample-nodejs-audio-player/blob/master/single-stream/instructions/6-publication.md)
 
 ## Get Your Skill Certified and Published
 
@@ -17,10 +17,10 @@ We are almost done!  The last step is to add the metadata that your skill will u
 
     *  **Provide testing instructions.** Testing instructions give you an opportunity to explain your skill, and any special or possibly confusing features, to the certification team.  A value is required in this box.
 
-        *  Since you are using our Howto Sample, make sure to add this sentence to your Testing Instructions:
+        *  Since you are using our Audio Player Sample, make sure to add this sentence to your Testing Instructions:
 
            ```
-           This was built using the Howto Sample.
+           This was built using the Audio Player Sample.
            ```
 
            This will let the testing team understand what you're providing them, and should decrease the testing time required.        
@@ -101,7 +101,7 @@ We are almost done!  The last step is to add the metadata that your skill will u
 
 9.  **Export Compliance.** Be certain that you agree with all of the conditions.  If you do, make sure to check this box, as Amazon requires this permission to distribute your skill around the globe.  
 
-10. **Privacy Policy URL.** This is an optional field, and should not be required for this howto skill sample.  You can leave it blank.
+10. **Privacy Policy URL.** This is an optional field, and should not be required for this Audio Player skill sample.  You can leave it blank.
 
 11. **Terms of Use URL.** This is also optional, and you can leave it blank.
 

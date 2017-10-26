@@ -1,4 +1,23 @@
-# Single Stream Audio Skill (My Radio)
+# Build An Alexa Radio Skill
+<img src="https://m.media-amazon.com/images/G/01/mobile-apps/dex/alexa/alexa-skills-kit/tutorials/quiz-game/header._TTH_.png" />
+
+[![Voice User Interface](https://m.media-amazon.com/images/G/01/mobile-apps/dex/alexa/alexa-skills-kit/tutorials/navigation/1-off._TTH_.png)](https://github.com/alexa/skill-sample-nodejs-quiz-game/blob/master/instructions/1-voice-user-interface.md)[![Lambda Function](https://m.media-amazon.com/images/G/01/mobile-apps/dex/alexa/alexa-skills-kit/tutorials/navigation/2-off._TTH_.png)](https://github.com/alexa/skill-sample-nodejs-quiz-game/blob/master/instructions/2-lambda-function.md)[![Connect VUI to Code](https://m.media-amazon.com/images/G/01/mobile-apps/dex/alexa/alexa-skills-kit/tutorials/navigation/3-off._TTH_.png)](https://github.com/alexa/skill-sample-nodejs-quiz-game/blob/master/instructions/3-connect-vui-to-code.md)[![Testing](https://m.media-amazon.com/images/G/01/mobile-apps/dex/alexa/alexa-skills-kit/tutorials/navigation/4-off._TTH_.png)](https://github.com/alexa/skill-sample-nodejs-quiz-game/blob/master/instructions/4-testing.md)[![Customization](https://m.media-amazon.com/images/G/01/mobile-apps/dex/alexa/alexa-skills-kit/tutorials/navigation/5-off._TTH_.png)](https://github.com/alexa/skill-sample-nodejs-quiz-game/blob/master/instructions/5-customization.md)[![Publication](https://m.media-amazon.com/images/G/01/mobile-apps/dex/alexa/alexa-skills-kit/tutorials/navigation/6-off._TTH_.png)](https://github.com/alexa/skill-sample-nodejs-quiz-game/blob/master/instructions/6-publication.md)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- # Single Stream Audio Skill (My Radio)
 
 This skill demonstrates how to create a single stream audio skill.  Single stream skills are typically used by radio stations to provide a convenient and quick access to their live stream.
 
@@ -20,7 +39,7 @@ You will need to change a few configuration files before creating the skill and 
 
 This is a NodeJS Lambda function and skill defintion to be used by [ASK CLI](https://developer.amazon.com/docs/smapi/quick-start-alexa-skills-kit-command-line-interface.html).
 
-You need to initialize ASK CLI with 
+You need to initialize ASK CLI with
 
 ```bash
 $ ask init
@@ -75,7 +94,7 @@ Repeat the operation for each locale you are planning to support.
 
 This code is using [Mocha](https://mochajs.org/) and [Chai](http://chaijs.com/) to test the responses returned by your skill.  Before to deploy, be sure to have no test failures.
 
-Execute your test by typing 
+Execute your test by typing
 
 ```bash
 $ (cd lambda && npm test)
@@ -90,7 +109,7 @@ Lambda function will be creadted in ```us-east-1``` (Northern Virginia) by defau
 You deploy the skill and the lambda function in one step :
 
 ```bash
-$ ask deploy 
+$ ask deploy
 ```
 
 You can test your deployment by FIRST ENABLING the TEST switch on your skill in the Alexa Developer Console.
@@ -99,7 +118,7 @@ Then
 
 ```bash
  $ ask simulate -l en-GB -t "alexa, play my radio"
- 
+
  ✓ Simulation created for simulation id: 4a7a9ed8-94b2-40c0-b3bd-fb63d9887fa7
 ◡ Waiting for simulation response{
   "status": "SUCCESSFUL",
@@ -137,7 +156,7 @@ Then copy/paste the skill id to ```lambda/src/constants.js```
 
 ```javascript
 module.exports = Object.freeze({
-    
+
     //App-ID. TODO: set to your own Skill App ID from the developer portal.
     appId : "amzn1.ask.skill.123",
 
@@ -157,4 +176,4 @@ Then, just say :
 
 ```text
 Alexa, open my radio.
-```
+``` -->

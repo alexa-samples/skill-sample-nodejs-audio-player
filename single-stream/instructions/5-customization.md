@@ -1,5 +1,5 @@
-# Build An Alexa Minecraft Helper Skill
-[![Voice User Interface](https://m.media-amazon.com/images/G/01/mobile-apps/dex/alexa/alexa-skills-kit/tutorials/navigation/1-locked._TTH_.png)](https://github.com/alexa/skill-sample-nodejs-howto/blob/master/instructions/1-voice-user-interface.md)[![Lambda Function](https://m.media-amazon.com/images/G/01/mobile-apps/dex/alexa/alexa-skills-kit/tutorials/navigation/2-locked._TTH_.png)](https://github.com/alexa/skill-sample-nodejs-howto/blob/master/instructions/2-lambda-function.md)[![Connect VUI to Code](https://m.media-amazon.com/images/G/01/mobile-apps/dex/alexa/alexa-skills-kit/tutorials/navigation/3-locked._TTH_.png)](https://github.com/alexa/skill-sample-nodejs-howto/blob/master/instructions/3-connect-vui-to-code.md)[![Testing](https://m.media-amazon.com/images/G/01/mobile-apps/dex/alexa/alexa-skills-kit/tutorials/navigation/4-locked._TTH_.png)](https://github.com/alexa/skill-sample-nodejs-howto/blob/master/instructions/4-testing.md)[![Customization](https://m.media-amazon.com/images/G/01/mobile-apps/dex/alexa/alexa-skills-kit/tutorials/navigation/5-on._TTH_.png)](https://github.com/alexa/skill-sample-nodejs-howto/blob/master/instructions/5-customization.md)[![Publication](https://m.media-amazon.com/images/G/01/mobile-apps/dex/alexa/alexa-skills-kit/tutorials/navigation/6-off._TTH_.png)](https://github.com/alexa/skill-sample-nodejs-howto/blob/master/instructions/6-publication.md)
+# Build An Alexa Radio Player Skill
+[![Voice User Interface](https://m.media-amazon.com/images/G/01/mobile-apps/dex/alexa/alexa-skills-kit/tutorials/navigation/1-locked._TTH_.png)](https://github.com/alexa/skill-sample-nodejs-audio-player/blob/master/single-stream/instructions/1-voice-user-interface.md)[![Lambda Function](https://m.media-amazon.com/images/G/01/mobile-apps/dex/alexa/alexa-skills-kit/tutorials/navigation/2-locked._TTH_.png)](https://github.com/alexa/skill-sample-nodejs-audio-player/blob/master/single-stream/instructions/2-lambda-function.md)[![Connect VUI to Code](https://m.media-amazon.com/images/G/01/mobile-apps/dex/alexa/alexa-skills-kit/tutorials/navigation/3-locked._TTH_.png)](https://github.com/alexa/skill-sample-nodejs-audio-player/blob/master/single-stream/instructions/3-connect-vui-to-code.md)[![Testing](https://m.media-amazon.com/images/G/01/mobile-apps/dex/alexa/alexa-skills-kit/tutorials/navigation/4-locked._TTH_.png)](https://github.com/alexa/skill-sample-nodejs-audio-player/blob/master/single-stream/instructions/4-testing.md)[![Customization](https://m.media-amazon.com/images/G/01/mobile-apps/dex/alexa/alexa-skills-kit/tutorials/navigation/5-on._TTH_.png)](https://github.com/alexa/skill-sample-nodejs-audio-player/blob/master/single-stream/instructions/5-customization.md)[![Publication](https://m.media-amazon.com/images/G/01/mobile-apps/dex/alexa/alexa-skills-kit/tutorials/navigation/6-off._TTH_.png)](https://github.com/alexa/skill-sample-nodejs-audio-player/blob/master/single-stream/instructions/6-publication.md)
 
 ## Customize the Skill to be Yours
 
@@ -7,7 +7,7 @@ At this point, you should have a working copy of our Helper skill.  In order to 
 
 1.  **New sentences to respond to your users.** There are several sentences and responses that you will want to customize for your skill.
 
-    1.  **Go back to your copy of [index.js]((https://github.com/alexa/skill-sample-nodejs-howto/blob/master/lambda/src/index.js)).**
+    1.  **Go back to your copy of [index.js]((https://github.com/alexa/skill-sample-nodejs-audio-player/blob/master/single-stream/lambda/src/index.js)).**
 
     2.  **Look for the comment "TODO: Update these messages to customize."** This is the beginning of the section where you need to customize several text strings for your skill.
 
@@ -19,9 +19,9 @@ At this point, you should have a working copy of our Helper skill.  In order to 
 
 3.  **Once you have made the updates listed on this page, you can click "Next" to move on to Publishing and Certification of your skill.**
 
-    <a href="https://github.com/alexa/skill-sample-nodejs-howto/blob/master/instructions/6-publication.md"><img src="https://m.media-amazon.com/images/G/01/mobile-apps/dex/alexa/alexa-skills-kit/tutorials/general/3-7-next-button._TTH_.png" /></a>
+    <a href="https://github.com/alexa/skill-sample-nodejs-audio-player/blob/master/single-stream/instructions/6-publication.md"><img src="https://m.media-amazon.com/images/G/01/mobile-apps/dex/alexa/alexa-skills-kit/tutorials/general/3-7-next-button._TTH_.png" /></a>
 
 <br/><br/>
-<a href="https://github.com/alexa/skill-sample-nodejs-howto/blob/master/instructions/6-publication.md"><img src="https://m.media-amazon.com/images/G/01/mobile-apps/dex/alexa/alexa-skills-kit/tutorials/general/buttons/button_next_publication._TTH_.png" /></a>
+<a href="https://github.com/alexa/skill-sample-nodejs-audio-player/blob/master/single-stream/instructions/6-publication.md"><img src="https://m.media-amazon.com/images/G/01/mobile-apps/dex/alexa/alexa-skills-kit/tutorials/general/buttons/button_next_publication._TTH_.png" /></a>
 
 <img height="1" width="1" src="https://www.facebook.com/tr?id=1847448698846169&ev=PageView&noscript=1"/>
