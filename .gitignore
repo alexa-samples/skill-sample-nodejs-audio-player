@@ -1,5 +1,5 @@
 node_modules
 .idea
-*.zip
-single-stream/lambda/package-lock.json
+**/*.zip
+**/package-lock.json
 sync_upstream.sh
