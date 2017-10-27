@@ -1,7 +1,7 @@
 {
   "deploy_settings": {
     "default": {
-      "skill_id": "amzn1.ask.skill.393666c6-4701-4e68-9237-f030ae707a65",
+      "skill_id": "",
       "was_cloned": false,
       "merge": {
         "skillManifest": {
@@ -14,21 +14,5 @@
           }
         }
       }
-    },
-    "amazon": {
-      "skill_id": "amzn1.ask.skill.51e5cc29-2e85-4313-a685-3f84c4359600",
-      "was_cloned": false,
-      "merge": {
-        "skillManifest": {
-          "apis": {
-            "custom": {
-              "endpoint": {
-                "uri": "ask-custom-My_Radio-amazon"
-              }
-            }
-          }
-        }
-      }
     }
-  }
 }
