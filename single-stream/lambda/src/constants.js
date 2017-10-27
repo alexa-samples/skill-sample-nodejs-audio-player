@@ -6,6 +6,6 @@ module.exports = Object.freeze({
     //appId : 'amzn1.ask.skill.123',
 
     // when true, the skill logs additional detail, including the full request received from Alexa
-    debug : false
+    debug : true
 
 });
