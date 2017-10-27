@@ -1,5 +1,7 @@
 'use strict';
 
+var audioData = require('./audioAssets');
+
 var audioEventHandlers =  {
     'PlaybackStarted' : function () {
         /*
@@ -36,7 +38,7 @@ var audioEventHandlers =  {
          * This should not happen on live streams
          */
         console.log("Playback nearly finished");
-        this.response.audioPlayerPlay('REPLACE_ALL', audioData.url, audioData.url, null, 0);
+        this.response.audioPlayerPlay('REPLACE_ENQUEUED', audioData.url, audioData.url, null, 0);
         this.emit(':responseReady');
     },
     'PlaybackFailed' : function () {

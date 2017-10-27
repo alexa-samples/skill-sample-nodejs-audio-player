@@ -5,6 +5,7 @@ var audioData = {
     subtitle: 'Less bla bla, more la la',
     cardContent: "Visit our web site https://www.myradio.com",
     url: 'https://audio1.maxi80.com',
+    startJingle : 'https://s3.amazonaws.com/alexademo.ninja/maxi80/jingle.m4a',    
     image: {
         largeImageUrl: 'https://s3-eu-west-1.amazonaws.com/alexa.maxi80.com/assets/alexa-artwork-1200.png',
         smallImageUrl: 'https://s3-eu-west-1.amazonaws.com/alexa.maxi80.com/assets/alexa-artwork-720.png'

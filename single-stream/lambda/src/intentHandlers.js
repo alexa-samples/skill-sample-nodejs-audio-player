@@ -9,8 +9,11 @@ var intentHandlers = {
         this.emit('PlayAudio');
     },
     'PlayAudio': function () {
+        // play a jingle first, then the live stream
+        // (live stream will be started when we will receive Playback Nearly Finished event)
+        controller.play.call(this, this.t('WELCOME_MSG', { skillName: audioData.title }), audioData.startJingle);
         // play the radio
-        controller.play.call(this, this.t('WELCOME_MSG', { skillName: audioData.title } ));
+        // controller.play.call(this, this.t('WELCOME_MSG', { skillName: audioData.title }) , audioData.url);
     },
     'AMAZON.HelpIntent': function () {
         this.response.listen(this.t('HELP_MSG', { skillName: audioData.title } ));
@@ -39,9 +42,9 @@ var intentHandlers = {
 
     'AMAZON.PauseIntent':   function () { this.emit('AMAZON.StopIntent'); },
     'AMAZON.CancelIntent':  function () { this.emit('AMAZON.StopIntent'); },
-    'AMAZON.StopIntent':    function () { controller.stop.call(this, this.t('STOP_MSG')) },
+    'AMAZON.StopIntent':    function () { controller.stop.call(this, this.t('STOP_MSG'), audioData.url) },
 
-    'AMAZON.ResumeIntent':  function () { controller.play.call(this, this.t('RESUME_MSG')) },
+    'AMAZON.ResumeIntent':  function () { controller.play.call(this, this.t('RESUME_MSG'), audioData.url) },
 
     'AMAZON.LoopOnIntent':     function () { this.emit('AMAZON.StartOverIntent'); },
     'AMAZON.LoopOffIntent':    function () { this.emit('AMAZON.StartOverIntent');},
@@ -63,7 +66,7 @@ module.exports = intentHandlers;
 
 var controller = function () {
     return {
-        play: function (text) {
+        play: function (text, url) {
             /*
              *  Using the function to begin playing audio when:
              *      Play Audio intent invoked.
@@ -78,7 +81,7 @@ var controller = function () {
                 this.response.cardRenderer(cardTitle, cardContent, cardImage);
             }
 
-            this.response.speak(text).audioPlayerPlay('REPLACE_ALL', audioData.url, audioData.url, null, 0);
+            this.response.speak(text).audioPlayerPlay('REPLACE_ALL', url, url, null, 0);
             this.emit(':responseReady');
         },
         stop: function (text) {
