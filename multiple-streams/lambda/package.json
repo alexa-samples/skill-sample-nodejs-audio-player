@@ -1,7 +1,7 @@
 {
   "name": "Single_Stream_Audio_Player_Example",
   "version": "1.0.0",
-  "description": "An simple audio player sample skill.",
+  "description": "A simple audio player sample skill.",
   "main": "index.js",
   "scripts": {
     "test": "mocha"

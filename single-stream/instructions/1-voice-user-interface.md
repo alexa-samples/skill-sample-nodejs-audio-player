@@ -32,7 +32,7 @@ There are two parts to an Alexa skill.  The first part is the [Voice User Interf
 
     *  **Name** This is the name of the skill as it will be displayed in the [Alexa app](http://alexa.amazon.com).
 
-    *  **Invocation Name** This is the name spoken by your users to start the skill. Use a name like "Radio Player" for this sample skill. Some common issues that developers experience with invocation names are listed in the following table. In addition, please review the [Invocation Name Requirements](https://developer.amazon.com/public/solutions/alexa/alexa-skills-kit/docs/choosing-the-invocation-name-for-an-alexa-skill) as you consider an invocation name for your skill.
+    *  **Invocation Name** This is the name spoken by your users to start the skill. Use a name like "My Radio" for this sample skill. Some common issues that developers experience with invocation names are listed in the following table. In addition, please review the [Invocation Name Requirements](https://developer.amazon.com/public/solutions/alexa/alexa-skills-kit/docs/choosing-the-invocation-name-for-an-alexa-skill) as you consider an invocation name for your skill.
 
         | Invocation Name Requirements | Examples of incorrect invocation names |
         | ---------------------------- | -------------------------------------- |
@@ -55,7 +55,7 @@ There are two parts to an Alexa skill.  The first part is the [Voice User Interf
 
 8.  Click on the "Code Editor" item under **Dashboard** on the top left side of the skill builder.
 
-9.  In the textfield provided, replace any existing code with the code provided in the [Interaction Model](https://github.com/alexa/skill-sample-nodejs-audio-player/blob/master/single-stream/interaction-model.json), then click "Apply Changes" or "Save Model".  
+9.  In the textfield provided, replace any existing code with the code provided in the [Interaction Model](../InteractionModel.json), then click "Apply Changes" or "Save Model".  
 
 10. Click on the "Dashboard" button.
 
