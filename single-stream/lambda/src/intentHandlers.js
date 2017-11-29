@@ -9,11 +9,14 @@ var intentHandlers = {
         this.emit('PlayAudio');
     },
     'PlayAudio': function () {
-        // play a jingle first, then the live stream
-        // (live stream will be started when we will receive Playback Nearly Finished event)
-        controller.play.call(this, this.t('WELCOME_MSG', { skillName: audioData.title }), audioData.startJingle);
-        // play the radio
-        // controller.play.call(this, this.t('WELCOME_MSG', { skillName: audioData.title }) , audioData.url);
+        if (audioData.startJingle) {
+            // play a jingle first, then the live stream
+            // (live stream will be started when we will receive Playback Nearly Finished event)
+            controller.play.call(this, this.t('WELCOME_MSG', { skillName: audioData.title }), audioData.startJingle);        
+        } else {
+            // play the radio directly
+            controller.play.call(this, this.t('WELCOME_MSG', { skillName: audioData.title }) , audioData.url);
+        }
     },
     'AMAZON.HelpIntent': function () {
         this.response.listen(this.t('HELP_MSG', { skillName: audioData.title } ));
