@@ -8,7 +8,7 @@ In the [first step of this guide](https://github.com/alexa/skill-sample-nodejs-a
 First, clone the project and package the skill:
 ```bash
 git clone https://github.com/alexa/skill-sample-nodejs-audio-player.git
-cd skill-sample-nodejs-audio-player/multiple-streams/js
+cd skill-sample-nodejs-audio-player/multiple-streams/
 npm install
 zip -r ../audio-player.zip *
 ```
