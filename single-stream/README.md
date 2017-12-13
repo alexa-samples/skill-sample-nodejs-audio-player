@@ -3,173 +3,127 @@
 
 [![Voice User Interface](https://m.media-amazon.com/images/G/01/mobile-apps/dex/alexa/alexa-skills-kit/tutorials/navigation/1-off._TTH_.png)](https://github.com/alexa/skill-sample-nodejs-audio-player/blob/master/single-stream/instructions/1-voice-user-interface.md)[![Lambda Function](https://m.media-amazon.com/images/G/01/mobile-apps/dex/alexa/alexa-skills-kit/tutorials/navigation/2-off._TTH_.png)](https://github.com/alexa/skill-sample-nodejs-audio-player/blob/master/single-stream/instructions/2-lambda-function.md)[![Connect VUI to Code](https://m.media-amazon.com/images/G/01/mobile-apps/dex/alexa/alexa-skills-kit/tutorials/navigation/3-off._TTH_.png)](https://github.com/alexa/skill-sample-nodejs-audio-player/blob/master/single-stream/instructions/3-connect-vui-to-code.md)[![Testing](https://m.media-amazon.com/images/G/01/mobile-apps/dex/alexa/alexa-skills-kit/tutorials/navigation/4-off._TTH_.png)](https://github.com/alexa/skill-sample-nodejs-audio-player/blob/master/single-stream/instructions/4-testing.md)[![Customization](https://m.media-amazon.com/images/G/01/mobile-apps/dex/alexa/alexa-skills-kit/tutorials/navigation/5-off._TTH_.png)](https://github.com/alexa/skill-sample-nodejs-audio-player/blob/master/single-stream/instructions/5-customization.md)[![Publication](https://m.media-amazon.com/images/G/01/mobile-apps/dex/alexa/alexa-skills-kit/tutorials/navigation/6-off._TTH_.png)](https://github.com/alexa/skill-sample-nodejs-audio-player/blob/master/single-stream/instructions/6-publication.md)
 
+# Streaming Audio Player Sample Project
 
-# Single Stream Audio Skill (My Radio)
+The Alexa Skills Kit now allows developers to build skills that play long-form audio content on Alexa devices.  This sample project demonstrates how to use the new interfaces for triggering an audio stream.
 
-This skill demonstrates how to create a single stream audio skill.  Single stream skills are typically used by radio stations to provide a convenient and quick access to their live stream.
+<p align='center'>
+<a href='./instructions/0-intro.md'><img src='https://camo.githubusercontent.com/db9b9ce26327ad3bac57ec4daf0961a382d75790/68747470733a2f2f6d2e6d656469612d616d617a6f6e2e636f6d2f696d616765732f472f30312f6d6f62696c652d617070732f6465782f616c6578612f616c6578612d736b696c6c732d6b69742f7475746f7269616c732f67656e6572616c2f627574746f6e732f627574746f6e5f6765745f737461727465642e5f5454485f2e706e67'></a>
+</p>
 
-User interface is limited to Play and Stop use cases.
 
-## Usage
+Be sure to take a look at the [Additional Resources](#additional-resources) at the bottom of this page!
+
+
+## About
+**Note:** The rest of this readme assumes you have your developer environment ready to go and that you have some familiarity with CLI (Command Line Interface) Tools, [AWS](https://aws.amazon.com/), and the [ASK Developer Portal](https://developer.amazon.com/alexa-skills-kit). If not, [click here](./instructions/0-intro.md) for a more detailed walkthrough.
+
+
+
+### Usage
 
 ```text
-Alexa, play my radio
-
-Alexa, stop
+Alexa, open my radio.
+	>> Welcome to My Radio.
 ```
 
-Work through these [instructions](https://github.com/alexa/skill-sample-nodejs-audio-player/blob/master/single-stream/instructions/1-voice-user-interface.md) to build the audio skill.
+### Repository Contents
+* `/.ask`	- [ASK CLI (Command Line Interface) Configuration](https://developer.amazon.com/docs/smapi/ask-cli-intro.html)	 
+* `/lambda/custom` - Back-End Logic for the Alexa Skill hosted on [AWS Lambda](https://aws.amazon.com/lambda/)
+* `/models` - Voice User Interface and Language Specific Interaction Models
+* `/instructions` - Step-by-Step Instructions for Getting Started
+* `skill.json`	- [Skill Manifest](https://developer.amazon.com/docs/smapi/skill-manifest.html)
 
-<!-- Follow the instructions below for ASK CLI process, or follow these step by step [instructions](https://github.com/alexa/skill-sample-nodejs-audio-player/blob/master/single-stream/instructions/1-voice-user-interface.md) to work in your browser.
-
-
-## Installation
-
-You will need to change a few configuration files before creating the skill and upload the lambda code.
+## Setup w/ ASK CLI
 
 ### Pre-requisites
 
-This is a NodeJS Lambda function and skill defintion to be used by [ASK CLI](https://developer.amazon.com/docs/smapi/quick-start-alexa-skills-kit-command-line-interface.html).
+* Node.js (> v4.3)
+* Register for an [AWS Account](https://aws.amazon.com/)
+* Register for an [Amazon Developer Account](https://developer.amazon.com/)
+* Install and Setup [ASK CLI](https://developer.amazon.com/docs/smapi/quick-start-alexa-skills-kit-command-line-interface.html)
 
-You need to initialize ASK CLI with
+### Installation
+1. Clone the repository.
 
-```bash
-$ ask init
-```
+	```bash
+	$ git clone https://github.com/alexa/skill-sample-nodejs-audio-player/single-streams/
+	```
 
-You need an [AWS account](https://aws.amazon.com) and an [Amazon developer account](https://developer.amazon.com) to create an Alexa Skill.
+2. Initiatialize the [ASK CLI](https://developer.amazon.com/docs/smapi/quick-start-alexa-skills-kit-command-line-interface.html) by Navigating into the repository and running npm command: `ask init`. Follow the prompts.
 
-You need to download NodeJS dependencies :
+	```bash
+	$ cd skill-sample-nodejs-audio-player/single-streams/
+	$ ask init
+	```
 
-```bash
-$ (cd lambda && npm install)
-$ (cd lambda/src && npm install)
-```
+3. Install npm dependencies by navigating into the `/lambda` directory and running the npm command: `npm install`
 
-### Required changes before to deploy
+	```bash
+	$ cd lambda/custom
+	$ npm install
+	```
+
+
+### Deployment
+
+ASK CLI will create the skill and the lambda function for you. The Lambda function will be created in ```us-east-1 (Northern Virginia)``` by default.
+
+1. Deploy the skill and the lambda function in one step by running the following command:
+
+	```bash
+	$ ask deploy
+	```
+
+### Testing
+
+1. To test, you need to login to Alexa Developer Console, and enable the "Test" switch on your skill from the "Test" Tab.
+
+2. Simulate verbal interaction with your skill through the command line using the following example:
+
+	```bash
+	 $ ask simulate -l en-US -t "alexa, start my radio"
+
+	 ✓ Simulation created for simulation id: 4a7a9ed8-94b2-40c0-b3bd-fb63d9887fa7
+	◡ Waiting for simulation response{
+	  "status": "SUCCESSFUL",
+	  ...
+	 ```
+
+3. Once the "Test" switch is enabled, your skill can be tested on devices associated with the developer account as well. Speak to Alexa from any enabled device, from your browser at [echosim.io](https://echosim.io/welcome), or through your Amazon Mobile App and say :
+
+	```text
+	Alexa, start my radio
+	```
+
+## Customization
 
 1. ```./skill.json```
 
    Change the skill name, example phrase, icons, testing instructions etc ...
 
-   Remember than many information are locale-specific and must be changed for each locale (en-GB and en-US)
+   Remember that many information is locale-specific and must be changed for each locale (en-GB and en-US)
 
-   Please refer to https://developer.amazon.com/docs/smapi/skill-manifest.html for details about manifest values.
+   See the Skill [Manifest Documentation](https://developer.amazon.com/docs/smapi/skill-manifest.html) for more information.
 
-2. ```./lambda/src/audioAssets.js```
+2. ```./lambda/custom/index.js```
 
-   Modify each value in the audioAssets.js file to provide your skill at runtime the correct value : your radio name, description, icon and, obviosuly, URL of your stream (https only).
-
-   To learn more about Alexa App cards, see https://developer.amazon.com/docs/custom-skills/include-a-card-in-your-skills-response.html
-
-```javascript
-var audioData = {
-    title: "<The title of the card for the Alexa App>",
-    subtitle: "<The subtitle of the card for the Alexa App>",
-    cardContent: "<The contect of the card for the Alexa App>",
-    url: "<your stream HTTPS URL>",
-    image: {
-        largeImageUrl: "<the HTTPS URL of your large icon for the Alexa App>",
-        smallImageUrl: "<the HTTPS URL of your small icon for the Alexa App>"
-    }
-};
-```
+   Modify messages, and facts from the source code to customize the skill.
 
 3. ```./models/*.json```
 
-Change the model defintion to replace the invocation name (it defaults to "my radio") and the sample phrases for each intent.  
+	Change the model definition to replace the invocation name and the sample phrase for each intent.  Repeat the operation for each locale you are planning to support.
 
-Repeat the operation for each locale you are planning to support.
+## Additional Resources
 
+### Community
+* [Amazon Developer Forums](https://forums.developer.amazon.com/spaces/165/index.html) - Join the conversation!
+* [Hackster.io](https://www.hackster.io/amazon-alexa) - See what others are building with Alexa.
 
-### Local Tests
+### Tutorials & Guides
+* [Voice Design Guide](https://developer.amazon.com/designing-for-voice/) - A great resource for learning conversational and voice user interface design.
+* [CodeAcademy: Learn Alexa](https://www.codecademy.com/learn/learn-alexa) - Learn how to build an Alexa Skill from within your browser with this beginner friendly tutorial on CodeAcademy!
 
-This code is using [Mocha](https://mochajs.org/) and [Chai](http://chaijs.com/) to test the responses returned by your skill.  Before to deploy, be sure to have no test failures.
-
-Execute your test by typing
-
-```bash
-$ (cd lambda && npm test)
-```
-
-### Deployment
-
-ASK will create the skill and the lambda function for you.
-
-Lambda function will be creadted in ```us-east-1``` (Northern Virginia) by default.
-
-You deploy the skill and the lambda function in one step :
-
-```bash
-$ ask deploy
-```
-
-You can test your deployment by FIRST ENABLING the TEST switch on your skill in the Alexa Developer Console.
-
-Then
-
-```bash
- $ ask simulate -l en-GB -t "alexa, play my radio"
-
- ✓ Simulation created for simulation id: 4a7a9ed8-94b2-40c0-b3bd-fb63d9887fa7
-◡ Waiting for simulation response{
-  "status": "SUCCESSFUL",
-  ...
- ```
-
-You should see the code of the skill's response after the SUCCESSFUL line.
-
-#### Change the skillid in lambda code. (Optional but recommended)
-
-Once the skill and lambda function is deployed, do not forget to add the skill id to ```lambda/src/constants.js``` to ensure your code is executed only for your skill.
-
-Uncomment the ```AppId``` line and change it with your new skill id.  You can find the skill id by typing :
-
-```bash
-$ ask api list-skills
-```
-```json
-{
-  "skills": [
-    {
-      "lastUpdated": "2017-10-08T08:06:34.835Z",
-      "nameByLocale": {
-        "en-GB": "My Radio",
-        "en-US": "My Radio"
-      },
-      "skillId": "amzn1.ask.skill.123",
-      "stage": "development"
-    }
-  ]
-}
-```
-
-Then copy/paste the skill id to ```lambda/src/constants.js```    
-
-```javascript
-module.exports = Object.freeze({
-
-    //App-ID. TODO: set to your own Skill App ID from the developer portal.
-    appId : "amzn1.ask.skill.123",
-
-    // when true, the skill logs additional detail, including the full request received from Alexa
-    debug : false
-
-});
-```
-
-## On Device Tests
-
-To be able to invoke the skill on your device, you need to login to Alexa Developer Console, and enable the "Test" switch on your skill.
-
-See https://developer.amazon.com/docs/smapi/quick-start-alexa-skills-kit-command-line-interface.html#step-4-test-your-skill for more testing instructions.
-
-Then, just say :
-
-```text
-Alexa, open my radio.
-``` -->
-
-<a href="https://github.com/alexa/skill-sample-nodejs-audio-player/blob/master/single-stream/instructions/1-voice-user-interface.md"><img src="https://m.media-amazon.com/images/G/01/mobile-apps/dex/alexa/alexa-skills-kit/tutorials/general/buttons/button_get_started._TTH_.png" /></a>
-
-<img height="1" width="1" src="https://www.facebook.com/tr?id=1847448698846169&ev=PageView&noscript=1"/>
+###Documentation
+* [Official Alexa Skills Kit Node.js SDK](https://www.npmjs.com/package/alexa-sdk) - The Official Node.js SDK Documentation
+*  [Official Alexa Skills Kit Documentation](https://developer.amazon.com/docs/ask-overviews/build-skills-with-the-alexa-skills-kit.html) - Official Alexa Skills Kit Documentation
