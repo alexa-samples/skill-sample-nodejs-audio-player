@@ -24,6 +24,8 @@ var intentHandlers = {
     },
     'SessionEndedRequest': function () {
         // No session ended logic
+        // do not return a response, as per https://developer.amazon.com/docs/custom-skills/handle-requests-sent-by-alexa.html#sessionendedrequest
+        this.emit(':responseReady');
     },
     'ExceptionEncountered': function () {
         console.log("\n******************* EXCEPTION **********************");
