@@ -59,7 +59,7 @@ describe('Audio Player Test : Playback Nearly Finished', function () {
       d.should.have.property("type");
       d.type.should.equal("AudioPlayer.Play");
       d.should.have.property("playBehavior");
-      d.playBehavior.should.equal("REPLACE_ENQUEUED");
+      d.playBehavior.should.equal("REPLACE_ALL");
       d.should.have.property("audioItem");
       d.audioItem.should.have.property("stream");
       d.audioItem.stream.should.have.property("url");
