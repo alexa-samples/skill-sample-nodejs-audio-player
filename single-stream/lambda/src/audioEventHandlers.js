@@ -47,8 +47,7 @@ var audioEventHandlers =  {
          * Logging the error and restarting playing.
          */
         console.log("Playback Failed : %j", this.event.request.error);
-        this.response.audioPlayerClearQueue('CLEAR_ENQUEUED');
-        this.emit(':responseReady');
+        controller.clear.call(this);
     }
 };
 

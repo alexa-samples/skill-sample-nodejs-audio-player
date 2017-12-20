@@ -57,6 +57,13 @@ var controller = function () {
              */
             this.response.speak(text).audioPlayerStop();
             this.emit(':responseReady');
+        },
+        clear: function() {
+            /*
+             * Clear the queue and stop the player
+             */
+            this.response.audioPlayerClearQueue('CLEAR_ENQUEUED');
+            this.emit(':responseReady');            
         }
     }
 }();
