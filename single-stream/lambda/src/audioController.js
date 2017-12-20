@@ -15,7 +15,7 @@ function canThrowCard() {
 
 var controller = function () {
     return {
-        play: function (text, audioData) {
+        play: function (text, url, cardData) {
             /*
              *  Using the function to begin playing audio when:
              *      Play Audio intent invoked.
@@ -23,22 +23,31 @@ var controller = function () {
              *      Next/Previous commands issued.
              */
 
+             /*
+                https://developer.amazon.com/docs/custom-skills/audioplayer-interface-reference.html#play
+                REPLACE_ALL: Immediately begin playback of the specified stream, and replace current and enqueued streams.             
+             */
+
             if (canThrowCard.call(this)) {
-                var cardTitle   = audioData.subtitle;
-                var cardContent = audioData.cardContent;
-                var cardImage   = audioData.image;
+                var cardTitle   = cardData.subtitle;
+                var cardContent = cardData.cardContent;
+                var cardImage   = cardData.image;
                 this.response.cardRenderer(cardTitle, cardContent, cardImage);
             }
 
             if (text && text != "") {
-                this.response.speak(text).audioPlayerPlay('REPLACE_ALL', audioData.url, audioData.url, null, 0);
+                this.response.speak(text).audioPlayerPlay('REPLACE_ALL', url, url, null, 0);
             } else {
-                this.response.audioPlayerPlay('REPLACE_ALL', audioData.url, audioData.url, null, 0);
+                this.response.audioPlayerPlay('REPLACE_ALL', url, url, null, 0);
             }
             this.emit(':responseReady');
         },
-        playJingle: function (text, audioData) {
-            this.response.speak(text).audioPlayerPlay('REPLACE_ALL', audioData.startJingle, audioData.startJingle, null, 0);
+        playLater: function (url) {
+             /*
+                https://developer.amazon.com/docs/custom-skills/audioplayer-interface-reference.html#play
+                REPLACE_ENQUEUED: Replace all streams in the queue. This does not impact the currently playing stream. 
+              */
+            this.response.audioPlayerPlay('REPLACE_ENQUEUED', url, url, null, 0);
             this.emit(':responseReady');
         },
         stop: function (text) {

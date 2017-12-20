@@ -13,14 +13,14 @@ var intentHandlers = {
         if (audioData.startJingle) {
             // play a jingle first, then the live stream
             // (live stream will be started when we will receive Playback Nearly Finished event)
-            controller.playJingle.call(this, this.t('WELCOME_MSG', { skillName: audioData.title }), audioData);        
+            controller.play.call(this, this.t('WELCOME_MSG', { skillName: audioData.card.title }), audioData.startJingle, audioData.card);        
         } else {
             // play the radio directly
-            controller.play.call(this, this.t('WELCOME_MSG', { skillName: audioData.title }), audioData);
+            controller.play.call(this, this.t('WELCOME_MSG', { skillName: audioData.card.title }), audioData.url, audioData.card);
         }
     },
     'AMAZON.HelpIntent': function () {
-        this.response.listen(this.t('HELP_MSG', { skillName: audioData.title } ));
+        this.response.listen(this.t('HELP_MSG', { skillName: audioData.card.title } ));
         this.emit(':responseReady');
     },
     'SessionEndedRequest': function () {
@@ -48,9 +48,9 @@ var intentHandlers = {
 
     'AMAZON.PauseIntent':   function () { this.emit('AMAZON.StopIntent'); },
     'AMAZON.CancelIntent':  function () { this.emit('AMAZON.StopIntent'); },
-    'AMAZON.StopIntent':    function () { controller.stop.call(this, this.t('STOP_MSG'), audioData) },
+    'AMAZON.StopIntent':    function () { controller.stop.call(this, this.t('STOP_MSG')) },
 
-    'AMAZON.ResumeIntent':  function () { controller.play.call(this, this.t('RESUME_MSG'), audioData) },
+    'AMAZON.ResumeIntent':  function () { controller.play.call(this, this.t('RESUME_MSG'), audioData.url, audioData.card) },
 
     'AMAZON.LoopOnIntent':     function () { this.emit('AMAZON.StartOverIntent'); },
     'AMAZON.LoopOffIntent':    function () { this.emit('AMAZON.StartOverIntent');},
@@ -64,7 +64,7 @@ var intentHandlers = {
     /*
      *  All Requests are received using a Remote Control. Calling corresponding handlers for each of them.
      */
-    'PlayCommandIssued':  function () { controller.play.call(this, this.t('WELCOME_MSG', { skillName: audioData.title } )), audioData },
+    'PlayCommandIssued':  function () { controller.play.call(this, this.t('WELCOME_MSG', { skillName: audioData.card.title } )), audioData.url, audioData.card },
     'PauseCommandIssued': function () { controller.stop.call(this, this.t('STOP_MSG')) }
 }
 
