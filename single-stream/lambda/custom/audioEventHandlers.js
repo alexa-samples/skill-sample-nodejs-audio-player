@@ -1,13 +1,13 @@
 'use strict';
 
-var audioEventHandlers =  {
+const audioEventHandlers =  {
     'PlaybackStarted' : function () {
         /*
          * AudioPlayer.PlaybackStarted Directive received.
          * Confirming that requested audio file began playing.
          * Do not send any specific response.
          */
-        console.log("Playback started");        
+        console.log("Playback started");
         this.emit(':responseReady');
     },
     'PlaybackFinished' : function () {

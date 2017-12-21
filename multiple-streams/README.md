@@ -1,56 +1,131 @@
+# Build An Alexa Radio Skill
+<img src="https://m.media-amazon.com/images/G/01/mobile-apps/dex/alexa/alexa-skills-kit/tutorials/quiz-game/header._TTH_.png" />
+
+[![Voice User Interface](https://m.media-amazon.com/images/G/01/mobile-apps/dex/alexa/alexa-skills-kit/tutorials/navigation/1-off._TTH_.png)](https://github.com/alexa/skill-sample-nodejs-audio-player/blob/master/multiple-streams/instructions/1-voice-user-interface.md)[![Lambda Function](https://m.media-amazon.com/images/G/01/mobile-apps/dex/alexa/alexa-skills-kit/tutorials/navigation/2-off._TTH_.png)](https://github.com/alexa/skill-sample-nodejs-audio-player/blob/master/multiple-streams/instructions/2-lambda-function.md)[![Connect VUI to Code](https://m.media-amazon.com/images/G/01/mobile-apps/dex/alexa/alexa-skills-kit/tutorials/navigation/3-off._TTH_.png)](https://github.com/alexa/skill-sample-nodejs-audio-player/blob/master/multiple-streams/instructions/3-connect-vui-to-code.md)[![Testing](https://m.media-amazon.com/images/G/01/mobile-apps/dex/alexa/alexa-skills-kit/tutorials/navigation/4-off._TTH_.png)](https://github.com/alexa/skill-sample-nodejs-audio-player/blob/master/multiple-streams/instructions/4-testing.md)[![Customization](https://m.media-amazon.com/images/G/01/mobile-apps/dex/alexa/alexa-skills-kit/tutorials/navigation/5-off._TTH_.png)](https://github.com/alexa/skill-sample-nodejs-audio-player/blob/master/multiple-streams/instructions/5-customization.md)[![Publication](https://m.media-amazon.com/images/G/01/mobile-apps/dex/alexa/alexa-skills-kit/tutorials/navigation/6-off._TTH_.png)](https://github.com/alexa/skill-sample-nodejs-audio-player/blob/master/multiple-streams/instructions/6-publication.md)
+
 # Audio Player Sample Project
 
 The Alexa Skills Kit now allows developers to build skills that play long-form audio content on Alexa devices.  This sample project demonstrates how to use the new interfaces for triggering playback of audio and handling audio player input events.
 
-## How to Run the Sample
+<p align='center'>
+<a href='./instructions/0-intro.md'><img src='https://camo.githubusercontent.com/db9b9ce26327ad3bac57ec4daf0961a382d75790/68747470733a2f2f6d2e6d656469612d616d617a6f6e2e636f6d2f696d616765732f472f30312f6d6f62696c652d617070732f6465782f616c6578612f616c6578612d736b696c6c732d6b69742f7475746f7269616c732f67656e6572616c2f627574746f6e732f627574746f6e5f6765745f737461727465642e5f5454485f2e706e67'></a>
+</p>
 
-1. Clone the project and package the skill:
-```bash
-git clone https://github.com/alexa/skill-sample-nodejs-audio-player.git
-cd skill-sample-nodejs-audio-player/multiple-streams/js
-npm install
-zip -r ../audio-player.zip *
+
+Be sure to take a look at the [Additional Resources](#additional-resources) at the bottom of this page!
+
+
+## About
+**Note:** The rest of this readme assumes you have your developer environment ready to go and that you have some familiarity with CLI (Command Line Interface) Tools, [AWS](https://aws.amazon.com/), and the [ASK Developer Portal](https://developer.amazon.com/alexa-skills-kit). If not, [click here](./instructions/0-intro.md) for a more detailed walkthrough.
+
+
+
+### Usage
+
+```text
+Alexa, open podcast player.
+	>> Welcome to the AWS Podcast. You can say, play the audio to begin the podcast..
+
+Alexa, ask podcast player to play the audio.
 ```
-2. Create or login to an [AWS account](https://aws.amazon.com/). In the AWS Console:
 
-    1. Create an AWS Role in IAM with access to Lambda, CloudWatch Logs and DynamoDB.
-        ![create_role_1](https://cloud.githubusercontent.com/assets/7671574/17451098/09f64f40-5b19-11e6-82ee-b82c98387052.png "AWS Create Role Screenshot 1")
-        ![create_role_2](https://cloud.githubusercontent.com/assets/7671574/17451100/0c3ef928-5b19-11e6-9aca-8cd353106396.png "AWS Create Role Screenshot 2")
-        ![create_role_3](https://cloud.githubusercontent.com/assets/7671574/18011103/7b05f2b2-6b68-11e6-8dc3-3aa9ead6d83e.png "AWS Create Role Screenshot 3")
+### Repository Contents
+* `/.ask`	- [ASK CLI (Command Line Interface) Configuration](https://developer.amazon.com/docs/smapi/ask-cli-intro.html)	 
+* `/lambda/custom` - Back-End Logic for the Alexa Skill hosted on [AWS Lambda](https://aws.amazon.com/lambda/)
+* `/models` - Voice User Interface and Language Specific Interaction Models
+* `/instructions` - Step-by-Step Instructions for Getting Started
+* `skill.json`	- [Skill Manifest](https://developer.amazon.com/docs/smapi/skill-manifest.html)
 
-    2. Create an AWS Lambda function named AudioPlayerLambdaFunction being sure to select the role created above, configuring "Alexa Skills Kit" as the "Trigger" and using the zip file created above as the source.
-        ![alt text](https://s3.amazonaws.com/lantern-public-assets/audio-player-assets/aws-lambda-role.PNG "AWS Lambda Role")
-        ![alt text](https://s3.amazonaws.com/lantern-public-assets/audio-player-assets/aws-lambda-ask-trigger.PNG "AWS Lambda Trigger")
-    3. After creation, take note of the ARN on the upper right, which you'll configure in the Developer Console below.
-    
-3. Create or login to an [Amazon Developer account](https://developer.amazon.com).  In the Developer Console:
+## Setup w/ ASK CLI
 
-    1. [Create an Alexa Skill](https://developer.amazon.com/public/solutions/alexa/alexa-skills-kit/docs/developing-an-alexa-skill-as-a-lambda-function) named MySkill and using the invocation name "my skill" and select 'Yes' for Audio Player support.
-        ![alt text](https://s3.amazonaws.com/lantern-public-assets/audio-player-assets/prod-skill-info.png "Developer Portal Skill Information")
-    2. Copy the contents of `speechAssets/intentSchema.json` and `speechAssets/Utterances.txt` into the intent schema and sample utterances fields on the Interaction Model tab.
-        ![alt text](https://s3.amazonaws.com/lantern-public-assets/audio-player-assets/prod-interaction-model.png "Developer Portal Interaction Model")
-    3. Copy the Lambda ARN from above in the Configuration tab.
-        ![alt text](https://s3.amazonaws.com/lantern-public-assets/audio-player-assets/prod-configuration.png "Developer Portal Configuration")
-     
-4. You can start using the skill on your device or in the simulator using the invocation phrase "Alexa, ask my skill to play".
+### Pre-requisites
 
-## How it Works
+* Node.js (> v4.3)
+* Register for an [AWS Account](https://aws.amazon.com/)
+* Register for an [Amazon Developer Account](https://developer.amazon.com/)
+* Install and Setup [ASK CLI](https://developer.amazon.com/docs/smapi/quick-start-alexa-skills-kit-command-line-interface.html)
 
-Alexa Skills Kit now includes a set of output directives and input events that allow you to control the playback of audio files or streams.  There are a few important concepts to get familiar with:
+### Installation
+1. Clone the repository.
 
-* **AudioPlayer directives** are used by your skill to start and stop audio playback from content hosted at a publicly accessible secure URL.  You  send AudioPlayer directives in response to the intents you've configured for your skill, or new events you'll receive when a user controls their device with a dedicated controller (see PlaybackController events below).
-* **PlaybackController events** are sent to your skill when a user selects play/next/prev/pause on dedicated hardware controls on the Alexa device, such as on the Amazon Tap or the Voice Remote for Amazon Echo and Echo Dot.  Your skill receives these events if your skill is currently controlling audio on the device (i.e., you were the last to send an AudioPlayer directive).
-* **AudioPlayer events** are sent to your skill at key changes in the status of audio playback, such as when audio has begun playing, been stopped or has finished.  You can use them to track what's currently playing or queue up more content.  Unlike intents, when you receive an AudioPlayer event, you may only respond with appropriate AudioPlayer directives to control playback.
+	```bash
+	$ git clone https://github.com/alexa/skill-sample-nodejs-audio-player/multiple-streams/
+	```
 
-The sample project plays a pre-defined list of audio content defined in `js/audioAssets.js`, allowing the user to control playback with a range of custom and built-in intents.  It's organized into several modules:
+2. Initiatialize the [ASK CLI](https://developer.amazon.com/docs/smapi/quick-start-alexa-skills-kit-command-line-interface.html) by Navigating into the repository and running npm command: `ask init`. Follow the prompts.
 
-* `index.js` is the main module that handles events from Alexa.  In the sample project, we setup the skill and register handlers defined in seperate modules.
-* `constants.js` holds a few constants like the Application ID of the skill and the name of a table in DynamoDB the skill will use to store details about what each user has played.
-* `audioAssets.js` is a list of audio content the skill will play from.
-* `stateHandlers.js` is where the skill handles voice intent and playback control commands.  It registers handlers for each of the input events in different states the skill can be in, and defines a `controller` that centralizes the handler code since we perform the same action for several different input events (e.g., we do the same thing when the user tells the skill to stop or if the stop button is pressed on the device).  The sample project define three states:
-    * **START_MODE** is the default state of the skill, such as when it's invoked without an intent for the first time.
-    * **PLAY_MODE** is used when audio is currently being played by the skill.
-    * **RESUME_DECISION_MODE** is used to handle the response from the user when they're asked to confirm they'd like to resume playback from a prior use of the skill.
-* `audioEventHandlers.js` is where the skill handles AudioPlayer events.  These events are only expected in the PLAY_MODE state and are used to track the user's progress through the content. 
+	```bash
+	$ cd skill-sample-nodejs-audio-player/multiple-streams/
+	$ ask init
+	```
 
-You can learn more about the new [AudioPlayer interface](https://developer.amazon.com/public/solutions/alexa/alexa-skills-kit/docs/custom-audioplayer-interface-reference) and [PlaybackController interface](https://developer.amazon.com/public/solutions/alexa/alexa-skills-kit/docs/custom-playbackcontroller-interface-reference).
+3. Install npm dependencies by navigating into the `/lambda` directory and running the npm command: `npm install`
+
+	```bash
+	$ cd lambda/custom
+	$ npm install
+	```
+
+
+### Deployment
+
+ASK CLI will create the skill and the lambda function for you. The Lambda function will be created in ```us-east-1 (Northern Virginia)``` by default.
+
+1. Deploy the skill and the lambda function in one step by running the following command:
+
+	```bash
+	$ ask deploy
+	```
+
+### Testing
+
+1. To test, you need to login to Alexa Developer Console, and enable the "Test" switch on your skill from the "Test" Tab.
+
+2. Simulate verbal interaction with your skill through the command line using the following example:
+
+	```bash
+	 $ ask simulate -l en-US -t "alexa, start podcast player"
+
+	 ✓ Simulation created for simulation id: 4a7a9ed8-94b2-40c0-b3bd-fb63d9887fa7
+	◡ Waiting for simulation response{
+	  "status": "SUCCESSFUL",
+	  ...
+	 ```
+
+3. Once the "Test" switch is enabled, your skill can be tested on devices associated with the developer account as well. Speak to Alexa from any enabled device, from your browser at [echosim.io](https://echosim.io/welcome), or through your Amazon Mobile App and say :
+
+	```text
+	Alexa, start podcast player
+	```
+
+## Customization
+
+1. ```./skill.json```
+
+   Change the skill name, example phrase, icons, testing instructions etc ...
+
+   Remember that many information is locale-specific and must be changed for each locale (en-GB and en-US)
+
+   See the Skill [Manifest Documentation](https://developer.amazon.com/docs/smapi/skill-manifest.html) for more information.
+
+2. ```./lambda/custom/index.js```
+
+   Modify messages, and facts from the source code to customize the skill.
+
+3. ```./models/*.json```
+
+	Change the model definition to replace the invocation name and the sample phrase for each intent.  Repeat the operation for each locale you are planning to support.
+
+## Additional Resources
+
+### Community
+* [Amazon Developer Forums](https://forums.developer.amazon.com/spaces/165/index.html) - Join the conversation!
+* [Hackster.io](https://www.hackster.io/amazon-alexa) - See what others are building with Alexa.
+
+### Tutorials & Guides
+* [Voice Design Guide](https://developer.amazon.com/designing-for-voice/) - A great resource for learning conversational and voice user interface design.
+* [CodeAcademy: Learn Alexa](https://www.codecademy.com/learn/learn-alexa) - Learn how to build an Alexa Skill from within your browser with this beginner friendly tutorial on CodeAcademy!
+
+###Documentation
+* [Official Alexa Skills Kit Node.js SDK](https://www.npmjs.com/package/alexa-sdk) - The Official Node.js SDK Documentation
+*  [Official Alexa Skills Kit Documentation](https://developer.amazon.com/docs/ask-overviews/build-skills-with-the-alexa-skills-kit.html) - Official Alexa Skills Kit Documentation

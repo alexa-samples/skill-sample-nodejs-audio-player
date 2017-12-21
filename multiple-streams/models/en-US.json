@@ -1,0 +1,70 @@
+{
+  "interactionModel": {
+    "languageModel": {
+      "invocationName": "podcast player",
+      "intents": [
+        {
+          "name": "AMAZON.CancelIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.HelpIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.NextIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.NoIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.PauseIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.PreviousIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.ResumeIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.StartOverIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.StopIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.YesIntent",
+          "samples": []
+        },
+        {
+          "name": "PlayAudio",
+          "samples": [
+            "begin podcast",
+            "begin the podcast",
+            "begin playing the podcast",
+            "start podcast",
+            "start the podcast",
+            "start playing the podcast",
+            "play the podcast",
+            "to play",
+            "to begin podcast",
+            "to begin the podcast",
+            "to begin playing the podcast",
+            "to start podcast",
+            "to start the podcast",
+            "to start playing the podcast",
+            "to play the podcast"
+          ],
+          "slots": []
+        }
+      ]
+    }
+  }
+}

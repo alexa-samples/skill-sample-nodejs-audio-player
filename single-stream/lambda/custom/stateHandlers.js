@@ -1,10 +1,10 @@
 'use strict';
 
-var Alexa = require('alexa-sdk');
-var audioData = require('./audioAssets');
-var constants = require('./constants');
+const Alexa = require('alexa-sdk');
+const audioData = require('./audioAssets');
+const constants = require('./constants');
 
-var stateHandlers = {
+const stateHandlers = {
     'LaunchRequest': function () {
         this.emit('PlayAudio');
     },
@@ -32,7 +32,7 @@ var stateHandlers = {
         this.response.speak(this.t('CAN_NOT_SKIP_MSG'));
         this.emit(':responseReady');
     },
-    'AMAZON.PreviousIntent': function () { 
+    'AMAZON.PreviousIntent': function () {
         this.response.speak(this.t('CAN_NOT_SKIP_MSG'));
         this.emit(':responseReady');
     },
@@ -47,7 +47,7 @@ var stateHandlers = {
     'AMAZON.LoopOffIntent':    function () { this.emit('AMAZON.StartOverIntent');},
     'AMAZON.ShuffleOnIntent':  function () { this.emit('AMAZON.StartOverIntent');},
     'AMAZON.ShuffleOffIntent': function () { this.emit('AMAZON.StartOverIntent');},
-    'AMAZON.StartOverIntent':  function () { 
+    'AMAZON.StartOverIntent':  function () {
         this.response.speak(this.t('NOT_POSSIBLE_MSG'));
         this.emit(':responseReady');
     },
@@ -61,7 +61,7 @@ var stateHandlers = {
 
 module.exports = stateHandlers;
 
-var controller = function () {
+const controller = function () {
     return {
         play: function (text) {
             /*
@@ -72,9 +72,9 @@ var controller = function () {
              */
 
             if (canThrowCard.call(this)) {
-                var cardTitle   = audioData.subtitle;
-                var cardContent = audioData.cardContent;
-                var cardImage   = audioData.image;
+                let cardTitle   = audioData.subtitle;
+                let cardContent = audioData.cardContent;
+                let cardImage   = audioData.image;
                 this.response.cardRenderer(cardTitle, cardContent, cardImage);
             }
 
@@ -104,4 +104,3 @@ function canThrowCard() {
         return false;
     }
 }
-
