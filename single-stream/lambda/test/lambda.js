@@ -31,10 +31,10 @@ exports.callback = function callback(error, result) {
         console.error(error);
     }
     if (result != undefined && result != null) {
-        if (exports.debug) {
-            console.log("\n" + "******************* RESPONSE **********************");
-            console.log("\n" + JSON.stringify(result, null, 2));
-        }
+        // if (exports.debug) {
+        //     console.log("\n" + "******************* RESPONSE **********************");
+        //     console.log("\n" + JSON.stringify(result, null, 2));
+        // }
         exports.response = result;
     } else {
         console.log('result undefined or null');
