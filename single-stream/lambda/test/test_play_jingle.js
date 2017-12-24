@@ -1,6 +1,8 @@
 'use strict';
 
 let lambda = require('./lambda.js');
+let audio = require('../src/audioAssets.js');
+let ddb = require('../src/ddbController.js');
 
 let chai = require('chai');
 chai.use(require('chai-string'));
@@ -8,13 +10,26 @@ chai.use(require('chai-string'));
 let should = chai.should();
 let assert = chai.assert;
 
-var event = undefined;
+const USER_ID = "amzn1.ask.account.123";
 
-describe('Audio Player Test : PlayIntent', function () {
+describe('Audio Player Test : PlayIntent w/Jingle', function () {
 
   // pre-requisites
   before(function () {
-    return lambda.simulateAlexa('./play_intent.json');
+
+    // prepare the database
+    return ddb.deleteFromDDB(USER_ID).then( data => {
+
+      console.log("Finished preping the database");
+      return lambda.simulateAlexa('./play_intent.json');
+    
+    }).catch( (error) => {
+
+      // when database preparation fails, it might be because the table doe snot exist or AWS_REGION is not set
+      // run the test in any case.
+      return lambda.simulateAlexa('./play_intent.json');
+    
+    });
   });
 
 
@@ -41,7 +56,7 @@ describe('Audio Player Test : PlayIntent', function () {
       done();
     }),
 
-    it('it responses with AudioPlayer.Play directive ', function (done) {
+    it('it responses with AudioPlayer.Play directive with a Jingle URL', function (done) {
 
       let r = lambda.response.response;
       r.should.have.property("shouldEndSession");
@@ -62,6 +77,9 @@ describe('Audio Player Test : PlayIntent', function () {
       d.audioItem.stream.should.have.property("token");
       d.audioItem.stream.should.have.property("expectedPreviousToken");
       d.audioItem.stream.should.have.property("offsetInMilliseconds");
+
+      // does the URL name contains "Jingle" ?
+      assert.strictEqual(d.audioItem.stream.url, audio.startJingle, "The stream URL is not the jingle")
 
       done();
 

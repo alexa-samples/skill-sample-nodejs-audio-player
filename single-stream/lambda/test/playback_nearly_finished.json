@@ -1,0 +1,36 @@
+{
+    "version": "1.0",
+    "context": {
+      "AudioPlayer": {
+        "offsetInMilliseconds": 3029,
+        "token": "https://s3.amazonaws.com/alexademo.ninja/maxi80/jingle.m4a",
+        "playerActivity": "PLAYING"
+      },
+      "System": {
+        "application": {
+          "applicationId": "amzn1.ask.skill.123"
+        },
+        "user": {
+          "userId": "amzn1.ask.account.123"
+        },
+        "device": {
+          "deviceId": "amzn1.ask.device.123",
+          "supportedInterfaces": {
+            "AudioPlayer": {}
+          }
+        },
+        "apiEndpoint": "https://api.eu.amazonalexa.com"
+      }
+    },
+    "request": {
+      "type": "AudioPlayer.PlaybackNearlyFinished",
+      "requestId": "amzn1.echo-api.request.123",
+      "timestamp": "2017-10-26T07:46:38Z",
+      "locale": "en-GB",
+      "token": "https://s3.amazonaws.com/alexademo.ninja/maxi80/jingle.m4a",
+      "offsetInMilliseconds": 3029
+    },
+    "session": {
+      "attributes": {}
+    }
+  }

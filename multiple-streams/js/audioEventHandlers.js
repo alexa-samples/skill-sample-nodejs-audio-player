@@ -51,7 +51,7 @@ var audioEventHandlers = Alexa.CreateStateHandler(constants.states.PLAY_MODE, {
              * same audio being played.
              * If an audio file is already enqueued, exit without enqueuing again.
              */
-            return this.context.succeed(true);
+            return this.context.succeed({});
         }
         
         var enqueueIndex = this.attributes['index'];
@@ -63,7 +63,7 @@ var audioEventHandlers = Alexa.CreateStateHandler(constants.states.PLAY_MODE, {
                 enqueueIndex = 0;
             } else {
                 // Nothing to enqueue since reached end of the list and looping is disabled.
-                return this.context.succeed(true);
+                return this.context.succeed({});
             }
         }
         // Setting attributes to indicate item is enqueued.
@@ -81,7 +81,7 @@ var audioEventHandlers = Alexa.CreateStateHandler(constants.states.PLAY_MODE, {
     'PlaybackFailed' : function () {
         //  AudioPlayer.PlaybackNearlyFinished Directive received. Logging the error.
         console.log("Playback Failed : %j", this.event.request.error);
-        this.context.succeed(true);
+        this.context.succeed({});
     }
 });
 

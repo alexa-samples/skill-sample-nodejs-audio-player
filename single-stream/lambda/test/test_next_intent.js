@@ -1,8 +1,6 @@
 'use strict';
 
 let lambda = require('./lambda.js');
-let skill = require('../src/index.js');
-let constant = require('../src/constants.js');
 
 let chai = require('chai');
 chai.use(require('chai-string'));
@@ -15,16 +13,8 @@ var event = undefined;
 describe('Audio Player Test : NextIntent', function () {
 
   // pre-requisites
-  before(function (done) {
-
-    // pass the skill debug flag to Lambda mockup
-    lambda.debug = constant.debug;
-
-    event = require('./next_intent.json');
-    skill.handler(event, lambda.context(), lambda.callback);
-
-    done();
-
+  before(function () {
+    return lambda.simulateAlexa('./next_intent.json');
   });
 
 

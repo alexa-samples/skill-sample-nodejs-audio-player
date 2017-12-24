@@ -1,6 +1,8 @@
 'use strict';
 
 let lambda = require('./lambda.js');
+let skill = require('../src/index.js');
+let constant = require('../src/constants.js');
 
 let chai = require('chai');
 chai.use(require('chai-string'));
@@ -8,11 +10,13 @@ chai.use(require('chai-string'));
 let should = chai.should();
 let assert = chai.assert;
 
-describe('Audio Player Test : Exception', function () {
+var event = undefined;
+
+describe('Audio Player Test : Playback Failed', function () {
 
   // pre-requisites
   before(function () {
-    return lambda.simulateAlexa('./system_exception.json');
+    return lambda.simulateAlexa('./playback_failed.json');
   });
 
 
@@ -24,28 +28,26 @@ describe('Audio Player Test : Exception', function () {
       done();
     }),
 
-    it('it responses with output speech ', function (done) {
+    it('it responses with no output speech ', function (done) {
 
       lambda.response.should.have.property("response");
       let r = lambda.response.response;
 
-      r.should.have.property("outputSpeech");
-      r.outputSpeech.should.have.property("type");
-      r.outputSpeech.type.should.equal('SSML');
-      r.outputSpeech.should.have.property("ssml");
-      r.outputSpeech.ssml.should.startWith('<speak>');
-      r.outputSpeech.ssml.should.endWith('</speak>');
+      r.should.not.have.property("outputSpeech");
 
       done();
     }),
 
-    it('it responses with no directive ', function (done) {
+    it('it responses with an audio directive ', function (done) {
 
       let r = lambda.response.response;
       r.should.have.property("shouldEndSession");
       r.shouldEndSession.should.be.true;
 
-      r.should.not.have.property("directives");
+      r.should.have.property("directives");
+      let d = r.directives[0];
+      d.should.have.property("type");
+      d.type.should.startWith("AudioPlayer");
 
       done();
 
