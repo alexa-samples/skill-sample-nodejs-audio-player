@@ -66,9 +66,9 @@ function shouldPlayJingle(userId) {
 
     return new Promise( (resolve, reject) => {
 
-        ddb.getFromDDB(userId).then((data) => {
+        var WILL_PLAY_JINGLE = false;
 
-            let WILL_PLAY_JINGLE = false;
+        ddb.getFromDDB(userId).then((data) => {
 
             let lastPlayedEPOCH = (data && data.Item) ? data.Item.lastPlayed : 0;
             let now = Math.round(new Date() / 1000);
@@ -96,7 +96,8 @@ function shouldPlayJingle(userId) {
             };
 
         }).catch((error) => {
-            console.log(`Error while reading data from the DB ${error}`);
+            console.log(`Error while reading data from the DB ${error} - will play jingle in any case`);
+            WILL_PLAY_JINGLE = true;
             resolve(WILL_PLAY_JINGLE);
         });
     });

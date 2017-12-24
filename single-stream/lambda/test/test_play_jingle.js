@@ -19,14 +19,17 @@ describe('Audio Player Test : PlayIntent w/Jingle', function () {
 
     // prepare the database
     return ddb.deleteFromDDB(USER_ID).then( data => {
+
       console.log("Finished preping the database");
       return lambda.simulateAlexa('./play_intent.json');
-    }).catch( (error) => {
-      assert.fail(null, null, "Failed preparing the database");
-      // TODO MUST reject promises
-    });
-    // return new Promise().all([ddb.deleteFromDDB(USER_ID), lambda.simulateAlexa('./play_intent.json')]);
     
+    }).catch( (error) => {
+
+      // when database preparation fails, it might be because the table doe snot exist or AWS_REGION is not set
+      // run the test in any case.
+      return lambda.simulateAlexa('./play_intent.json');
+    
+    });
   });
 
 
