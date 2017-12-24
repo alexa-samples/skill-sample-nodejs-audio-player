@@ -11,7 +11,7 @@ var audioData = {
         }
     },
     url: 'https://audio1.maxi80.com',
-    startJingle : 'https://s3.amazonaws.com/alexademo.ninja/maxi80/jingle.m4a',    
+    startJingle : 'https://s3.amazonaws.com/alexademo.ninja/maxi80/jingle.m4a'    
 };
 
 module.exports = audioData;
