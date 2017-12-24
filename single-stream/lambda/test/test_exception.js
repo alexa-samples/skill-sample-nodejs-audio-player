@@ -1,8 +1,6 @@
 'use strict';
 
 let lambda = require('./lambda.js');
-let skill = require('../src/index.js');
-let constant = require('../src/constants.js');
 
 let chai = require('chai');
 chai.use(require('chai-string'));
@@ -10,21 +8,11 @@ chai.use(require('chai-string'));
 let should = chai.should();
 let assert = chai.assert;
 
-var event = undefined;
-
 describe('Audio Player Test : Exception', function () {
 
   // pre-requisites
-  before(function (done) {
-
-    // pass the skill debug flag to Lambda mockup
-    lambda.debug = constant.debug;
-
-    event = require('./system_exception.json');
-    skill.handler(event, lambda.context(), lambda.callback);
-
-    done();
-
+  before(function () {
+    return lambda.simulateAlexa('./system_exception.json');
   });
 
 

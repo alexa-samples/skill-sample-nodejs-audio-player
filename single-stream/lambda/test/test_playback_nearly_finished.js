@@ -15,16 +15,8 @@ var event = undefined;
 describe('Audio Player Test : Playback Nearly Finished', function () {
 
   // pre-requisites
-  before(function (done) {
-
-    // pass the skill debug flag to Lambda mockup
-    lambda.debug = constant.debug;
-
-    event = require('./playback_nearly_finished.json');
-    skill.handler(event, lambda.context(), lambda.callback);
-
-    done();
-
+  before(function () {
+    return lambda.simulateAlexa('./playback_nearly_finished.json');
   });
 
 
