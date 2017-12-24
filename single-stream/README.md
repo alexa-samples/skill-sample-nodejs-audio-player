@@ -127,7 +127,8 @@ When using DynamoDB, you also must ensure your Lambda function [execution role](
             "Resource": "arn:aws:dynamodb:us-east-1:YOUR_ACCOUNT_ID:table/my_radio"
         }
     ]
-}```
+}
+```
 
 ### Local Tests
 
