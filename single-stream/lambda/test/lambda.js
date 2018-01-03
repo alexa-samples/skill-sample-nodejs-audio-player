@@ -1,7 +1,42 @@
 'use strict';
 
-exports.debug = false;
+let constant = require('../src/constants.js');
+let skill = require('../src/index.js');
+
+// keep track of resolve, reject pair per event
+var promiseResolvers = undefined;
+
 exports.response = undefined;
+
+exports.callback = function callback(error, result) {
+
+    if (error !== undefined && error !== null) {
+        console.error(error);
+        promiseResolvers.reject(error);
+        return;
+    }
+    if (result !== undefined && result !== null) {
+        // if (exports.debug) {
+        //     console.log("\n" + "******************* RESPONSE **********************");
+        //     console.log("\n" + JSON.stringify(result, null, 2));
+        // }
+        exports.response = result;
+    } else {
+        console.log('result undefined or null');
+    }
+
+    promiseResolvers.resolve(result);
+}
+
+exports.simulateAlexa = function simulateAlexa(eventFile) {
+
+    let event = require(eventFile);
+    return new Promise( (resolve, reject) => {
+        promiseResolvers = { resolve, reject }
+        skill.handler(event, exports.context, exports.callback);
+    });
+
+}
 
 exports.context = function context() {
 
@@ -23,20 +58,4 @@ exports.context = function context() {
     }
 
     return context;
-}
-
-exports.callback = function callback(error, result) {
-
-    if (error != undefined && error != null) {
-        console.error(error);
-    }
-    if (result != undefined && result != null) {
-        if (exports.debug) {
-            console.log("\n" + "******************* RESPONSE **********************");
-            console.log("\n" + JSON.stringify(result, null, 2));
-        }
-        exports.response = result;
-    } else {
-        console.log('result undefined or null');
-    }
 }

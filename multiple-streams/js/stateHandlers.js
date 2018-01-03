@@ -14,7 +14,7 @@ var stateHandlers = {
             this.attributes['playOrder'] = Array.apply(null, {length: audioData.length}).map(Number.call, Number);
             this.attributes['index'] = 0;
             this.attributes['offsetInMilliseconds'] = 0;
-            this.attributes['loop'] = true;
+            this.attributes['loop'] = false; //do not loop on the list of podcast
             this.attributes['shuffle'] = false;
             this.attributes['playbackIndexChanged'] = true;
             //  Change state to START_MODE
@@ -32,7 +32,7 @@ var stateHandlers = {
                 this.attributes['playOrder'] = Array.apply(null, {length: audioData.length}).map(Number.call, Number);
                 this.attributes['index'] = 0;
                 this.attributes['offsetInMilliseconds'] = 0;
-                this.attributes['loop'] = true;
+                this.attributes['loop'] = false; //do not loop on the list of podcast
                 this.attributes['shuffle'] = false;
                 this.attributes['playbackIndexChanged'] = true;
                 //  Change state to START_MODE
@@ -206,7 +206,8 @@ var controller = function () {
                 this.response.cardRenderer(cardTitle, cardContent, null);
             }
 
-            this.response.audioPlayerPlay(playBehavior, podcast.url, token, null, offsetInMilliseconds);
+            var message = "This is " + audioData[this.attributes['index']].title;
+            this.response.speak(message).audioPlayerPlay(playBehavior, podcast.url, token, null, offsetInMilliseconds);
             this.emit(':responseReady');
         },
         stop: function () {

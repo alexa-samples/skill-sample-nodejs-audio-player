@@ -2,19 +2,40 @@
 
 let lambda = require('./lambda.js');
 
+let audio = require('../src/audioAssets.js');
+let ddb = require('../src/ddbController.js');
+
 let chai = require('chai');
 chai.use(require('chai-string'));
 
 let should = chai.should();
 let assert = chai.assert;
 
-var event = undefined;
+const USER_ID = "amzn1.ask.account.123";
 
-describe('Audio Player Test : PlayIntent', function () {
+describe('Audio Player Test : PlayIntent w/Jingle Recently Played', function () {
+
+  var JINGLE_WILL_PLAY = false;
 
   // pre-requisites
   before(function () {
-    return lambda.simulateAlexa('./play_intent.json');
+    
+    // prepare the database insert a "last played" attribute in the db
+    // so when the skill will test it, it should NOT play the jingle again
+    return ddb.insertOrUpdateDDB(USER_ID).then( data => {
+
+      console.log("Finished preping the database");
+      JINGLE_WILL_PLAY = false;
+      return lambda.simulateAlexa('./play_intent.json');
+
+    }).catch( (error) => {
+
+      // when database preparation fails, it might be because the table doe snot exist or AWS_REGION is not set
+      // run the test in any case, the result of the test is to play the jingle
+      JINGLE_WILL_PLAY = true;
+      return lambda.simulateAlexa('./play_intent.json');
+      
+    });
   });
 
 
@@ -41,7 +62,7 @@ describe('Audio Player Test : PlayIntent', function () {
       done();
     }),
 
-    it('it responses with AudioPlayer.Play directive ', function (done) {
+    it('it responses with AudioPlayer.Play directive with a stream URL', function (done) {
 
       let r = lambda.response.response;
       r.should.have.property("shouldEndSession");
@@ -62,6 +83,14 @@ describe('Audio Player Test : PlayIntent', function () {
       d.audioItem.stream.should.have.property("token");
       d.audioItem.stream.should.have.property("expectedPreviousToken");
       d.audioItem.stream.should.have.property("offsetInMilliseconds");
+
+      if (JINGLE_WILL_PLAY) {
+        // does the URL is the Jingle (not the live stream)
+        assert.strictEqual(d.audioItem.stream.url, audio.startJingle, "The stream URL is not the live stream")
+      } else {
+        // does the URL is the stream URL (not the jingle)
+        assert.strictEqual(d.audioItem.stream.url, audio.url, "The stream URL is not the live stream")
+      }
 
       done();
 

@@ -20,5 +20,8 @@ module.exports = Object.freeze({
         START_MODE : '',
         PLAY_MODE : '_PLAY_MODE',
         RESUME_DECISION_MODE : '_RESUME_DECISION_MODE'
-    }
+    },
+
+    // when true, the skill logs additional detail, including the full request received from Alexa
+    debug : true    
 });

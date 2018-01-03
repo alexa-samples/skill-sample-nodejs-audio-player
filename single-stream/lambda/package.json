@@ -14,7 +14,8 @@
   "author": "Amazon.com",
   "license": "See license in ../../LICENSE.txt",
   "dependencies": {
-    "alexa-sdk": "^1.0.14",
+    "alexa-sdk": "^1.0.24",
+    "aws-sdk": "^2.175.0",
     "chai": "*",
     "chai-string": "*",
     "mocha": "*"
