@@ -109,7 +109,7 @@ var intentHandlers = {
     },
     'PlayAudio': function () {
 
-        //is the jingke URL defined ?
+        //is the jingle URL defined ?
         if (audioData.startJingle) {
 
             //should we play the jingle ?
