@@ -117,9 +117,8 @@ var intentHandlers = {
                 // play a jingle first, then the live stream or play the live stream
                 // depending on return value from shouldPlayJingle()
                 // (live stream will be started when we will receive Playback Nearly Finished event)
-                controller.play.call(this, this.t('WELCOME_MSG', {
-                    skillName: audioData.card.title
-                }), shouldPlayJingleResult ? audioData.startJingle : audioData.url, audioData.card);
+                controller.play.call(this,
+                                     this.t('WELCOME_MSG', {skillName: audioData.card.title}), shouldPlayJingleResult ? audioData.startJingle : audioData.url, audioData.card);
             });
 
         } else {
