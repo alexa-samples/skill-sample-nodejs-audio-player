@@ -39,7 +39,7 @@ var audioEventHandlers =  {
          * This should not happen on live streams
          */
         console.log("Playback nearly finished");
-        controller.playLater.call(this, audioData.url);
+        controller.playLater.call(this, audioData(this.event.request).url);
     },
     'PlaybackFailed' : function () {
         /*

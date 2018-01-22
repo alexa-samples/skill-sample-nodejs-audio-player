@@ -79,7 +79,7 @@ describe('Audio Player Test : PlayIntent w/Jingle', function () {
       d.audioItem.stream.should.have.property("offsetInMilliseconds");
 
       // does the URL name contains "Jingle" ?
-      assert.strictEqual(d.audioItem.stream.url, audio.startJingle, "The stream URL is not the jingle")
+      assert.strictEqual(d.audioItem.stream.url, audio(undefined).startJingle, "The stream URL is not the jingle")
 
       done();
 

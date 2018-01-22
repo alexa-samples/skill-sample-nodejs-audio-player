@@ -86,10 +86,10 @@ describe('Audio Player Test : PlayIntent w/Jingle Recently Played', function () 
 
       if (JINGLE_WILL_PLAY) {
         // does the URL is the Jingle (not the live stream)
-        assert.strictEqual(d.audioItem.stream.url, audio.startJingle, "The stream URL is not the live stream")
+        assert.strictEqual(d.audioItem.stream.url, audio(undefined).startJingle, "The stream URL is not the live stream")
       } else {
         // does the URL is the stream URL (not the jingle)
-        assert.strictEqual(d.audioItem.stream.url, audio.url, "The stream URL is not the live stream")
+        assert.strictEqual(d.audioItem.stream.url, audio(undefined).url, "The stream URL is not the live stream")
       }
 
       done();

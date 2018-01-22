@@ -109,8 +109,10 @@ var intentHandlers = {
     },
     'PlayAudio': function () {
 
+        let request = this.event.request;
+
         //is the jingke URL defined ?
-        if (audioData.startJingle) {
+        if (audioData(request).startJingle) {
 
             //should we play the jingle ?
             shouldPlayJingle(this.event.session.user.userId).then(shouldPlayJingleResult => {
@@ -118,21 +120,21 @@ var intentHandlers = {
                 // depending on return value from shouldPlayJingle()
                 // (live stream will be started when we will receive Playback Nearly Finished event)
                 controller.play.call(this,
-                                     this.t('WELCOME_MSG', {skillName: audioData.card.title}), shouldPlayJingleResult ? audioData.startJingle : audioData.url, audioData.card);
+                                     this.t('WELCOME_MSG', {skillName: audioData(request).card.title}), shouldPlayJingleResult ? audioData(request).startJingle : audioData(request).url, audioData(request).card);
             });
 
         } else {
 
             // play the radio directly
             controller.play.call(this, this.t('WELCOME_MSG', {
-                skillName: audioData.card.title
-            }), audioData.url, audioData.card);
+                skillName: audioData(request).card.title
+            }), audioData(request).url, audioData(request).card);
 
         }
     },
     'AMAZON.HelpIntent': function () {
         this.response.listen(this.t('HELP_MSG', {
-            skillName: audioData.card.title
+            skillName: audioData(this.event.request).card.title
         }));
         this.emit(':responseReady');
     },
@@ -170,7 +172,7 @@ var intentHandlers = {
     },
 
     'AMAZON.ResumeIntent': function () {
-        controller.play.call(this, this.t('RESUME_MSG'), audioData.url, audioData.card)
+        controller.play.call(this, this.t('RESUME_MSG'), audioData(this.event.request).url, audioData(this.event.request).card)
     },
 
     'AMAZON.LoopOnIntent': function () {
@@ -195,8 +197,8 @@ var intentHandlers = {
      */
     'PlayCommandIssued': function () {
         controller.play.call(this, this.t('WELCOME_MSG', {
-            skillName: audioData.card.title
-        })), audioData.url, audioData.card
+            skillName: audioData(this.event.request).card.title
+        })), audioData(this.event.request).url, audioData(this.event.request).card
     },
     'PauseCommandIssued': function () {
         controller.stop.call(this, this.t('STOP_MSG'))
