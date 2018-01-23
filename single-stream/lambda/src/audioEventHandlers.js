@@ -39,12 +39,17 @@ var audioEventHandlers =  {
          * This should not happen on live streams
          */
         console.log("Playback nearly finished");
-        controller.playLater.call(this, audioData.url);
+        controller.playLater.call(this, audioData(this.event.request).url);
     },
     'PlaybackFailed' : function () {
         /*
          * AudioPlayer.PlaybackFailed Directive received.
-         * Logging the error and restarting playing.
+         * Logging the error and stop playing.
+         * 
+         *  TODO : should we enqueue another URL ?  The risk is to loop if the problem comes from the stream itself.
+         *         Smart skills should try to enqueue the URL 2-3 times and if the error still occurs,
+         *         decide to play an MP3 with an error message instead.
+         *         These error should be reported.  We recommend to create an Alert on Cloudwatch to send an email based on volume.
          */
         console.log("Playback Failed : %j", this.event.request.error);
         controller.clear.call(this);

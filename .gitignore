@@ -1,9 +1,10 @@
 node_modules
-.idea
-.vscode
-.ask
+**/.idea
+**/.vscode
+**/*.zip
+**/.ask/config
+**/node_modules
 **/*.zip
 **/package-lock.json
 sync_upstream.sh
-single-stream/.ask/config
 **/.ask/config

@@ -18,7 +18,7 @@ You will need to change a few configuration files before creating the skill and 
 
 ### Pre-requisites
 
-This is a NodeJS Lambda function and skill defintion to be used by [ASK CLI](https://developer.amazon.com/docs/smapi/quick-start-alexa-skills-kit-command-line-interface.html).
+This is a NodeJS Lambda function and skill definition to be used by [ASK CLI](https://developer.amazon.com/docs/smapi/quick-start-alexa-skills-kit-command-line-interface.html).
 
 You need to initialize ASK CLI with 
 
@@ -35,19 +35,19 @@ $ (cd lambda && npm install)
 $ (cd lambda/src && npm install)
 ```
 
-### Code changes before to deploy
+### Code changes before deploying
 
 1. ```./skill.json```
 
    Change the skill name, example phrase, icons, testing instructions etc ...
 
-   Remember than many information are locale-specific and must be changed for each locale (en-GB and en-US)
+   Remember than most information is locale-specific and must be changed for each locale (en-GB and en-US)
 
    Please refer to https://developer.amazon.com/docs/smapi/skill-manifest.html for details about manifest values.
 
 2. ```./lambda/src/audioAssets.js```
 
-   Modify each value in the audioAssets.js file to provide your skill at runtime the correct values : your radio name, description, icon and, obviosuly, URL of your stream (https only).
+   Modify each value in the audioAssets.js file to provide your skill with the correct runtime values for values : your radio name, description, icon and, obviously, URL of your stream (https only).
 
    ```startJingle``` is an optional property defining a Jingle to be played before the live stream. 
 
@@ -132,7 +132,7 @@ When using DynamoDB, you also must ensure your Lambda function [execution role](
 
 ### Local Tests
 
-This code is using [Mocha](https://mochajs.org/) and [Chai](http://chaijs.com/) to test the responses returned by your skill.  Before to deploy, be sure to have no test failures.
+This code uses [Mocha](https://mochajs.org/) and [Chai](http://chaijs.com/) to test the responses returned by your skill.  Be sure you have no test failures before deploying.
 
 Execute your test by typing 
 
@@ -208,7 +208,7 @@ module.exports = Object.freeze({
 
 ## On Device Tests
 
-To be able to invoke the skill on your device, you need to login to Alexa Developer Console, and enable the "Test" switch on your skill.
+To invoke the skill from your device, you need to login to the Alexa Developer Console, and enable the "Test" switch on your skill.
 
 See https://developer.amazon.com/docs/smapi/quick-start-alexa-skills-kit-command-line-interface.html#step-4-test-your-skill for more testing instructions.
 
