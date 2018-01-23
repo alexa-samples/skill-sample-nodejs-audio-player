@@ -35,7 +35,7 @@ var controller = function () {
                 this.response.cardRenderer(cardTitle, cardContent, cardImage);
             }
 
-            if (text && text != "") {
+            if (text && text !== "") {
                 this.response.speak(text).audioPlayerPlay('REPLACE_ALL', url, url, null, 0);
             } else {
                 this.response.audioPlayerPlay('REPLACE_ALL', url, url, null, 0);
