@@ -1,6 +1,0 @@
-node_modules
-.idea
-.vscode
-**/*.zip
-**/package-lock.json
-sync_upstream.sh
