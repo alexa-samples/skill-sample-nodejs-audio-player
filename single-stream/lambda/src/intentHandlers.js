@@ -143,10 +143,10 @@ var intentHandlers = {
         // do not return a response, as per https://developer.amazon.com/docs/custom-skills/handle-requests-sent-by-alexa.html#sessionendedrequest
         this.emit(':responseReady');
     },
-    'ExceptionEncountered': function () {
+    'System.ExceptionEncountered': function () {
         console.log("\n******************* EXCEPTION **********************");
         console.log("\n" + JSON.stringify(this.event.request, null, 2));
-        this.callback(null, null)
+        this.emit(':responseReady');
     },
     'Unhandled': function () {
         this.response.speak(this.t('UNHANDLED_MSG'));

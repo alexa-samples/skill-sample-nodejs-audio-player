@@ -29,12 +29,7 @@ describe('Audio Player Test : Exception', function () {
       lambda.response.should.have.property("response");
       let r = lambda.response.response;
 
-      r.should.have.property("outputSpeech");
-      r.outputSpeech.should.have.property("type");
-      r.outputSpeech.type.should.equal('SSML');
-      r.outputSpeech.should.have.property("ssml");
-      r.outputSpeech.ssml.should.startWith('<speak>');
-      r.outputSpeech.ssml.should.endWith('</speak>');
+      r.should.not.have.property("outputSpeech");
 
       done();
     }),
