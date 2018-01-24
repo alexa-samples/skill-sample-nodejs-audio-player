@@ -14,11 +14,11 @@
   "author": "Amazon.com",
   "license": "See license in ../../LICENSE.txt",
   "dependencies": {
-    "alexa-sdk": "^1.0.24",
-    "aws-sdk": "^2.175.0",
+    "alexa-sdk": "^1.0.25",
+    "aws-sdk": "^2.186.0",
     "chai": "*",
     "chai-string": "*",
-    "mocha": "*"
+    "mocha": "^5.0.0"
   },
   "repository": {
     "type": "git",
