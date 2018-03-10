@@ -26,15 +26,6 @@ $ ask init
 $ (cd lambda && npm install)
 $ (cd lambda/src && npm install)
 ```
-### Local Tests
-
-This code uses [Mocha](https://mochajs.org/) and [Chai](http://chaijs.com/) to test the responses returned by your skill.  Be sure you have no test failures before deploying.
-
-Execute your test by typing 
-
-```bash
-$ (cd lambda && npm test)
-```
 
 ### Deployment
 
@@ -55,6 +46,7 @@ After deploying, you will need to add DynamoDB permission to the IAM Role create
 - click "Attach Policy"
 - locate and select "DynamoDBFullAccessPolicy" role and click "Attach Policy"
 
+When done, you are ready to test from the command line, or using the Alexa developer console.
 
 ```bash
  $ ask simulate -l en-US -t "alexa, open audio player"
