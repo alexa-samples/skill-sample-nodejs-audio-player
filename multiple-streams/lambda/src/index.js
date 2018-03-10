@@ -20,7 +20,15 @@ exports.handler = function(event, context, callback){
     if (constants.debug) {
         console.log("\n" + "******************* REQUEST **********************");
         console.log("\n" + JSON.stringify(event, null, 2));
+
+        var origCallback = callback;
+        callback = function (error, response) {
+            console.log("\n" + "******************* RESPONSE  **********************");
+            console.log("\n" + JSON.stringify(response, null, 2));
+            return origCallback(error, response);
+        }
     }
+
 
     var audioPlayerInterface = ((((event.context || {}).System || {}).device || {}).supportedInterfaces || {}).AudioPlayer;
     if (audioPlayerInterface === undefined) {

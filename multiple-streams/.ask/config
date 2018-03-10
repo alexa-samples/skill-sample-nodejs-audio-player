@@ -1,0 +1,18 @@
+{
+  "deploy_settings": {
+    "default": {
+      "skill_id": "",
+      "was_cloned": false,
+      "merge": {
+        "skillManifest": {
+          "apis": {
+            "custom": {
+              "endpoint": {
+                "uri": "ask-custom-Multi_Stream_Audio_Player"
+              }
+            }
+          }
+        }
+      }
+    }
+}
