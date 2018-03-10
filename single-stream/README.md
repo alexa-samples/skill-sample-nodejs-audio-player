@@ -14,21 +14,23 @@ Alexa, stop
 
 ## Installation
 
-You will need to change a few configuration files before creating the skill and upload the lambda code.
+You will need to comply to the prerequisites below and to change a few configuration files before creating the skill and upload the lambda code.
 
 ### Pre-requisites
 
 This is a NodeJS Lambda function and skill definition to be used by [ASK CLI](https://developer.amazon.com/docs/smapi/quick-start-alexa-skills-kit-command-line-interface.html).
 
-You need to initialize ASK CLI with 
+0. You need an [AWS account](https://aws.amazon.com) and an [Amazon developer account](https://developer.amazon.com) to create an Alexa Skill.
+
+1. You need to install and configure the [AWS CLI](https://aws.amazon.com/cli/)
+
+2. You need to inistall and to initialize [ASK CLI](https://developer.amazon.com/docs/smapi/quick-start-alexa-skills-kit-command-line-interface.html) with 
 
 ```bash
 $ ask init
 ```
 
-You need an [AWS account](https://aws.amazon.com) and an [Amazon developer account](https://developer.amazon.com) to create an Alexa Skill.
-
-You need to download NodeJS dependencies :
+3. You need to download NodeJS dependencies :
 
 ```bash
 $ (cd lambda && npm install)
