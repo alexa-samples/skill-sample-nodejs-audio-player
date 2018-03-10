@@ -16,8 +16,8 @@
           ],
           "name": "My Radio",
           "description": "Listen to My Radio, with less bla bla bla, and more la la la.\n\nMy Radio provides a high quality sound 24/7 with the best music.\n\nTo start, just say \"Alexa, launch My Radio\" or \"Alexa, play my radio\" to start the radio\".\n\nAt anytime, you can stop the radio by saying \"Alexa, stop\"",
-          "smallIconUri": "https://s3-eu-west-1.amazonaws.com/alexa.maxi80.com/assets/alexa-logo-108.png",
-          "largeIconUri": "https://s3-eu-west-1.amazonaws.com/alexa.maxi80.com/assets/alexa-logo-512.png"
+          "smallIconUri": "https://alexademo.ninja/skills/logo-108.png",
+          "largeIconUri": "https://alexademo.ninja/skills/logo-512.png"
         },
         "en-GB": {
           "summary": "Listen to My Radio, less bla bla bla, more la la la.",
@@ -33,8 +33,8 @@
           ],
           "name": "My Radio",
           "description": "Listen to My Radio, with less bla bla bla, and more la la la.\n\nMy Radio provides a high quality sound 24/7 with the best music.\n\nTo start, just say \"Alexa, launch My Radio\" or \"Alexa, play my radio\" to start the radio\".\n\nAt anytime, you can stop the radio by saying \"Alexa, stop\"",
-          "smallIconUri": "https://s3-eu-west-1.amazonaws.com/alexa.maxi80.com/assets/alexa-logo-108.png",
-          "largeIconUri": "https://s3-eu-west-1.amazonaws.com/alexa.maxi80.com/assets/alexa-logo-512.png"
+          "smallIconUri": "https://alexademo.ninja/skills/logo-108.png",
+          "largeIconUri": "https://alexademo.ninja/skills/logo-512.png"
         },
         "en-IN": {
           "summary": "Listen to My Radio, less bla bla bla, more la la la.",
@@ -50,8 +50,8 @@
           ],
           "name": "My Radio",
           "description": "Listen to My Radio, with less bla bla bla, and more la la la.\n\nMy Radio provides a high quality sound 24/7 with the best music.\n\nTo start, just say \"Alexa, launch My Radio\" or \"Alexa, play my radio\" to start the radio\".\n\nAt anytime, you can stop the radio by saying \"Alexa, stop\"",
-          "smallIconUri": "https://s3-eu-west-1.amazonaws.com/alexa.maxi80.com/assets/alexa-logo-108.png",
-          "largeIconUri": "https://s3-eu-west-1.amazonaws.com/alexa.maxi80.com/assets/alexa-logo-512.png"
+          "smallIconUri": "https://alexademo.ninja/skills/logo-108.png",
+          "largeIconUri": "https://alexademo.ninja/skills/logo-512.png"
         },
         "en-CA": {
           "summary": "Listen to My Radio, less bla bla bla, more la la la.",
@@ -67,8 +67,8 @@
           ],
           "name": "My Radio",
           "description": "Listen to My Radio, with less bla bla bla, and more la la la.\n\nMy Radio provides a high quality sound 24/7 with the best music.\n\nTo start, just say \"Alexa, launch My Radio\" or \"Alexa, play my radio\" to start the radio\".\n\nAt anytime, you can stop the radio by saying \"Alexa, stop\"",
-          "smallIconUri": "https://s3-eu-west-1.amazonaws.com/alexa.maxi80.com/assets/alexa-logo-108.png",
-          "largeIconUri": "https://s3-eu-west-1.amazonaws.com/alexa.maxi80.com/assets/alexa-logo-512.png"
+          "smallIconUri": "https://alexademo.ninja/skills/logo-108.png",
+          "largeIconUri": "https://alexademo.ninja/skills/logo-512.png"
         },
         "en-AU": {
           "summary": "Listen to My Radio, less bla bla bla, more la la la.",
@@ -84,8 +84,8 @@
           ],
           "name": "My Radio",
           "description": "Listen to My Radio, with less bla bla bla, and more la la la.\n\nMy Radio provides a high quality sound 24/7 with the best music.\n\nTo start, just say \"Alexa, launch My Radio\" or \"Alexa, play my radio\" to start the radio\".\n\nAt anytime, you can stop the radio by saying \"Alexa, stop\"",
-          "smallIconUri": "https://s3-eu-west-1.amazonaws.com/alexa.maxi80.com/assets/alexa-logo-108.png",
-          "largeIconUri": "https://s3-eu-west-1.amazonaws.com/alexa.maxi80.com/assets/alexa-logo-512.png"
+          "smallIconUri": "https://alexademo.ninja/skills/logo-108.png",
+          "largeIconUri": "https://alexademo.ninja/skills/logo-512.png"
         }
       },
       "isAvailableWorldwide": true,
