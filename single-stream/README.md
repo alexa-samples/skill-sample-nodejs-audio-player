@@ -146,7 +146,7 @@ $ (cd lambda && npm test)
 
 ASK will create the skill and the lambda function for you.
 
-Lambda function will be creadted in ```us-east-1``` (Northern Virginia) by default.
+Lambda function will be created in ```us-east-1``` (Northern Virginia) by default.
 
 You deploy the skill and the lambda function in one step :
 
