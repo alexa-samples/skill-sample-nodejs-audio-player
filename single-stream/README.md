@@ -24,7 +24,7 @@ This is a NodeJS Lambda function and skill definition to be used by [ASK CLI](ht
 
 1. You need to install and configure the [AWS CLI](https://aws.amazon.com/cli/)
 
-2. You need to inistall and to initialize [ASK CLI](https://developer.amazon.com/docs/smapi/quick-start-alexa-skills-kit-command-line-interface.html) with 
+2. You need to install and to initialize [ASK CLI](https://developer.amazon.com/docs/smapi/quick-start-alexa-skills-kit-command-line-interface.html) with 
 
 ```bash
 $ ask init
