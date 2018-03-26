@@ -51,6 +51,16 @@ After deploying, you will need to add DynamoDB permission to the IAM Role create
 - click "Attach Policy"
 - locate and select "DynamoDBFullAccessPolicy" role and click "Attach Policy"
 
+You will also need to update the Application/Skill ID in the constants.js
+- look in the output from "ask deploy"
+- copy the contents of Skill Id: amzn1.ask.skill.uniqueidentifier...
+- paste the skill id into constants.js and save
+- deploy the skill again
+
+```bash
+$ ask deploy
+```
+
 When done, you are ready to test from the command line, or using the Alexa developer console.
 
 ```bash
