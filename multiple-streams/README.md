@@ -14,7 +14,12 @@ This is a NodeJS Lambda function and skill definition to be used by [ASK CLI](ht
 
 1. You need to install and configure the [AWS CLI](https://aws.amazon.com/cli/)
 
-2. You need to inistall and to initialize [ASK CLI](https://developer.amazon.com/docs/smapi/quick-start-alexa-skills-kit-command-line-interface.html) with 
+```bash
+$ pip install aws-cli
+$ aws configure // https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-started.html
+```
+
+2. You need to inistall and to initialize [ASK CLI](https://developer.amazon.com/docs/smapi/quick-start-alexa-skills-kit-command-line-interface.html) with
 
 ```bash
 $ ask init
@@ -36,7 +41,7 @@ Lambda function will be created in ```us-east-1``` (Northern Virginia) by defaul
 You deploy the skill and the lambda function in one step :
 
 ```bash
-$ ask deploy 
+$ ask deploy
 ```
 
 After deploying, you will need to add DynamoDB permission to the IAM Role created to execute your function :
@@ -46,11 +51,21 @@ After deploying, you will need to add DynamoDB permission to the IAM Role create
 - click "Attach Policy"
 - locate and select "DynamoDBFullAccessPolicy" role and click "Attach Policy"
 
+You will also need to update the Application/Skill ID in the constants.js
+- look in the output from "ask deploy"
+- copy the contents of Skill Id: amzn1.ask.skill.uniqueidentifier...
+- paste the skill id into constants.js and save
+- deploy the skill again
+
+```bash
+$ ask deploy
+```
+
 When done, you are ready to test from the command line, or using the Alexa developer console.
 
 ```bash
  $ ask simulate -l en-US -t "alexa, open audio player"
- 
+
  ✓ Simulation created for simulation id: 4a7a9ed8-94b2-40c0-b3bd-fb63d9887fa7
 ◡ Waiting for simulation response{
   "status": "SUCCESSFUL",
@@ -76,11 +91,11 @@ The sample project plays a pre-defined list of audio content defined in `js/audi
     * **START_MODE** is the default state of the skill, such as when it's invoked without an intent for the first time.
     * **PLAY_MODE** is used when audio is currently being played by the skill.
     * **RESUME_DECISION_MODE** is used to handle the response from the user when they're asked to confirm they'd like to resume playback from a prior use of the skill.
-* `audioEventHandlers.js` is where the skill handles AudioPlayer events.  These events are only expected in the PLAY_MODE state and are used to track the user's progress through the content. 
+* `audioEventHandlers.js` is where the skill handles AudioPlayer events.  These events are only expected in the PLAY_MODE state and are used to track the user's progress through the content.
 
 You can learn more about the new [AudioPlayer interface](https://developer.amazon.com/public/solutions/alexa/alexa-skills-kit/docs/custom-audioplayer-interface-reference) and [PlaybackController interface](https://developer.amazon.com/public/solutions/alexa/alexa-skills-kit/docs/custom-playbackcontroller-interface-reference).
 
-## Cleanup 
+## Cleanup
 
 If you were deploying this skill just for learning purposes or for testing, do not forget to clean your AWS account to avoid recurring charges for your DynamoDB table.
 
