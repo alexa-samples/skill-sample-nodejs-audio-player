@@ -44,6 +44,8 @@ You deploy the skill and the lambda function in one step :
 $ ask deploy
 ```
 
+#### Add DynamoDB permission to your Lambda function
+
 After deploying, you will need to add DynamoDB permission to the IAM Role created to execute your function :
 
 - connect to AWS Console : https://console.aws.amazon.com/iam/home?region=us-east-1#/roles
@@ -51,15 +53,46 @@ After deploying, you will need to add DynamoDB permission to the IAM Role create
 - click "Attach Policy"
 - locate and select "DynamoDBFullAccessPolicy" role and click "Attach Policy"
 
-You will also need to update the Application/Skill ID in the constants.js
-- look in the output from "ask deploy"
-- copy the contents of Skill Id: amzn1.ask.skill.uniqueidentifier...
-- paste the skill id into constants.js and save
-- deploy the skill again
+#### Change the skillid in lambda code. (Optional but recommended)
+
+Once the skill and lambda function is deployed, do not forget to add the skill id to ```lambda/src/constants.js``` to ensure your code is executed only for your skill.
+
+Uncomment the ```AppId``` line and change it with your new skill id.  You can find the skill id by typing :
 
 ```bash
-$ ask deploy
+$ ask api list-skills
 ```
+```json
+{
+  "skills": [
+    {
+      "lastUpdated": "2017-10-08T08:06:34.835Z",
+      "nameByLocale": {
+        "en-GB": "Your Skill Name",
+        "en-US": "Your Skill Name"
+      },
+      "skillId": "amzn1.ask.skill.123",
+      "stage": "development"
+    }
+  ]
+}
+```
+
+Then copy/paste the skill id to ```lambda/src/constants.js```    
+
+```javascript
+module.exports = Object.freeze({
+    
+    //App-ID. TODO: set to your own Skill App ID from the developer portal.
+    appId : "amzn1.ask.skill.123",
+
+    // when true, the skill logs additional detail, including the full request received from Alexa
+    debug : false
+
+});
+```
+
+### Testing from command line
 
 When done, you are ready to test from the command line, or using the Alexa developer console.
 
