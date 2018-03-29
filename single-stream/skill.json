@@ -103,6 +103,7 @@
           "description": "Ecoutez Ma Radio, moins de bla bla, plus de la la la\n\nMa Radio vous donne le meilleur son, 24h sur 24h\n\nPour démarrer, dites juste : \"Alexa, lance Ma Radio\" ou \"Alexa, démarre ma radio\"\".\n\nA n'importe quel moment, vous pouvez dire \"Alexa, stop\" pour arrêter.",
           "smallIconUri": "https://alexademo.ninja/skills/logo-108.png",
           "largeIconUri": "https://alexademo.ninja/skills/logo-512.png"
+        }
       },
       "isAvailableWorldwide": true,
       "testingInstructions": "Include your testing instruction (if any) here",
