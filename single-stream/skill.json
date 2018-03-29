@@ -86,7 +86,23 @@
           "description": "Listen to My Radio, with less bla bla bla, and more la la la.\n\nMy Radio provides a high quality sound 24/7 with the best music.\n\nTo start, just say \"Alexa, launch My Radio\" or \"Alexa, play my radio\" to start the radio\".\n\nAt anytime, you can stop the radio by saying \"Alexa, stop\"",
           "smallIconUri": "https://alexademo.ninja/skills/logo-108.png",
           "largeIconUri": "https://alexademo.ninja/skills/logo-512.png"
-        }
+        },
+        "fr-FR": {
+          "summary": "Ecoutez Ma Radio, moins de bla bla, plus de la la la.",
+          "examplePhrases": [
+            "Alexa, ouvre My Radio",
+            "Alexa, lance My Radio",
+            "Alexa, demande à Ma Radio de démarrer"
+          ],
+          "keywords": [
+            "musique",
+            "direct",
+            "radio"
+          ],
+          "name": "Ma Radio",
+          "description": "Ecoutez Ma Radio, moins de bla bla, plus de la la la\n\nMa Radio vous donne le meilleur son, 24h sur 24h\n\nPour démarrer, dites juste : \"Alexa, lance Ma Radio\" ou \"Alexa, démarre ma radio\"\".\n\nA n'importe quel moment, vous pouvez dire \"Alexa, stop\" pour arrêter.",
+          "smallIconUri": "https://alexademo.ninja/skills/logo-108.png",
+          "largeIconUri": "https://alexademo.ninja/skills/logo-512.png"
       },
       "isAvailableWorldwide": true,
       "testingInstructions": "Include your testing instruction (if any) here",

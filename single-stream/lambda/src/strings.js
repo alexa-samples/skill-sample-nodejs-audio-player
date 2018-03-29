@@ -20,6 +20,16 @@ let de = { // TODO translate to German
     "STOP_MSG" : "Goodbye."
 };
 
+let fr = {
+        "WELCOME_MSG": "Bienvenue sur {{ skillName }}",
+        "HELP_MSG": "Bienvenue sur {{ skillName }}. Vous pouvez démarrer, arrêter ou reprendre.  Que souhaitez-vous faire ?",
+        "UNHANDLED_MSG" : "Désolé, je n'ai pas compris ce que vous avez dit.",
+        "CAN_NOT_SKIP_MSG" : "C'est de la radio, vous devez attendre le titre suivant.",
+        "RESUME_MSG" : "Je redémarre {{ skillName }}",
+        "NOT_POSSIBLE_MSG" : "C'est de la radio, vous ne pouvez pas faire ca.  Vous pouvez me demander d'arrêter ou de metre en pause pour arrêter la musique.",
+        "STOP_MSG" : "au revoir !"
+}
+
 module.exports = {
     "en-GB": {
         "translation": en
@@ -38,5 +48,8 @@ module.exports = {
     },
     "de-DE": {
         "translation": de
+    },
+    "fr-FR": {
+        "translation": fr
     }
 };
