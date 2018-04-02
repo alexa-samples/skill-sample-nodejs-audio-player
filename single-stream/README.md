@@ -25,7 +25,7 @@ This is a NodeJS Lambda function and skill definition to be used by [ASK CLI](ht
 1. You need to install and configure the [AWS CLI](https://aws.amazon.com/cli/)
 
 ```bash
-$ pip install aws-cli
+$ pip install awscli
 $ aws configure // https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-started.html
 ```
 
