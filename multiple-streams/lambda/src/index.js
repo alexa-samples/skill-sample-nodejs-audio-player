@@ -19,7 +19,7 @@ exports.handler = function(event, context, callback){
         }
     }
 
-    var alexa = Alexa.handler(event, context);
+    var alexa = Alexa.handler(event, context, callback);
     alexa.appId = constants.appId;
     alexa.dynamoDBTableName = constants.dynamoDBTableName;
     alexa.registerHandlers(
