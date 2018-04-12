@@ -6,17 +6,6 @@ var stateHandlers = require('./stateHandlers');
 var audioEventHandlers = require('./audioEventHandlers');
 
 exports.handler = function(event, context, callback){
-    var alexa = Alexa.handler(event, context);
-    alexa.appId = constants.appId;
-    alexa.dynamoDBTableName = constants.dynamoDBTableName;
-    alexa.registerHandlers(
-        stateHandlers.startModeIntentHandlers,
-        stateHandlers.playModeIntentHandlers,
-        stateHandlers.remoteControllerHandlers,
-        stateHandlers.resumeDecisionModeIntentHandlers,
-        audioEventHandlers
-    );
-
     if (constants.debug) {
         console.log("\n" + "******************* REQUEST **********************");
         console.log("\n" + JSON.stringify(event, null, 2));
@@ -29,6 +18,16 @@ exports.handler = function(event, context, callback){
         }
     }
 
+    var alexa = Alexa.handler(event, context, callback);
+    alexa.appId = constants.appId;
+    alexa.dynamoDBTableName = constants.dynamoDBTableName;
+    alexa.registerHandlers(
+        stateHandlers.startModeIntentHandlers,
+        stateHandlers.playModeIntentHandlers,
+        stateHandlers.remoteControllerHandlers,
+        stateHandlers.resumeDecisionModeIntentHandlers,
+        audioEventHandlers
+    );
 
     var audioPlayerInterface = ((((event.context || {}).System || {}).device || {}).supportedInterfaces || {}).AudioPlayer;
     if (audioPlayerInterface === undefined) {
