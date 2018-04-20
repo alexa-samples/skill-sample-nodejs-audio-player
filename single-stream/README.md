@@ -163,9 +163,13 @@ You deploy the skill and the lambda function in one step :
 $ ask deploy 
 ```
 
-You can test your deployment by FIRST ENABLING the TEST switch on your skill in the Alexa Developer Console.
+IMPORTANT : ask CLI will create an ```index.handler``` lambda entry point by default.  This projects uses typescript and the executable source are now in the ```dist``` directory, so it is important to update the Lambda function configuration with the correct code entry point.  You can do this using the AWS command line :
 
-Then
+```bash
+aws lambda update-function-configuration --function-name ask-custom-myradio-default --handler dist/index.handler --runtime nodejs8.10
+```
+
+You can test your deployment with
 
 ```bash
  $ ask simulate -l en-GB -t "alexa, play my radio"
