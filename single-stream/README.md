@@ -39,7 +39,6 @@ $ ask init
 
 ```bash
 $ (cd lambda && npm install)
-$ (cd lambda/src && npm install)
 ```
 
 ### Code changes before deploying
@@ -60,15 +59,14 @@ $ (cd lambda/src && npm install)
 
    To learn more about Alexa App cards, see https://developer.amazon.com/docs/custom-skills/include-a-card-in-your-skills-response.html
 
-```javascript
+```typescript
 var audioData = {
     card : {
         title: 'My Radio',
-        subtitle: 'Less bla bla, more la la',
-        cardContent: "Visit our web site https://www.myradio.com",
+        text: 'Less bla bla bla, more la la la',
         image: {
-            largeImageUrl: 'https://s3-eu-west-1.amazonaws.com/alexa.maxi80.com/assets/alexa-artwork-1200.png',
-            smallImageUrl: 'https://s3-eu-west-1.amazonaws.com/alexa.maxi80.com/assets/alexa-artwork-720.png'
+            largeImageUrl: 'https://alexademo.ninja/skills/logo-512.png',
+            smallImageUrl: 'https://alexademo.ninja/skills/logo-108.png'
         }
     },
     url: 'https://audio1.maxi80.com',
@@ -78,15 +76,15 @@ var audioData = {
 
 3. ```./models/*.json```
 
-   Change the model defintion to replace the invocation name (it defaults to "my radio") and the sample phrases for each intent.  
+   Change the model definition to replace the invocation name (it defaults to "my radio") and the sample phrases for each intent.  
 
    Repeat the operation for each locale you are planning to support.
 
 4. ```./lambda/src/constants.js```
 
 
-```javascript
-module.exports = Object.freeze({
+```typescript
+export const Constants = {
     
     //App-ID. TODO: set to your own Skill App ID from the developer portal.
     //appId : 'amzn1.ask.skill.123',
@@ -115,7 +113,7 @@ You can create the DynamoDB table with the following command:
 aws dynamodb create-table --table-name my_radio --attribute-definitions AttributeName=userId,AttributeType=S --key-schema AttributeName=userId,KeyType=HASH --provisioned-throughput ReadCapacityUnits=5,WriteCapacityUnits=5
 ```
 
-To minimize latency, we recommend to create the DynamDB table in the same region as the Lambda function.
+To minimize latency, we recommend to create the DynamoDB table in the same region as the Lambda function.
 
 When using DynamoDB, you also must ensure your Lambda function [execution role](http://docs.aws.amazon.com/lambda/latest/dg/intro-permission-model.html) will have permissions to read and write to the DynamoDB table.  Be sure [to add the following policy](http://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_manage_modify.html) to the Lambda function [execution role](http://docs.aws.amazon.com/lambda/latest/dg/intro-permission-model.html):
 
@@ -145,6 +143,12 @@ Execute your test by typing
 
 ```bash
 $ (cd lambda && npm test)
+```
+
+Note : if you are deploying in another AWS region than us-east-1, be sure to have an environment variable defined :
+
+```bash
+AWS_REGION=<your aws region>
 ```
 
 ### Deployment
@@ -202,7 +206,7 @@ $ ask api list-skills
 Then copy/paste the skill id to ```lambda/src/constants.js```    
 
 ```javascript
-module.exports = Object.freeze({
+export const Constants = {
     
     //App-ID. TODO: set to your own Skill App ID from the developer portal.
     appId : "amzn1.ask.skill.123",
