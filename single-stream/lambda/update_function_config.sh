@@ -1,1 +1,0 @@
-aws --profile maxi80 lambda update-function-configuration --function-name alexa-maxi80 --handler dist/index.handler --runtime nodejs8.10
