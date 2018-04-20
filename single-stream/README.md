@@ -51,9 +51,9 @@ $ (cd lambda && npm install)
 
    Please refer to https://developer.amazon.com/docs/smapi/skill-manifest.html for details about manifest values.
 
-2. ```./lambda/src/audioAssets.js```
+2. ```./lambda/src/AudioAssets.ts```
 
-   Modify each value in the audioAssets.js file to provide your skill with the correct runtime values for values : your radio name, description, icon and, obviously, URL of your stream (https only).
+   Modify each value in the AudioAssets.ts file to provide your skill with the correct runtime values for values : your radio name, description, icon and, obviously, URL of your stream (https only).
 
    ```startJingle``` is an optional property defining a Jingle to be played before the live stream. 
 
@@ -80,7 +80,7 @@ var audioData = {
 
    Repeat the operation for each locale you are planning to support.
 
-4. ```./lambda/src/constants.js```
+4. ```./lambda/src/Constants.ts```
 
 
 ```typescript
@@ -180,7 +180,7 @@ You should see the code of the skill's response after the SUCCESSFUL line.
 
 #### Change the skillid in lambda code. (Optional but recommended)
 
-Once the skill and lambda function is deployed, do not forget to add the skill id to ```lambda/src/constants.js``` to ensure your code is executed only for your skill.
+Once the skill and lambda function is deployed, do not forget to add the skill id to ```lambda/src/Constants.ts``` to ensure your code is executed only for your skill.
 
 Uncomment the ```AppId``` line and change it with your new skill id.  You can find the skill id by typing :
 
@@ -203,7 +203,7 @@ $ ask api list-skills
 }
 ```
 
-Then copy/paste the skill id to ```lambda/src/constants.js```    
+Then copy/paste the skill id to ```lambda/src/Constants.ts```    
 
 ```javascript
 export const Constants = {
