@@ -1,0 +1,42 @@
+{
+  "version": "1.0",
+  "session": {
+    "new": true,
+    "sessionId": "amzn1.echo-api.session.123",
+    "application": {
+      "applicationId": "amzn1.ask.skill.6f354531-e96b-4b80-b446-1b77bce73996"
+    },
+    "user": {
+      "userId": "amzn1.ask.account.123"
+    }
+  },
+  "context": {
+    "AudioPlayer": {
+      "offsetInMilliseconds": 255764,
+      "token": "https://audio1.maxi80.com",
+      "playerActivity": "STOPPED"
+    },
+    "System": {
+      "application": {
+        "applicationId": "amzn1.ask.skill.6f354531-e96b-4b80-b446-1b77bce73996"
+      },
+      "user": {
+        "userId": "amzn1.ask.account.123"
+      },
+      "device": {
+        "supportedInterfaces": {
+          "AudioPlayer": {}
+        }
+      }
+    }
+  },
+  "request": {
+    "type": "IntentRequest",
+    "requestId": "amzn1.echo-api.request.123",
+    "timestamp": "2017-03-13T22:39:07Z",
+    "locale": "en-GB",
+    "intent": {
+      "name": "AMAZON.NextIntent"
+    }
+  }
+}

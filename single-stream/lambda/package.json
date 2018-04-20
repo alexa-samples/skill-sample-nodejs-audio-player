@@ -1,24 +1,29 @@
 {
-  "name": "Single_Stream_Audio_Player_Example",
-  "version": "1.0.0",
-  "description": "An simple audio player sample skill.",
-  "main": "index.js",
+  "name": "skill_sample_nodejs_sdkv2_single_stream",
+  "version": "2.0.0",
+  "description": "NodeJS SDKv2 Audio Sample Skill",
+  "main": "index.ts",
   "scripts": {
-    "test": "mocha"
+    "test": "AWS_REGION=us-east-1 /usr/local/bin/mocha -r ts-node/register test/test*.ts"
   },
   "keywords": [
     "alexa",
     "skill",
     "audio player"
   ],
-  "author": "Amazon.com",
+  "author": "Sébastien Stormacq",
   "license": "See license in ../../LICENSE.txt",
   "dependencies": {
-    "alexa-sdk": "^1.0.25",
-    "aws-sdk": "^2.186.0",
-    "chai": "*",
-    "chai-string": "*",
-    "mocha": "^5.0.0"
+    "ask-sdk": "^2.0.0"
+  },
+  "devDependencies": {
+    "@types/chai": "^4.1.2",
+    "@types/mocha": "^2.2.48",
+    "@types/node": "^9.6.0",
+    "chai": "^4.1.2",
+    "mocha": "^5.0.5",
+    "ts-node": "^5.0.1",
+    "typescript": "^2.8.1"
   },
   "repository": {
     "type": "git",

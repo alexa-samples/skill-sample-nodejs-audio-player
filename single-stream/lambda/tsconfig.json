@@ -1,0 +1,16 @@
+{
+    "compileOnSave": true,
+    "compilerOptions": {
+        "alwaysStrict" : true,
+        "target": "es2015",
+        "module": "commonjs",
+        "moduleResolution": "node",
+        "sourceMap": true,
+        "outDir": "dist/",
+        "noUnusedLocals": false,
+        "noUnusedParameters": false        
+    },    
+    "include": [
+        "src/**/*.ts"
+    ]
+}
