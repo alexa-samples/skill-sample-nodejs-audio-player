@@ -163,7 +163,7 @@ You deploy the skill and the lambda function in one step :
 $ ask deploy 
 ```
 
-IMPORTANT : ask CLI will create an ```index.handler``` lambda entry point by default.  This projects uses typescript and the executable source are now in the ```dist``` directory, so it is important to update the Lambda function configuration with the correct code entry point.  You can do this using the AWS command line :
+IMPORTANT : ask CLI will create an ```index.handler``` lambda entry point by default.  This projects uses typescript and the executable sources are now in the ```dist``` directory, so it is important to update the Lambda function configuration with the correct code entry point.  You can do this using the AWS command line :
 
 ```bash
 aws lambda update-function-configuration --function-name ask-custom-myradio-default --handler dist/index.handler --runtime nodejs8.10
