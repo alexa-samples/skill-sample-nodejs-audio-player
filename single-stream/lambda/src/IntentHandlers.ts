@@ -138,7 +138,7 @@ export const IntentHandler: IHandler = {
             return Promise.resolve(audio.play(audioData(request).url, 0, i18n.S(request, 'WELCOME_MSG', audioData(request).card.title), audioData(request).card));
         }
     },
-    'HelpIntent': async function (input : HandlerInput): Promise<Response> {
+    'AMAZON.HelpIntent': async function (input : HandlerInput): Promise<Response> {
         const request = input.requestEnvelope.request;
         return ResponseFactory.init()
             .speak(i18n.S(request, "HELP_MSG", audioData(request).card.title))
