@@ -432,14 +432,15 @@ const controller = {
     const { attributesManager, responseBuilder } = handlerInput;
 
     const playbackInfo = await attributesManager.getPersistentAttributes();
-    const { playOrder, offsetInMilliseconds, index } = playbackInfo;
+    const { playOrder, offsetInMilliseconds, index } = playbackInfo.playbackInfo;
 
     const playBehavior = 'REPLACE_ALL';
     const podcast = constants.audioData[playOrder[index]];
     const token = playOrder[index];
 
     responseBuilder
-      .speak(`This is ${constants.audioData[playbackInfo.index].title}`)
+      .speak(`This is ${podcast.title}`)
+      .withShouldEndSession(true)
       .addAudioPlayerPlayDirective(playBehavior, podcast.url, token, offsetInMilliseconds, null);
 
     if (await canThrowCard(handlerInput)) {
