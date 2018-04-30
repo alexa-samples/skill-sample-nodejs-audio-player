@@ -10,8 +10,7 @@ You will need to comply to the prerequisites below and to change a few configura
 
 This is a NodeJS Lambda function and skill definition to be used by [ASK CLI](https://developer.amazon.com/docs/smapi/quick-start-alexa-skills-kit-command-line-interface.html).
 
-0. You need to have NodeJS and ```npm``` installed.
-
+0. You need to have NodeJS and ```npm``` installed.  
 You can download NodeJS for your platform and follow instructions from [https://nodejs.org/en/download/](https://nodejs.org/en/download/)
 
 1. You need an [AWS account](https://aws.amazon.com) and an [Amazon developer account](https://developer.amazon.com) to create an Alexa Skill.
@@ -47,18 +46,25 @@ You deploy the skill and the lambda function in one step :
 $ ask deploy
 ```
 
+IMPORTANT : ask CLI will create an ```index.handler``` lambda entry point by default.  This projects uses ```src``` directory to keep source code separated from test code, so it is important to update the Lambda function configuration with the correct code entry point.  You can do this using the AWS command line :
+
+```bash
+aws lambda update-function-configuration --function-name ask-custom-Multi_Stream_Audio_Player-default --handler src/index.handler --runtime nodejs8.10
+```
+
+
 #### Add DynamoDB permission to your Lambda function
 
 After deploying, you will need to add DynamoDB permission to the IAM Role created to execute your function :
 
 - connect to AWS Console : https://console.aws.amazon.com/iam/home?region=us-east-1#/roles
-- select the role created to execute your lambda function (it is named "ask-custom-Multi-Stream-Audio-Player" if you did not  change the default name)
+- select the role created to execute your lambda function (it is named "ask-lambda-Multi-Stream-Audio-Player" if you did not  change the default name)
 - click "Attach Policy"
 - locate and select "DynamoDBFullAccessPolicy" role and click "Attach Policy"
 
 #### Change the skill id in lambda code. (Optional but recommended)
 
-Once the skill and lambda function is deployed, do not forget to add the skill id to ```lambda/constants.js``` to ensure your code is executed only for your skill.
+Once the skill and lambda function is deployed, do not forget to add the skill id to ```lambda/src/constants.js``` to ensure your code is executed only for your skill.
 
 Uncomment the ```AppId``` line and change it with your new skill id.  You can find the skill id by typing :
 
@@ -69,19 +75,23 @@ $ ask api list-skills
 {
   "skills": [
     {
+      "apis": [
+        "custom"
+      ],
       "lastUpdated": "2017-10-08T08:06:34.835Z",
       "nameByLocale": {
-        "en-GB": "Your Skill Name",
-        "en-US": "Your Skill Name"
+        "en-GB": "Multi Stream Audio Player",
+        "en-US": "Multi Stream Audio Player"
       },
       "skillId": "amzn1.ask.skill.123",
-      "stage": "development"
+      "stage": "development",
+      "publicationStatus": "DEVELOPMENT"      
     }
   ]
 }
 ```
 
-Then copy/paste the skill id to ```lambda/constants.js```    
+Then copy/paste the skill id to ```lambda/src/constants.js```    
 
 ```javascript
 export const constants = {

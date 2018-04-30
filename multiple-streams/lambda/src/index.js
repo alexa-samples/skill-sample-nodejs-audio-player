@@ -539,7 +539,7 @@ function shuffleOrder() {
   });
 }
 
-
+const skillBuilder = Alexa.SkillBuilders.standard();
 exports.handler = skillBuilder
   .addRequestHandlers(
     LaunchRequestHandler,
@@ -558,7 +558,7 @@ exports.handler = skillBuilder
     ShuffleOffHandler,
     StartOverHandler,
     ExitHandler,
-    AudioPlayerEventHandler,
+    AudioPlayerEventHandler
   )
   .addRequestInterceptors(LoadPersistentAttributesRequestInterceptor)
   .addResponseInterceptors(SavePersistentAttributesResponseInterceptor)
