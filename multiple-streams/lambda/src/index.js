@@ -3,9 +3,9 @@
 /* eslint-disable  no-restricted-syntax */
 /* eslint-disable  consistent-return */
 
-const Alexa = require('ask-sdk');
+const alexa = require('ask-sdk');
+const constants = require('./constants');
 
-const constants = require('constants');
 
 /* INTENT HANDLERS */
 
@@ -23,7 +23,7 @@ const LaunchRequestHandler = {
       reprompt = 'You can say, play the audio, to begin.';
     } else {
       playbackInfo.inPlaybackSession = false;
-      message = `You were listening to ${audioData[playbackInfo.playOrder[playbackInfo.index]].title}. Would you like to resume?`;
+      message = `You were listening to ${constants.audioData[playbackInfo.playOrder[playbackInfo.index]].title}. Would you like to resume?`;
       reprompt = 'You can say yes to resume or no to play from the top.';
     }
 
@@ -65,7 +65,7 @@ const AudioPlayerEventHandler = {
           break;
         }
 
-        const enqueueIndex = (playbackInfo.index + 1) % audioData.length;
+        const enqueueIndex = (playbackInfo.index + 1) % constants.audioData.length;
 
         if (enqueueIndex === 0 && !playbackSetting.loop) {
           break;
@@ -75,7 +75,7 @@ const AudioPlayerEventHandler = {
 
         const enqueueToken = playbackInfo.playOrder[enqueueIndex];
         const playBehavior = 'ENQUEUE';
-        const podcast = audioData[playbackInfo.playOrder[enqueueIndex]];
+        const podcast = constants.audioData[playbackInfo.playOrder[enqueueIndex]];
         const expectedPreviousToken = playbackInfo.token;
         const offsetInMilliseconds = 0;
 
@@ -248,7 +248,7 @@ const ShuffleOffHandler = {
     if (playbackSetting.shuffle) {
       playbackSetting.shuffle = false;
       playbackInfo.index = playbackInfo.playOrder[playbackInfo.index];
-      playbackInfo.playOrder = [...Array(audioData.length).keys()];
+      playbackInfo.playOrder = [...Array(constants.audioData.length).keys()];
     }
 
     return controller.play(handlerInput);
@@ -316,7 +316,7 @@ const HelpHandler = {
     if (!playbackInfo.hasPreviousPlaybackSession) {
       message = 'Welcome to the AWS Podcast. You can say, play the audio to begin the podcast.';
     } else if (!playbackInfo.inPlaybackSession) {
-      message = `You were listening to ${audioData[playbackInfo.index].title}. Would you like to resume?`;
+      message = `You were listening to ${constants.audioData[playbackInfo.index].title}. Would you like to resume?`;
     } else {
       message = 'You are listening to the AWS Podcast. You can say, Next or Previous to navigate through the playlist. At any time, you can say Pause to pause the audio and Resume to resume.';
     }
@@ -394,7 +394,7 @@ const LoadPersistentAttributesRequestInterceptor = {
           shuffle: false,
         },
         playbackInfo: {
-          playOrder: [...Array(audioData.length).keys()],
+          playOrder: [...Array(constants.audioData.length).keys()],
           index: 0,
           offsetInMilliseconds: 0,
           playbackIndexChanged: true,
@@ -435,11 +435,11 @@ const controller = {
     const { playOrder, offsetInMilliseconds, index } = playbackInfo;
 
     const playBehavior = 'REPLACE_ALL';
-    const podcast = audioData[playOrder[index]];
+    const podcast = constants.audioData[playOrder[index]];
     const token = playOrder[index];
 
     responseBuilder
-      .speak(`This is ${audioData[playbackInfo.index].title}`)
+      .speak(`This is ${constants.audioData[playbackInfo.index].title}`)
       .addAudioPlayerPlayDirective(playBehavior, podcast.url, token, offsetInMilliseconds, null);
 
     if (await canThrowCard(handlerInput)) {
@@ -461,7 +461,7 @@ const controller = {
       playbackSetting,
     } = await handlerInput.attributesManager.getPersistentAttributes();
 
-    const nextIndex = (playbackInfo.index + 1) % audioData.length;
+    const nextIndex = (playbackInfo.index + 1) % constants.audioData.length;
 
     if (nextIndex === 0 && !playbackSetting.loop) {
       return handlerInput.responseBuilder
@@ -486,7 +486,7 @@ const controller = {
 
     if (previousIndex === -1) {
       if (playbackSetting.loop) {
-        previousIndex += audioData.length;
+        previousIndex += constants.audioData.length;
       } else {
         return handlerInput.responseBuilder
           .speak('You have reached the start of the playlist')
@@ -522,7 +522,7 @@ function getOffsetInMilliseconds(handlerInput) {
 }
 
 function shuffleOrder() {
-  const array = [...Array(audioData.length).keys()];
+  const array = [...Array(constants.audioData.length).keys()];
   let currentIndex = array.length;
   let temp;
   let randomIndex;
@@ -539,7 +539,7 @@ function shuffleOrder() {
   });
 }
 
-const skillBuilder = Alexa.SkillBuilders.standard();
+const skillBuilder = alexa.SkillBuilders.standard();
 exports.handler = skillBuilder
   .addRequestHandlers(
     LaunchRequestHandler,
@@ -564,5 +564,5 @@ exports.handler = skillBuilder
   .addResponseInterceptors(SavePersistentAttributesResponseInterceptor)
   .addErrorHandlers(ErrorHandler)
   .withAutoCreateTable(true)
-  .withTableName(constants.dynamoDBTableName)
+  .withTableName(constants.skill.dynamoDBTableName)
   .lambda();

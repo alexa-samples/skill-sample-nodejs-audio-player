@@ -45,27 +45,34 @@ describe('Multiple Stream Audio Player Test : LaunchRequest', function () {
 
     }),
 
-    it('it responses with AudioPlayer.Play directive ',  () => {
+    it('it keeps the session open',  () => {
 
       let r = response.response;
       r.should.have.property("shouldEndSession");
-      r.shouldEndSession.should.be.true;
-
-      r.should.have.property("directives");
-      r.directives.should.have.lengthOf(1);
-
-      let d = r.directives[0];
-      d.should.have.property("type");
-      d.type.should.equal("AudioPlayer.Play");
-      d.should.have.property("playBehavior");
-      d.playBehavior.should.equal("REPLACE_ALL");
-      d.should.have.property("audioItem");
-      d.audioItem.should.have.property("stream");
-      d.audioItem.stream.should.have.property("url");
-      d.audioItem.stream.url.should.startWith("https://");
-      d.audioItem.stream.should.have.property("token");
-      d.audioItem.stream.should.have.property("expectedPreviousToken");
-      d.audioItem.stream.should.have.property("offsetInMilliseconds");
-
+      r.shouldEndSession.should.be.false;
     });
+
+    // it('it responses with AudioPlayer.Play directive ',  () => {
+
+    //   let r = response.response;
+    //   r.should.have.property("shouldEndSession");
+    //   r.shouldEndSession.should.be.true;
+
+    //   r.should.have.property("directives");
+    //   r.directives.should.have.lengthOf(1);
+
+    //   let d = r.directives[0];
+    //   d.should.have.property("type");
+    //   d.type.should.equal("AudioPlayer.Play");
+    //   d.should.have.property("playBehavior");
+    //   d.playBehavior.should.equal("REPLACE_ALL");
+    //   d.should.have.property("audioItem");
+    //   d.audioItem.should.have.property("stream");
+    //   d.audioItem.stream.should.have.property("url");
+    //   d.audioItem.stream.url.should.startWith("https://");
+    //   d.audioItem.stream.should.have.property("token");
+    //   d.audioItem.stream.should.have.property("expectedPreviousToken");
+    //   d.audioItem.stream.should.have.property("offsetInMilliseconds");
+
+    // });
 });
