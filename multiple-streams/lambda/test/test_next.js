@@ -8,14 +8,14 @@ let assert = chai.assert;
 
 let response;
 
-describe('Multiple Stream Audio Player Test : Play Audio', function () {
+describe('Multiple Stream Audio Player Test : Next Intent', function () {
 
   this.timeout(5000);
 
   // pre-requisites
   before(() => {
     return new Promise((resolve, reject) => {
-      const event = require('./requests/play_audio_intent.json')
+      const event = require('./requests/next_intent.json')
       let lambda = require('../src/index');
       lambda.handler(event, null, (error, result) => {
         console.log('******* RESPONSE *********');

@@ -14,12 +14,12 @@ const LaunchRequestHandler = {
     return handlerInput.requestEnvelope.request.type === 'LaunchRequest';
   },
   async handle(handlerInput) {
-    const playbackInfo = await handlerInput.attributesManager.getPersistentAttributes();
+    const playbackInfo = await getPlaybackInfo(handlerInput);
     let message;
     let reprompt;
 
     if (!playbackInfo.hasPreviousPlaybackSession) {
-      message = 'Welcome to the AWS Podcast. You can say, play the audio to begin the podcast.';
+      message = 'Welcome to the AWS Podcast. you can ask to play the audio to begin the podcast.';
       reprompt = 'You can say, play the audio, to begin.';
     } else {
       playbackInfo.inPlaybackSession = false;
@@ -102,7 +102,7 @@ const AudioPlayerEventHandler = {
 
 const StartPlaybackHandler = {
   async canHandle(handlerInput) {
-    const playbackInfo = await handlerInput.attributesManager.getPersistentAttributes();
+    const playbackInfo = await getPlaybackInfo(handlerInput);
     const request = handlerInput.requestEnvelope.request;
 
     if (!playbackInfo.inPlaybackSession) {
@@ -124,7 +124,7 @@ const StartPlaybackHandler = {
 
 const NextPlaybackHandler = {
   async canHandle(handlerInput) {
-    const playbackInfo = await handlerInput.attributesManager.getPersistentAttributes();
+    const playbackInfo = await getPlaybackInfo(handlerInput);
     const request = handlerInput.requestEnvelope.request;
 
     return playbackInfo.inPlaybackSession
@@ -138,7 +138,7 @@ const NextPlaybackHandler = {
 
 const PreviousPlaybackHandler = {
   async canHandle(handlerInput) {
-    const playbackInfo = await handlerInput.attributesManager.getPersistentAttributes();
+    const playbackInfo = await getPlaybackInfo(handlerInput);
     const request = handlerInput.requestEnvelope.request;
 
     return playbackInfo.inPlaybackSession
@@ -152,7 +152,7 @@ const PreviousPlaybackHandler = {
 
 const PausePlaybackHandler = {
   async canHandle(handlerInput) {
-    const playbackInfo = await handlerInput.attributesManager.getPersistentAttributes();
+    const playbackInfo = await getPlaybackInfo(handlerInput);
     const request = handlerInput.requestEnvelope.request;
 
     return playbackInfo.inPlaybackSession
@@ -168,7 +168,7 @@ const PausePlaybackHandler = {
 
 const LoopOnHandler = {
   async canHandle(handlerInput) {
-    const playbackInfo = await handlerInput.attributesManager.getPersistentAttributes();
+    const playbackInfo = await getPlaybackInfo(handlerInput);
     const request = handlerInput.requestEnvelope.request;
 
     return playbackInfo.inPlaybackSession
@@ -176,7 +176,7 @@ const LoopOnHandler = {
             && request.intent.name === 'AMAZON.LoopOnIntent';
   },
   async handle(handlerInput) {
-    const playbackSetting = await handlerInput.attributesManager.getPersistentAttributes();
+    const playbackSetting = await handlerInput.attributesManager.getPersistentAttributes().playbackSettings;
 
     playbackSetting.loop = true;
 
@@ -188,7 +188,7 @@ const LoopOnHandler = {
 
 const LoopOffHandler = {
   async canHandle(handlerInput) {
-    const playbackInfo = await handlerInput.attributesManager.getPersistentAttributes();
+    const playbackInfo = await getPlaybackInfo(handlerInput);
     const request = handlerInput.requestEnvelope.request;
 
     return playbackInfo.inPlaybackSession
@@ -196,7 +196,7 @@ const LoopOffHandler = {
             && request.intent.name === 'AMAZON.LoopOffIntent';
   },
   async handle(handlerInput) {
-    const playbackSetting = await handlerInput.attributesManager.getPersistentAttributes();
+    const playbackSetting = await handlerInput.attributesManager.getPersistentAttributes().playbackSetting;
 
     playbackSetting.loop = false;
 
@@ -208,7 +208,7 @@ const LoopOffHandler = {
 
 const ShuffleOnHandler = {
   async canHandle(handlerInput) {
-    const playbackInfo = await handlerInput.attributesManager.getPersistentAttributes();
+    const playbackInfo = await getPlaybackInfo(handlerInput);
     const request = handlerInput.requestEnvelope.request;
 
     return playbackInfo.inPlaybackSession
@@ -232,7 +232,7 @@ const ShuffleOnHandler = {
 
 const ShuffleOffHandler = {
   async canHandle(handlerInput) {
-    const playbackInfo = await handlerInput.attributesManager.getPersistentAttributes();
+    const playbackInfo = await getPlaybackInfo(handlerInput);
     const request = handlerInput.requestEnvelope.request;
 
     return playbackInfo.inPlaybackSession
@@ -257,7 +257,7 @@ const ShuffleOffHandler = {
 
 const StartOverHandler = {
   async canHandle(handlerInput) {
-    const playbackInfo = await handlerInput.attributesManager.getPersistentAttributes();
+    const playbackInfo = await getPlaybackInfo(handlerInput);
     const request = handlerInput.requestEnvelope.request;
 
     return playbackInfo.inPlaybackSession
@@ -265,7 +265,7 @@ const StartOverHandler = {
             && request.intent.name === 'AMAZON.StartOverIntent';
   },
   async handle(handlerInput) {
-    const playbackInfo = await handlerInput.attributesManager.getPersistentAttributes();
+    const playbackInfo = await handlerInput.attributesManager.getPersistentAttributes().playbackInfo;
 
     playbackInfo.offsetInMilliseconds = 0;
 
@@ -275,7 +275,7 @@ const StartOverHandler = {
 
 const YesHandler = {
   async canHandle(handlerInput) {
-    const playbackInfo = await handlerInput.attributesManager.getPersistentAttributes();
+    const playbackInfo = await getPlaybackInfo(handlerInput);
     const request = handlerInput.requestEnvelope.request;
 
     return !playbackInfo.inPlaybackSession && request.type === 'IntentRequest' && request.intent.name === 'AMAZON.YesIntent';
@@ -287,13 +287,13 @@ const YesHandler = {
 
 const NoHandler = {
   async canHandle(handlerInput) {
-    const playbackInfo = await handlerInput.attributesManager.getPersistentAttributes();
+    const playbackInfo = await getPlaybackInfo(handlerInput);
     const request = handlerInput.requestEnvelope.request;
 
     return !playbackInfo.inPlaybackSession && request.type === 'IntentRequest' && request.intent.name === 'AMAZON.NoIntent';
   },
   async handle(handlerInput) {
-    const playbackInfo = await handlerInput.attributesManager.getPersistentAttributes();
+    const playbackInfo = await getPlaybackInfo(handlerInput);
 
     playbackInfo.index = 0;
     playbackInfo.offsetInMilliseconds = 0;
@@ -310,7 +310,7 @@ const HelpHandler = {
             && handlerInput.requestEnvelope.request.intent.name === 'AMAZON.HelpIntent';
   },
   async handle(handlerInput) {
-    const playbackInfo = await handlerInput.attributesManager.getPersistentAttributes();
+    const playbackInfo = await getPlaybackInfo(handlerInput);
     let message;
 
     if (!playbackInfo.hasPreviousPlaybackSession) {
@@ -330,7 +330,7 @@ const HelpHandler = {
 
 const ExitHandler = {
   async canHandle(handlerInput) {
-    const playbackInfo = await handlerInput.attributesManager.getPersistentAttributes();
+    const playbackInfo = await getPlaybackInfo(handlerInput);
     const request = handlerInput.requestEnvelope.request;
 
 
@@ -416,9 +416,14 @@ const SavePersistentAttributesResponseInterceptor = {
 
 /* HELPER FUNCTIONS */
 
+async function getPlaybackInfo(handlerInput) {
+  const attributes = await handlerInput.attributesManager.getPersistentAttributes();
+  return attributes.playbackInfo;
+}
+
 async function canThrowCard(handlerInput) {
   const { requestEnvelope, attributesManager } = handlerInput;
-  const playbackInfo = await attributesManager.getPersistentAttributes();
+  const playbackInfo = await getPlaybackInfo(handlerInput);
 
   if (requestEnvelope.request.type === 'IntentRequest' && playbackInfo.playbackIndexChanged) {
     playbackInfo.playbackIndexChanged = false;
@@ -431,8 +436,8 @@ const controller = {
   async play(handlerInput) {
     const { attributesManager, responseBuilder } = handlerInput;
 
-    const playbackInfo = await attributesManager.getPersistentAttributes();
-    const { playOrder, offsetInMilliseconds, index } = playbackInfo.playbackInfo;
+    const playbackInfo = await getPlaybackInfo(handlerInput);
+    const { playOrder, offsetInMilliseconds, index } = playbackInfo;
 
     const playBehavior = 'REPLACE_ALL';
     const podcast = constants.audioData[playOrder[index]];
