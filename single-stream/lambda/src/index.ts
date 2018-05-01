@@ -8,15 +8,11 @@ import { IntentHandler } from './IntentHandlers';
 import { AudioHandler } from './AudioHandlers';
 import { RadioRequestHandler } from './utils/RadioRequestHandler';
 import { SkillEventHandler } from './SkillEventHandler';
-import { LoadPersistentAttributesRequestInterceptor, SavePersistentAttributesResponseInterceptor} from './PersistenceInterceptors';
+import { LoadPersistentAttributesRequestInterceptor, SavePersistentAttributesResponseInterceptor } from './PersistenceInterceptors';
 
 import { Constants } from './Constants';
 
 export async function handler(event: RequestEnvelope, context: any, callback: any): Promise<void> {
-
-    const ddbClient = new AWS.DynamoDB({
-        endpoint: 'http://localhost:8000'
-    });
 
     const factory = SkillBuilders.standard()
         .addRequestHandlers(new SkillEventHandler(),
@@ -31,9 +27,13 @@ export async function handler(event: RequestEnvelope, context: any, callback: an
         .withTableName(Constants.jingle.databaseTable);
 
     if (Constants.useLocalDB) {
+        const ddbClient = new AWS.DynamoDB({
+            endpoint: 'http://localhost:8000'
+        });
+
         factory.withDynamoDbClient(ddbClient);
     }
-        
+
     const skill = factory.create();
 
     try {
