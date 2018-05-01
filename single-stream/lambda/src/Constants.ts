@@ -1,9 +1,6 @@
 'use strict';
 export const Constants = {
     
-    //App-ID. TODO: set to your own Skill App ID from the developer portal.
-    appId : '',
-
     // when true, the skill logs additional detail, including the full request received from Alexa
     debug : true,
 

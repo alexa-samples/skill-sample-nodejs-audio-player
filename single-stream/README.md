@@ -53,15 +53,17 @@ $ (cd lambda && npm install)
 
 2. ```./lambda/src/AudioAssets.ts```
 
-   Modify each value in the AudioAssets.ts file to provide your skill with the correct runtime values for values : your radio name, description, icon and, obviously, URL of your stream (https only).
+   Modify each value in the ```AudioAssets.ts``` file to provide your skill with the correct runtime values for values : your radio name, description, icon and, obviously, URL of your stream (https only).
 
    ```startJingle``` is an optional property defining a Jingle to be played before the live stream. 
+
+   Be sure to modify the value for each language supported by your skill.
 
    To learn more about Alexa App cards, see https://developer.amazon.com/docs/custom-skills/include-a-card-in-your-skills-response.html
 
 ```typescript
-var audioData = {
-    card : {
+let en = {
+    card: {
         title: 'My Radio',
         text: 'Less bla bla bla, more la la la',
         image: {
@@ -70,7 +72,7 @@ var audioData = {
         }
     },
     url: 'https://audio1.maxi80.com',
-    startJingle : 'https://s3.amazonaws.com/alexademo.ninja/maxi80/jingle.m4a',    
+    startJingle: 'https://s3-eu-west-1.amazonaws.com/alexa.maxi80.com/assets/jingle.m4a'
 };
 ```
 
@@ -85,9 +87,6 @@ var audioData = {
 
 ```typescript
 export const Constants = {
-    
-    //App-ID. TODO: set to your own Skill App ID from the developer portal.
-    //appId : 'amzn1.ask.skill.123',
 
     // when true, the skill logs additional detail, including the full request received from Alexa
     debug : true,
@@ -105,12 +104,12 @@ export const Constants = {
 });
 ```
 
-When playing a jingle before your stream, you can choose the name of the database table where the "last played" information will be stored.  If the table does not exist, the persistence code will silently fail and play the jingle at each invocation of the skill. 
+When playing a jingle before your stream, you can choose the name of the database table where the "last played" information will be stored.  If the table does not exist, the persistence code will create the table at the first invocation of the skill.
 
-You can create the DynamoDB table with the following command:
+You can manually create the DynamoDB table with the following command:
 
 ```bash
-aws dynamodb create-table --table-name my_radio --attribute-definitions AttributeName=userId,AttributeType=S --key-schema AttributeName=userId,KeyType=HASH --provisioned-throughput ReadCapacityUnits=5,WriteCapacityUnits=5
+aws dynamodb create-table --table-name my_radio --attribute-definitions AttributeName=id,AttributeType=S --key-schema AttributeName=id,KeyType=HASH --provisioned-throughput ReadCapacityUnits=5,WriteCapacityUnits=5
 ```
 
 To minimize latency, we recommend to create the DynamoDB table in the same region as the Lambda function.
@@ -181,45 +180,6 @@ You can test your deployment with
  ```
 
 You should see the code of the skill's response after the SUCCESSFUL line.
-
-#### Change the skillid in lambda code. (Optional but recommended)
-
-Once the skill and lambda function is deployed, do not forget to add the skill id to ```lambda/src/Constants.ts``` to ensure your code is executed only for your skill.
-
-Uncomment the ```AppId``` line and change it with your new skill id.  You can find the skill id by typing :
-
-```bash
-$ ask api list-skills
-```
-```json
-{
-  "skills": [
-    {
-      "lastUpdated": "2017-10-08T08:06:34.835Z",
-      "nameByLocale": {
-        "en-GB": "My Radio",
-        "en-US": "My Radio"
-      },
-      "skillId": "amzn1.ask.skill.123",
-      "stage": "development"
-    }
-  ]
-}
-```
-
-Then copy/paste the skill id to ```lambda/src/Constants.ts```    
-
-```javascript
-export const Constants = {
-    
-    //App-ID. TODO: set to your own Skill App ID from the developer portal.
-    appId : "amzn1.ask.skill.123",
-
-    // when true, the skill logs additional detail, including the full request received from Alexa
-    debug : false
-
-});
-```
 
 ## On Device Tests
 
