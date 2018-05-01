@@ -8,7 +8,7 @@ import { interfaces, RequestEnvelope, ResponseEnvelope } from 'ask-sdk-model';
 import { handler as skill } from '../src/index';
 import { Constants } from '../src/Constants';
 import { strings } from '../src/Strings';
-import { ddb } from '../src/DDBController';
+import { ddb } from './utils/DDBController';
 import { i18n } from '../src/utils/I18N';
 import { audioData } from '../src/AudioAssets';
 
@@ -30,7 +30,7 @@ describe('Audio Player Test : Play Intent with radio stream', function () {
 
     return new Promise((resolve, reject) => {
       // prepare the database
-      ddb.insertOrUpdateDDB(USER_ID).then(data => {
+      ddb.initialiseDDB(USER_ID).then(data => {
         console.log("Finished preparing the database");
         skill(request, null, (error, responseEnvelope) => {
           skill_response = responseEnvelope;

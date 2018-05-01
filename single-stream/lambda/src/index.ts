@@ -1,23 +1,39 @@
 'use strict';
 
-import { Skill, SkillBuilders, CustomSkillFactory } from 'ask-sdk-core';
+import * as AWS from 'aws-sdk';
+import { SkillBuilders } from 'ask-sdk';
+import { Skill } from 'ask-sdk-core';
 import { RequestEnvelope, ResponseEnvelope } from 'ask-sdk-model';
 import { IntentHandler } from './IntentHandlers';
 import { AudioHandler } from './AudioHandlers';
 import { RadioRequestHandler } from './utils/RadioRequestHandler';
 import { SkillEventHandler } from './SkillEventHandler';
+import { LoadPersistentAttributesRequestInterceptor, SavePersistentAttributesResponseInterceptor} from './PersistenceInterceptors';
 
 import { Constants } from './Constants';
 
 export async function handler(event: RequestEnvelope, context: any, callback: any): Promise<void> {
-    const factory = SkillBuilders.custom()
+
+    const ddbClient = new AWS.DynamoDB({
+        endpoint: 'http://localhost:8000'
+    });
+
+    const factory = SkillBuilders.standard()
         .addRequestHandlers(new SkillEventHandler(),
             RadioRequestHandler.builder()
                 .withHandlers(IntentHandler)
                 .withHandlers(AudioHandler)
                 .build()
-        );
+        )
+        .addRequestInterceptors(LoadPersistentAttributesRequestInterceptor)
+        .addResponseInterceptors(SavePersistentAttributesResponseInterceptor)
+        .withAutoCreateTable(true)
+        .withTableName(Constants.jingle.databaseTable);
 
+    if (Constants.useLocalDB) {
+        factory.withDynamoDbClient(ddbClient);
+    }
+        
     const skill = factory.create();
 
     try {

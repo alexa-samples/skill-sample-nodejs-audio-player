@@ -7,15 +7,17 @@
         {
             "type": "node",
             "request": "launch",
-            "name": "Single Stream Mocha Tests",
-            "program": "/usr/local/bin/_mocha",
+            "name": "Simple Stream Mocha Tests (current file)",
+            "program": "${workspaceFolder}/single-stream/lambda/node_modules/mocha/bin/_mocha",
             "args": [
                 "-u",
                 "tdd",
                 "--timeout",
                 "999999",
                 "--colors",
-                "${workspaceFolder}/single-stream/lambda/test"
+                "-r",
+                "ts-node/register",
+                "${file}"
             ],
             "internalConsoleOptions": "openOnSessionStart",
             "env": {
@@ -25,7 +27,7 @@
         {
             "type": "node",
             "request": "launch",
-            "name": "Multiple Stream Mocha Tests",
+            "name": "Multiple Stream Mocha Tests (ALL)",
             "program": "/usr/local/bin/_mocha",
             "args": [
                 "-u",

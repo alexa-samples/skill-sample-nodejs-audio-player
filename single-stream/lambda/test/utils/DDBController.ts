@@ -2,7 +2,7 @@
 
 import * as AWS from 'aws-sdk';
 
-import { Constants } from './Constants';
+import { Constants } from '../../src/Constants';
 import { AWSError } from 'aws-sdk';
 
 class DDBController {
@@ -18,14 +18,14 @@ class DDBController {
 
     async getFromDDB(userId): Promise<AWS.DynamoDB.Types.DocumentClient.GetItemOutput> {
         return new Promise<AWS.DynamoDB.Types.DocumentClient.GetItemOutput>((resolve, reject) => {
-            var params : AWS.DynamoDB.Types.DocumentClient.GetItemInput = {
+            var params: AWS.DynamoDB.Types.DocumentClient.GetItemInput = {
                 TableName: Constants.jingle.databaseTable,
                 Key: {
-                    userId: userId
+                    id: userId
                 }
             };
 
-            this.documentClient.get(params, (err : AWSError, data : AWS.DynamoDB.Types.DocumentClient.GetItemOutput) => {
+            this.documentClient.get(params, (err: AWSError, data: AWS.DynamoDB.Types.DocumentClient.GetItemOutput) => {
                 if (err) {
                     console.log("Error when calling DynamoDB");
                     console.log(err, err.stack); // an error occurred
@@ -38,23 +38,22 @@ class DDBController {
         });
     }
 
-    async insertOrUpdateDDB(userId): Promise<AWS.DynamoDB.Types.DocumentClient.UpdateItemOutput> {
+    async initialiseDDB(userId): Promise<AWS.DynamoDB.Types.DocumentClient.UpdateItemOutput> {
 
         return new Promise<AWS.DynamoDB.Types.DocumentClient.UpdateItemOutput>((resolve, reject) => {
 
-            var params : AWS.DynamoDB.Types.DocumentClient.UpdateItemInput = {
+            var params: AWS.DynamoDB.Types.DocumentClient.PutItemInput = {
                 TableName: Constants.jingle.databaseTable,
-                Key: {
-                    userId: userId
-                },
-                UpdateExpression: "SET lastPlayed = :time ADD playedCount :val",
-                ExpressionAttributeValues: {
-                    ":val": 1,
-                    ":time": Math.round(new Date().getTime())
+                Item: {
+                    id: userId,
+                    attributes: {
+                        lastPlayed: Math.round(new Date().getTime()),
+                        playedCount: 0
+                    }
                 }
             };
 
-            this.documentClient.update(params, (err : AWSError, data : AWS.DynamoDB.Types.DocumentClient.UpdateItemOutput) => {
+            this.documentClient.put(params, (err: AWSError, data: AWS.DynamoDB.Types.DocumentClient.UpdateItemOutput) => {
                 if (err) {
                     console.log("Error when calling DynamoDB");
                     console.log(err, err.stack); // an error occurred
@@ -74,14 +73,14 @@ class DDBController {
 
         return new Promise<AWS.DynamoDB.Types.DocumentClient.DeleteItemOutput>((resolve, reject) => {
 
-            var params : AWS.DynamoDB.Types.DocumentClient.DeleteItemInput = {
+            var params: AWS.DynamoDB.Types.DocumentClient.DeleteItemInput = {
                 TableName: Constants.jingle.databaseTable,
                 Key: {
-                    userId: userId
+                    id: userId
                 }
             };
 
-            this.documentClient.delete(params, (err : AWSError, data : AWS.DynamoDB.Types.DocumentClient.DeleteItemOutput) => {
+            this.documentClient.delete(params, (err: AWSError, data: AWS.DynamoDB.Types.DocumentClient.DeleteItemOutput) => {
                 if (err) {
                     console.log("Error when deleting item from DynamoDB");
                     console.log(err, err.stack); // an error occurred
