@@ -8,15 +8,22 @@ let assert = chai.assert;
 
 let response;
 
-describe('Multiple Stream Audio Player Test : Next Intent', function () {
+describe('Multiple Stream Audio Player Test : Next Intent', function()  {
 
   this.timeout(5000);
 
   // pre-requisites
   before(() => {
-    return new Promise((resolve, reject) => {
+    return new Promise( async (resolve, reject) => {
+
+      // prepare the DB
+      const ddb = require('./ddbController');
+      const item = require('./requests/next_intent_db.json');
+      const result = await ddb.insertOrUpdateDDB(item);
+
       const event = require('./requests/next_intent.json')
       let lambda = require('../src/index');
+
       lambda.handler(event, null, (error, result) => {
         console.log('******* RESPONSE *********');
         console.log(JSON.stringify(result, null, 2));
