@@ -8,7 +8,6 @@ import { IntentHandler } from './IntentHandlers';
 import { AudioHandler } from './AudioHandlers';
 import { RadioRequestHandler } from './utils/RadioRequestHandler';
 import { SkillEventHandler } from './SkillEventHandler';
-import { LoadPersistentAttributesRequestInterceptor, SavePersistentAttributesResponseInterceptor } from './PersistenceInterceptors';
 
 import { Constants } from './Constants';
 
@@ -21,8 +20,6 @@ export async function handler(event: RequestEnvelope, context: any, callback: an
                 .withHandlers(AudioHandler)
                 .build()
         )
-        .addRequestInterceptors(LoadPersistentAttributesRequestInterceptor)
-        .addResponseInterceptors(SavePersistentAttributesResponseInterceptor)
         .withAutoCreateTable(true)
         .withTableName(Constants.jingle.databaseTable);
 

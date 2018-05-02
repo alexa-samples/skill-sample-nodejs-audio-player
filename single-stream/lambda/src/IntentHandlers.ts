@@ -69,10 +69,23 @@ class Util {
     */
     static async shouldPlayJingle(handlerInput: HandlerInput): Promise<boolean> {
 
-        // is a jingle defined for this locale ?
         let WILL_PLAY_JINGLE: boolean = false;
 
-        const attributes = await handlerInput.attributesManager.getPersistentAttributes();
+        // is a jingle defined for this locale ?
+        if (audioData(handlerInput.requestEnvelope.request).startJingle === undefined) {
+            return WILL_PLAY_JINGLE;
+        }
+
+        let attributes = await handlerInput.attributesManager.getPersistentAttributes();
+
+        // Check if user is invoking the skill the first time and initialize preset values
+        if (attributes === undefined || Object.keys(attributes).length === 0) {
+            attributes = {
+                lastPlayed: 0,
+                playedCount: 0
+            };
+            handlerInput.attributesManager.setPersistentAttributes(attributes);
+        }
 
         let lastPlayedEPOCH = attributes.lastPlayed;
         let now = Math.round(new Date().getTime());
