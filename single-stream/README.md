@@ -165,7 +165,7 @@ $ ask deploy
 IMPORTANT : ask CLI will create an ```index.handler``` lambda entry point by default.  This projects uses typescript and the executable sources are now in the ```dist``` directory, so it is important to update the Lambda function configuration with the correct code entry point.  You can do this using the AWS command line :
 
 ```bash
-aws lambda update-function-configuration --function-name ask-custom-My_Radio-sebuk --handler dist/index.handler --runtime nodejs8.10
+aws lambda update-function-configuration --function-name ask-custom-My_Radio-default --handler dist/index.handler --runtime nodejs8.10
 ```
 
 You can test your deployment with
