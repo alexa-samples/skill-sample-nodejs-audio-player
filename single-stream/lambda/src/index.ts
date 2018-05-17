@@ -8,13 +8,16 @@ import { IntentHandler } from './IntentHandlers';
 import { AudioHandler } from './AudioHandlers';
 import { RadioRequestHandler } from './utils/RadioRequestHandler';
 import { SkillEventHandler } from './SkillEventHandler';
+import { CheckAudioInterfaceHandler } from './CanPlayAudioCheck';
 
 import { Constants } from './Constants';
 
 export async function handler(event: RequestEnvelope, context: any, callback: any): Promise<void> {
 
     const factory = SkillBuilders.standard()
-        .addRequestHandlers(new SkillEventHandler(),
+        .addRequestHandlers(
+            CheckAudioInterfaceHandler,
+            new SkillEventHandler(),
             RadioRequestHandler.builder()
                 .withHandlers(IntentHandler)
                 .withHandlers(AudioHandler)

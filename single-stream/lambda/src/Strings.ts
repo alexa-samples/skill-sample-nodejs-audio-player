@@ -8,6 +8,7 @@ let EnglishStrings = {
     "RESUME_MSG" : "Resuming {0}",
     "NOT_POSSIBLE_MSG" : "This is radio, you can not do that.  You can ask me to stop or pause to stop listening.",
     "STOP_MSG" : "Goodbye.",
+    "DEVICE_NOT_SUPPORTED" : "Sorry, this skill is not supported on this device",
     
     "TEST": "test english",
     "TEST_PARAMS": "test with parameters {0} and {1}",    
@@ -20,6 +21,7 @@ let FrenchStrings = {
     "RESUME_MSG" : "Je redémarre {0}",
     "NOT_POSSIBLE_MSG" : "C'est de la radio, vous ne pouvez pas faire ca.  Vous pouvez me demander d'arrêter ou de metre en pause pour arrêter la musique.",
     "STOP_MSG" : "au revoir !",
+    "DEVICE_NOT_SUPPORTED" : "Désolé, cette skill ne peut être utilisée sur cet appareil.",
 
     "TEST": "test français",
     "TEST_PARAMS": "test avec paramètres {0} et {1}",    
