@@ -39,9 +39,16 @@ const AudioPlayerEventHandler = {
     return handlerInput.requestEnvelope.request.type.startsWith('AudioPlayer.');
   },
   async handle(handlerInput) {
-    const { requestEnvelope, attributesManager, responseBuilder } = handlerInput;
+    const {
+      requestEnvelope,
+      attributesManager,
+      responseBuilder
+    } = handlerInput;
     const audioPlayerEventName = requestEnvelope.request.type.split('.')[1];
-    const { playbackSetting, playbackInfo } = await attributesManager.getPersistentAttributes();
+    const {
+      playbackSetting,
+      playbackInfo
+    } = await attributesManager.getPersistentAttributes();
 
     switch (audioPlayerEventName) {
       case 'PlaybackStarted':
@@ -60,34 +67,35 @@ const AudioPlayerEventHandler = {
         playbackInfo.index = await getIndex(handlerInput);
         playbackInfo.offsetInMilliseconds = getOffsetInMilliseconds(handlerInput);
         break;
-      case 'PlaybackNearlyFinished': {
-        if (playbackInfo.nextStreamEnqueued) {
+      case 'PlaybackNearlyFinished':
+        {
+          if (playbackInfo.nextStreamEnqueued) {
+            break;
+          }
+
+          const enqueueIndex = (playbackInfo.index + 1) % constants.audioData.length;
+
+          if (enqueueIndex === 0 && !playbackSetting.loop) {
+            break;
+          }
+
+          playbackInfo.nextStreamEnqueued = true;
+
+          const enqueueToken = playbackInfo.playOrder[enqueueIndex];
+          const playBehavior = 'ENQUEUE';
+          const podcast = constants.audioData[playbackInfo.playOrder[enqueueIndex]];
+          const expectedPreviousToken = playbackInfo.token;
+          const offsetInMilliseconds = 0;
+
+          responseBuilder.addAudioPlayerPlayDirective(
+            playBehavior,
+            podcast.url,
+            enqueueToken,
+            offsetInMilliseconds,
+            expectedPreviousToken,
+          );
           break;
         }
-
-        const enqueueIndex = (playbackInfo.index + 1) % constants.audioData.length;
-
-        if (enqueueIndex === 0 && !playbackSetting.loop) {
-          break;
-        }
-
-        playbackInfo.nextStreamEnqueued = true;
-
-        const enqueueToken = playbackInfo.playOrder[enqueueIndex];
-        const playBehavior = 'ENQUEUE';
-        const podcast = constants.audioData[playbackInfo.playOrder[enqueueIndex]];
-        const expectedPreviousToken = playbackInfo.token;
-        const offsetInMilliseconds = 0;
-
-        responseBuilder.addAudioPlayerPlayDirective(
-          playBehavior,
-          podcast.url,
-          enqueueToken,
-          offsetInMilliseconds,
-          expectedPreviousToken,
-        );
-        break;
-      }
       case 'PlaybackFailed':
         playbackInfo.inPlaybackSession = false;
         console.log('Playback Failed : %j', handlerInput.requestEnvelope.request.error);
@@ -97,6 +105,19 @@ const AudioPlayerEventHandler = {
     }
 
     return responseBuilder.getResponse();
+  },
+};
+
+const CheckAudioInterfaceHandler = {
+  async canHandle(handlerInput) {
+    const audioPlayerInterface = ((((handlerInput.requestEnvelope.context || {}).System || {}).device || {}).supportedInterfaces || {}).AudioPlayer;
+    return audioPlayerInterface === undefined
+  },
+  handle(handlerInput) {
+    return handlerInput.responseBuilder
+      .speak('Sorry, this skill is not supported on this device')
+      .withShouldEndSession(true)
+      .getResponse();
   },
 };
 
@@ -113,8 +134,8 @@ const StartPlaybackHandler = {
     }
 
     if (request.type === 'IntentRequest') {
-      return request.intent.name === 'PlayAudio'
-                    || request.intent.name === 'AMAZON.ResumeIntent';
+      return request.intent.name === 'PlayAudio' ||
+        request.intent.name === 'AMAZON.ResumeIntent';
     }
   },
   handle(handlerInput) {
@@ -127,9 +148,9 @@ const NextPlaybackHandler = {
     const playbackInfo = await getPlaybackInfo(handlerInput);
     const request = handlerInput.requestEnvelope.request;
 
-    return playbackInfo.inPlaybackSession
-            && (request.type === 'PlaybackController.NextCommandIssued'
-                || (request.type === 'IntentRequest' && request.intent.name === 'AMAZON.NextIntent'));
+    return playbackInfo.inPlaybackSession &&
+      (request.type === 'PlaybackController.NextCommandIssued' ||
+        (request.type === 'IntentRequest' && request.intent.name === 'AMAZON.NextIntent'));
   },
   handle(handlerInput) {
     return controller.playNext(handlerInput);
@@ -141,9 +162,9 @@ const PreviousPlaybackHandler = {
     const playbackInfo = await getPlaybackInfo(handlerInput);
     const request = handlerInput.requestEnvelope.request;
 
-    return playbackInfo.inPlaybackSession
-            && (request.type === 'PlaybackController.PreviousCommandIssued'
-                || (request.type === 'IntentRequest' && request.intent.name === 'AMAZON.PreviousIntent'));
+    return playbackInfo.inPlaybackSession &&
+      (request.type === 'PlaybackController.PreviousCommandIssued' ||
+        (request.type === 'IntentRequest' && request.intent.name === 'AMAZON.PreviousIntent'));
   },
   handle(handlerInput) {
     return controller.playPrevious(handlerInput);
@@ -155,11 +176,11 @@ const PausePlaybackHandler = {
     const playbackInfo = await getPlaybackInfo(handlerInput);
     const request = handlerInput.requestEnvelope.request;
 
-    return playbackInfo.inPlaybackSession
-            && request.type === 'IntentRequest'
-            && (request.intent.name === 'AMAZON.StopIntent'
-                || request.intent.name === 'AMAZON.CancelIntent'
-                || request.intent.name === 'AMAZON.PauseIntent');
+    return playbackInfo.inPlaybackSession &&
+      request.type === 'IntentRequest' &&
+      (request.intent.name === 'AMAZON.StopIntent' ||
+        request.intent.name === 'AMAZON.CancelIntent' ||
+        request.intent.name === 'AMAZON.PauseIntent');
   },
   handle(handlerInput) {
     return controller.stop(handlerInput);
@@ -171,9 +192,9 @@ const LoopOnHandler = {
     const playbackInfo = await getPlaybackInfo(handlerInput);
     const request = handlerInput.requestEnvelope.request;
 
-    return playbackInfo.inPlaybackSession
-            && request.type === 'IntentRequest'
-            && request.intent.name === 'AMAZON.LoopOnIntent';
+    return playbackInfo.inPlaybackSession &&
+      request.type === 'IntentRequest' &&
+      request.intent.name === 'AMAZON.LoopOnIntent';
   },
   async handle(handlerInput) {
     const playbackSetting = await handlerInput.attributesManager.getPersistentAttributes().playbackSettings;
@@ -191,9 +212,9 @@ const LoopOffHandler = {
     const playbackInfo = await getPlaybackInfo(handlerInput);
     const request = handlerInput.requestEnvelope.request;
 
-    return playbackInfo.inPlaybackSession
-            && request.type === 'IntentRequest'
-            && request.intent.name === 'AMAZON.LoopOffIntent';
+    return playbackInfo.inPlaybackSession &&
+      request.type === 'IntentRequest' &&
+      request.intent.name === 'AMAZON.LoopOffIntent';
   },
   async handle(handlerInput) {
     const playbackSetting = await handlerInput.attributesManager.getPersistentAttributes().playbackSetting;
@@ -211,9 +232,9 @@ const ShuffleOnHandler = {
     const playbackInfo = await getPlaybackInfo(handlerInput);
     const request = handlerInput.requestEnvelope.request;
 
-    return playbackInfo.inPlaybackSession
-            && request.type === 'IntentRequest'
-            && request.intent.name === 'AMAZON.ShuffleOnIntent';
+    return playbackInfo.inPlaybackSession &&
+      request.type === 'IntentRequest' &&
+      request.intent.name === 'AMAZON.ShuffleOnIntent';
   },
   async handle(handlerInput) {
     const {
@@ -235,9 +256,9 @@ const ShuffleOffHandler = {
     const playbackInfo = await getPlaybackInfo(handlerInput);
     const request = handlerInput.requestEnvelope.request;
 
-    return playbackInfo.inPlaybackSession
-            && request.type === 'IntentRequest'
-            && request.intent.name === 'AMAZON.ShuffleOffIntent';
+    return playbackInfo.inPlaybackSession &&
+      request.type === 'IntentRequest' &&
+      request.intent.name === 'AMAZON.ShuffleOffIntent';
   },
   async handle(handlerInput) {
     const {
@@ -260,9 +281,9 @@ const StartOverHandler = {
     const playbackInfo = await getPlaybackInfo(handlerInput);
     const request = handlerInput.requestEnvelope.request;
 
-    return playbackInfo.inPlaybackSession
-            && request.type === 'IntentRequest'
-            && request.intent.name === 'AMAZON.StartOverIntent';
+    return playbackInfo.inPlaybackSession &&
+      request.type === 'IntentRequest' &&
+      request.intent.name === 'AMAZON.StartOverIntent';
   },
   async handle(handlerInput) {
     const playbackInfo = await handlerInput.attributesManager.getPersistentAttributes().playbackInfo;
@@ -306,8 +327,8 @@ const NoHandler = {
 
 const HelpHandler = {
   canHandle(handlerInput) {
-    return handlerInput.requestEnvelope.request.type === 'IntentRequest'
-            && handlerInput.requestEnvelope.request.intent.name === 'AMAZON.HelpIntent';
+    return handlerInput.requestEnvelope.request.type === 'IntentRequest' &&
+      handlerInput.requestEnvelope.request.intent.name === 'AMAZON.HelpIntent';
   },
   async handle(handlerInput) {
     const playbackInfo = await getPlaybackInfo(handlerInput);
@@ -334,10 +355,10 @@ const ExitHandler = {
     const request = handlerInput.requestEnvelope.request;
 
 
-    return !playbackInfo.inPlaybackSession
-      && request.type === 'IntentRequest'
-      && (request.intent.name === 'AMAZON.StopIntent'
-        || request.intent.name === 'AMAZON.CancelIntent');
+    return !playbackInfo.inPlaybackSession &&
+      request.type === 'IntentRequest' &&
+      (request.intent.name === 'AMAZON.StopIntent' ||
+        request.intent.name === 'AMAZON.CancelIntent');
   },
   handle(handlerInput) {
     return handlerInput.responseBuilder
@@ -422,7 +443,10 @@ async function getPlaybackInfo(handlerInput) {
 }
 
 async function canThrowCard(handlerInput) {
-  const { requestEnvelope, attributesManager } = handlerInput;
+  const {
+    requestEnvelope,
+    attributesManager
+  } = handlerInput;
   const playbackInfo = await getPlaybackInfo(handlerInput);
 
   if (requestEnvelope.request.type === 'IntentRequest' && playbackInfo.playbackIndexChanged) {
@@ -434,10 +458,17 @@ async function canThrowCard(handlerInput) {
 
 const controller = {
   async play(handlerInput) {
-    const { attributesManager, responseBuilder } = handlerInput;
+    const {
+      attributesManager,
+      responseBuilder
+    } = handlerInput;
 
     const playbackInfo = await getPlaybackInfo(handlerInput);
-    const { playOrder, offsetInMilliseconds, index } = playbackInfo;
+    const {
+      playOrder,
+      offsetInMilliseconds,
+      index
+    } = playbackInfo;
 
     const playBehavior = 'REPLACE_ALL';
     const podcast = constants.audioData[playOrder[index]];
@@ -548,6 +579,7 @@ function shuffleOrder() {
 const skillBuilder = alexa.SkillBuilders.standard();
 exports.handler = skillBuilder
   .addRequestHandlers(
+    CheckAudioInterfaceHandler,
     LaunchRequestHandler,
     HelpHandler,
     SystemExceptionHandler,
