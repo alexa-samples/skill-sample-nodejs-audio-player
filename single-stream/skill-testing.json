@@ -1,0 +1,10 @@
+{
+  "handler": "lambda/dist/index.js",
+  "locale": "en-US",
+  "jest": {
+    "silent": true,
+    "collectCoverageFrom": [
+      "**/index.js"
+    ]
+  }
+}

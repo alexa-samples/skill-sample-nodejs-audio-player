@@ -6,3 +6,4 @@
 **/package-lock.json
 sync_upstream.sh
 podcast/**
+coverage
