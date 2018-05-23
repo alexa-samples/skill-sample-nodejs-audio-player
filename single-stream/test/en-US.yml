@@ -48,7 +48,7 @@ configuration:
 - test: "Sequence 04. Test scenario: Resume and pause music."
 - resume:
   - response.outputSpeech.ssml: "Resuming My Radio"
-  - response.directives.audioItem.stream.url: "https://audio1.maxi80.com"
+  - response.directives[0].audioItem.stream.url: "https://audio1.maxi80.com"
 - pause: "Goodbye"
 
 ---
