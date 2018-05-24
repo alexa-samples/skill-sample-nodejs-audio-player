@@ -32,7 +32,7 @@ configuration:
 - stop: "Goodbye"
 
 ---
-- test: "Sequence 02. Test scenario: launch request, no further interaction."
+- test: "Sequence 02. Test scenario: launch request, now a returning user"
 - LaunchRequest:
   - response.directives[0].audioItem.stream.url: https://audio1.maxi80.com
 - stop: "Goodbye"
