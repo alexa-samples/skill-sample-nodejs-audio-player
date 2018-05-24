@@ -31,6 +31,15 @@
           "name": "AMAZON.ResumeIntent"
         },
         {
+          "name": "AMAZON.NextIntent"
+        },
+        {
+          "name": "AMAZON.PreviousIntent"
+        },
+        {
+          "name": "AMAZON.ShuffleOnIntent"
+        },
+        {
           "name": "AMAZON.HelpIntent",
           "samples": [
             "help me please",
