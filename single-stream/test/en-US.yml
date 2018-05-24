@@ -32,7 +32,13 @@ configuration:
 - stop: "Goodbye"
 
 ---
-- test: "Sequence 02. Test scenario: Next, Previous and Shuffle intents."
+- test: "Sequence 02. Test scenario: launch request, no further interaction."
+- LaunchRequest:
+  - response.directives[0].audioItem.stream.url: https://audio1.maxi80.com
+- stop: "Goodbye"
+
+---
+- test: "Sequence 03. Test scenario: Next, Previous and Shuffle intents."
 - LaunchRequest:
 - next: "This is radio, you have to wait for next track to play."
 - previous: "This is radio, you have to wait for next track to play."
@@ -40,24 +46,24 @@ configuration:
 - stop: "Goodbye"
 
 ---
-- test: "Sequence 03. Test scenario: start over intent."
+- test: "Sequence 04. Test scenario: start over intent."
 - LaunchRequest:
 - "start over": "This is radio, you can not do that.  You can ask me to stop or pause to stop listening."
 
 ---
-- test: "Sequence 04. Test scenario: Resume and pause music."
+- test: "Sequence 05. Test scenario: Resume and pause music."
 - resume:
   - response.outputSpeech.ssml: "Resuming My Radio"
   - response.directives[0].audioItem.stream.url: "https://audio1.maxi80.com"
 - pause: "Goodbye"
 
 ---
-- test: "Sequence 05. Test scenario: Help intent."
+- test: "Sequence 06. Test scenario: Help intent."
 - resume:
 - help: "*" # It seems the Help Intent has not been customized in this skill
 - stop: "Goodbye"
 
 ---
-- test: "Sequence 06. Test scenario: Cancel intent."
+- test: "Sequence 07. Test scenario: Cancel intent."
 - resume:
 - cancel: "Goodbye"
