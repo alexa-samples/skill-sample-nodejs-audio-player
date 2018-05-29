@@ -37,13 +37,11 @@ configuration:
   - $..playBehavior: "REPLACE_ALL"
   - $..audioItem.stream.url: "https://feeds.soundcloud.com/stream/274166909-amazon-web-services-306355661-aws-podcast-episode-139.mp3"
   - response.shouldEndSession: "true"
+  - response.card.type: "Simple"
+  - response.card.title: "Playing Episode 139"
+  - response.card.content: "Playing Episode 139"
 - stop:
   - response.outputSpeech.ssml: "Goodbye!"
-
----
-- test: "seq x: resume"
-- resume:
-  - response.outputSpeech.ssml: "This is Episode 139"
 
 ---
 - test: "Sequence 03. Test scenario: Pause audio and resume."
@@ -80,22 +78,13 @@ configuration:
   - response.outputSpeech.ssml: "This is Episode 140"
 - previous:
   - response.outputSpeech.ssml: "This is Episode 139"
-- stop:
   - response.outputSpeech.ssml: "Goodbye!"
+- stop:
 
 ---
-- test: "Sequence 06. Test scenario: Persistence with DynamoDB."
-- LaunchRequest:
-  - response.outputSpeech.ssml: "Welcome to the AWS Podcast. you can ask to play the audio to begin the podcast."
-- "begin podcast":
-  - $..audioItem.stream.url: "https://feeds.soundcloud.com/stream/274166909-amazon-web-services-306355661-aws-podcast-episode-139.mp3"
-- next:
-  - response.outputSpeech.ssml: "This is Episode 140"
-- stop:
-  - response.outputSpeech.ssml: "Goodbye!"
-- LaunchRequest:
-  - response.outputSpeech.ssml: "/you were listening episode 140 do you want to resume.*/i"
-- no:
-  - response.outputSpeech.ssml: "This is Episode 139"
-- stop:
-  - response.outputSpeech.ssml: "Goodbye!"
+- test: "Sequence 06. Test scenario: launch request and ask for help."
+- LaunchRequest: "*"
+- help:
+  - response.outputSpeech.ssml: "Welcome to the AWS Podcast. You can say, play the audio to begin the podcast."
+  - response.reprompt.outputSpeech.ssml: "Welcome to the AWS Podcast. You can say, play the audio to begin the podcast."
+  - response.shouldEndSession: "false"

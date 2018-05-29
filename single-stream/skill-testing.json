@@ -5,7 +5,7 @@
   "jest": {
     "silent": true,
     "collectCoverageFrom": [
-      "**/index.js"
+      "**/lambda/dist/*.js"
     ]
   }
 }

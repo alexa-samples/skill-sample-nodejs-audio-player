@@ -7,6 +7,16 @@
         {
             "type": "node",
             "request": "launch",
+            "name": "Launch with Skill Tester",
+            "program": "C:\\Users\\GOKA\\AppData\\Roaming\\npm\\node_modules\\skill-testing-ml\\dist\\bin\\SkillTester.js",
+            "args": [
+                "lambda/src/index.js"
+            ],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "node",
+            "request": "launch",
             "name": "Simple Stream Mocha Tests (current file)",
             "program": "${workspaceFolder}/single-stream/lambda/node_modules/mocha/bin/_mocha",
             "args": [
