@@ -15,7 +15,7 @@
 configuration:
   locale: en-US
   dynamo: mock
-  userId: 000000
+  userId: amzn1.ask.account.123456
 
 ---
 - test: "Sequence 01. Test scenario: launch request, no further interaction."
