@@ -1,7 +1,7 @@
 {
   "handler": "lambda/src/index.js",
   "locale": "en-US",
-  "trace": "true",
+  "trace": false,
   "jest": {
     "silent": false,
     "collectCoverageFrom": [

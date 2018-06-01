@@ -1,11 +1,11 @@
 {
   "handler": "lambda/dist/index.js",
   "locale": "en-US",
-  "trace": false,
+  "trace": true,
   "jest": {
     "silent": true,
     "collectCoverageFrom": [
-      "**/lambda/dist/*.js"
+      "**/dist/lambda/*.js"
     ]
   }
 }

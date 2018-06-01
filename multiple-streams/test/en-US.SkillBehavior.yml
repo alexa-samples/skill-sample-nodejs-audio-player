@@ -1,9 +1,10 @@
 #=====================================================================================================================
-#     ______    _ ____  ______        __  _
-#    / __/ /__ (_) / / /_  __/__ ___ / /_(_)__  ___ _
-#   _\ \/  '_// / / /   / / / -_|_-</ __/ / _ \/ _ `/
-#  /___/_/\_\/_/_/_/   /_/  \__/___/\__/_/_//_/\_, /
-#                                             /___/
+#  ██████╗ ███████╗███████╗██████╗  ██████╗ ██╗  ██╗███████╗███╗   ██╗
+#  ██╔══██╗██╔════╝██╔════╝██╔══██╗██╔═══██╗██║ ██╔╝██╔════╝████╗  ██║
+#  ██████╔╝█████╗  ███████╗██████╔╝██║   ██║█████╔╝ █████╗  ██╔██╗ ██║
+#  ██╔══██╗██╔══╝  ╚════██║██╔═══╝ ██║   ██║██╔═██╗ ██╔══╝  ██║╚██╗██║
+#  ██████╔╝███████╗███████║██║     ╚██████╔╝██║  ██╗███████╗██║ ╚████║
+#  ╚═════╝ ╚══════╝╚══════╝╚═╝      ╚═════╝ ╚═╝  ╚═╝╚══════╝╚═╝  ╚═══╝
 #
 # Test type: Functional/End-to-End/Regression
 # Skill name: "Audio Player Multiple Streams" by Amazon
@@ -15,7 +16,7 @@
 configuration:
   locale: en-US
   dynamo: mock
-  userId: amzn1.ask.account.123456
+  userId: 000000
 
 ---
 - test: "Sequence 01. Test scenario: launch request, no further interaction."
@@ -28,62 +29,64 @@ configuration:
 
 ---
 - test: "Sequence 02. Test scenario: launch request and start playing audio."
-- LaunchRequest:
-  - response.outputSpeech.ssml: "Welcome to the AWS Podcast. you can ask to play the audio to begin the podcast."
 - "begin podcast":
   - response.outputSpeech.ssml: "This is Episode 139"
   - response.directives[0].type: "AudioPlayer.Play" # this is equivalent to $..type JSONPath
   - $..playBehavior: "REPLACE_ALL"
   - $..audioItem.stream.url: "https://feeds.soundcloud.com/stream/274166909-amazon-web-services-306355661-aws-podcast-episode-139.mp3"
   - response.shouldEndSession: "true"
-  - response.card.type: "Simple"
-  - response.card.title: "Playing Episode 139"
-  - response.card.content: "Playing Episode 139"
 - stop:
-  - response.outputSpeech.ssml: "Goodbye!"
+  - response.directives[0].type: "AudioPlayer.Stop"
+- resume:
+  - response.outputSpeech.ssml: "This is Episode 139"
 
 ---
 - test: "Sequence 03. Test scenario: Pause audio and resume."
 - LaunchRequest:
-  - response.outputSpeech.ssml: "Welcome to the AWS Podcast. you can ask to play the audio to begin the podcast."
+  - response.outputSpeech.ssml: "You were listening to Episode 139. Would you like to resume?"
 - "begin podcast":
   - $..audioItem.stream.url: "https://feeds.soundcloud.com/stream/274166909-amazon-web-services-306355661-aws-podcast-episode-139.mp3"
 - pause: # No output is returned
 - resume: # Not sure about the content of the directives and what can be tested there
   - response.outputSpeech.ssml: "This is Episode 139"
 - stop:
-  - response.outputSpeech.ssml: "Goodbye!"
+  - response.directives[0].type: "AudioPlayer.Stop"
 
 --- # This sequence works fine with an echo device, resume after cancel fails with skill-tester
 - test: "Sequence 04. Test scenario: Cancel."
 - LaunchRequest:
-  - response.outputSpeech.ssml: "Welcome to the AWS Podcast. you can ask to play the audio to begin the podcast."
+  - response.outputSpeech.ssml: "You were listening to Episode 139. Would you like to resume?"
 - "begin podcast":
   - $..audioItem.stream.url: "https://feeds.soundcloud.com/stream/274166909-amazon-web-services-306355661-aws-podcast-episode-139.mp3"
 - cancel: # No output is returned, but given the code it should say "Goodbye!"
-  - response.outputSpeech.ssml: "Goodbye!"
+  - response.directives[0].type: "AudioPlayer.Stop"
 - resume:
   - response.outputSpeech.ssml: "This is Episode 139"
 - stop:
-  - response.outputSpeech.ssml: "Goodbye!"
+  - response.directives[0].type: "AudioPlayer.Stop"
 
 ---
 - test: "Sequence 05. Test scenario: Start audio, next track, previous track, stop."
 - LaunchRequest:
-  - response.outputSpeech.ssml: "Welcome to the AWS Podcast. you can ask to play the audio to begin the podcast."
+  - response.outputSpeech.ssml: "You were listening to Episode 139. Would you like to resume?"
 - "begin podcast":
   - $..audioItem.stream.url: "https://feeds.soundcloud.com/stream/274166909-amazon-web-services-306355661-aws-podcast-episode-139.mp3"
 - next:
   - response.outputSpeech.ssml: "This is Episode 140"
 - previous:
   - response.outputSpeech.ssml: "This is Episode 139"
-  - response.outputSpeech.ssml: "Goodbye!"
+- next:
+  - response.outputSpeech.ssml: "This is Episode 140"
 - stop:
+  - response.directives[0].type: "AudioPlayer.Stop"
 
 ---
-- test: "Sequence 06. Test scenario: launch request and ask for help."
-- LaunchRequest: "*"
-- help:
-  - response.outputSpeech.ssml: "Welcome to the AWS Podcast. You can say, play the audio to begin the podcast."
-  - response.reprompt.outputSpeech.ssml: "Welcome to the AWS Podcast. You can say, play the audio to begin the podcast."
-  - response.shouldEndSession: "false"
+- test: "Sequence 06. Test scenario: Persistence with DynamoDB."
+- LaunchRequest:
+  - response.outputSpeech.ssml: "You were listening to Episode 140. Would you like to resume?"
+- "begin podcast":
+  - $..audioItem.stream.url: "https://feeds.soundcloud.com/stream/275202399-amazon-web-services-306355661-amazon-web-services.mp3"
+- next:
+  - response.outputSpeech.ssml: "You have reached the end of the playlist"
+  - response.shouldEndSession: undefined
+  - response.directives[0].type: "AudioPlayer.Stop"
