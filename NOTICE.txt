@@ -1,2 +1,2 @@
-Interactive Adventure Game Tool
+Alexa Skill Kit Audio Player Sample skill.
 Copyright 2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
