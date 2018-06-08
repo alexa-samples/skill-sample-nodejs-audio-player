@@ -18,7 +18,7 @@ You can download NodeJS for your platform and follow instructions from [https://
 2. You need to install and configure the [AWS CLI](https://aws.amazon.com/cli/)
 
 ```bash
-$ pip install aws-cli
+$ pip install awscli
 $ aws configure // https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-started.html
 ```
 
