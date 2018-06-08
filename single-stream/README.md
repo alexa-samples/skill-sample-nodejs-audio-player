@@ -41,6 +41,13 @@ $ ask init
 $ (cd lambda && npm install)
 ```
 
+4. This example using Alexa SDK for NodeJS v2 is using [Typescript](https://www.typescriptlang.org/docs/handbook/typescript-in-5-minutes.html), you need to install Typescript compiler
+
+```bash
+$ npm install -g typescript
+$ (cd lambda && tsc)
+```
+
 ### Code changes before deploying
 
 1. ```./skill.json```
@@ -159,10 +166,14 @@ Lambda function will be created in ```us-east-1``` (Northern Virginia) by defaul
 You deploy the skill and the lambda function in one step :
 
 ```bash
-$ ask deploy 
+$ # when you modified the code, be sure to recompile the Typescript code to Javascript
+$ (cd lambda && tsc)
+
+$ # Otherwise, just deploy
+$ ask deploy
 ```
 
-IMPORTANT : ask CLI will create an ```index.handler``` lambda entry point by default.  This projects uses typescript and the executable sources are now in the ```dist``` directory, so it is important to update the Lambda function configuration with the correct code entry point.  You can do this using the AWS command line :
+IMPORTANT : ask CLI will create an ```index.handler``` lambda entry point by default.  This projects uses typescript and the executable sources are now in the ```lambda/dist``` directory, so it is important to update the Lambda function configuration with the correct code entry point.  You can do this using the AWS command line :
 
 ```bash
 aws lambda update-function-configuration --function-name ask-custom-My_Radio-default --handler dist/index.handler --runtime nodejs8.10
