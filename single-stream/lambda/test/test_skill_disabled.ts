@@ -21,7 +21,7 @@ const A = new Assertion();
 const USER_ID = "amzn1.ask.account.123";
 let skill_response: ResponseEnvelope;
 
-describe('Maxi80 : Skill Disabled', function () {
+describe('AudioSample : Skill Disabled', function () {
 
   // pre-requisites
   before(() => {
