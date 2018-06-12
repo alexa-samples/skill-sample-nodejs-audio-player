@@ -1,7 +1,7 @@
 'use strict';
 
-import { HandlerInput, RequestHandler, ResponseFactory } from 'ask-sdk';
-import { interfaces, Response, Request, IntentRequest, RequestEnvelope } from 'ask-sdk-model';
+import { HandlerInput, ResponseFactory } from 'ask-sdk';
+import { Response } from 'ask-sdk-model';
 
 import { IHandler } from './utils/iHandler';
 import { Constants } from './Constants';

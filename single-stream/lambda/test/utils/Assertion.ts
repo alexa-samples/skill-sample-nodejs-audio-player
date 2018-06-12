@@ -1,7 +1,7 @@
 'use strict';
 
 import { interfaces, ResponseEnvelope, ui } from 'ask-sdk-model'
-import { expect, should } from 'chai';
+import { expect } from 'chai';
 
 export class Assertion {
 

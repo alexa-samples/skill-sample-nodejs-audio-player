@@ -2,7 +2,6 @@
 
 import * as AWS from 'aws-sdk';
 import { SkillBuilders } from 'ask-sdk';
-import { Skill } from 'ask-sdk-core';
 import { RequestEnvelope, ResponseEnvelope } from 'ask-sdk-model';
 import { IntentHandler } from './IntentHandlers';
 import { AudioHandler } from './AudioHandlers';

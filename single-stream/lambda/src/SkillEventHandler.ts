@@ -2,7 +2,7 @@
 
 import { ResponseFactory } from 'ask-sdk-core';
 import { HandlerInput, RequestHandler } from 'ask-sdk';
-import { interfaces,Response,Request, IntentRequest} from 'ask-sdk-model';
+import { Response } from 'ask-sdk-model';
 
 export class SkillEventHandler implements RequestHandler {
     public async canHandle(handlerInput : HandlerInput) : Promise<boolean> {

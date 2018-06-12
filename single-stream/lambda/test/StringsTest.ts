@@ -2,11 +2,9 @@
 
 import 'mocha';
 import { expect } from 'chai';
-import { Request, IntentRequest } from 'ask-sdk-model';
 
 import { LaunchRequestBuilder } from './utils/LaunchRequestBuilder';
 import { i18n } from '../src/utils/I18N';
-import { strings } from '../src/Strings';
 
 describe('Strings', () => {
 

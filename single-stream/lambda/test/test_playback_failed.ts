@@ -1,16 +1,9 @@
 'use strict';
 
 import 'mocha';
-import { expect, should } from 'chai';
-
-import { interfaces, RequestEnvelope, ResponseEnvelope } from 'ask-sdk-model';
-
+import { expect } from 'chai';
+import { RequestEnvelope, ResponseEnvelope } from 'ask-sdk-model';
 import { handler as skill } from '../src/index';
-import { Constants } from '../src/Constants';
-import { strings } from '../src/Strings';
-import { ddb } from './utils/DDBController';
-import { i18n } from '../src/utils/I18N';
-import { audioData } from '../src/AudioAssets';
 
 import * as r from './request/playback_failed.json'; // tslint:disable-line
 const request: RequestEnvelope = <RequestEnvelope>r;
