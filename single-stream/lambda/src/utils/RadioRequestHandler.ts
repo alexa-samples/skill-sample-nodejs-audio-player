@@ -2,7 +2,7 @@
 
 import { HandlerInput, RequestHandler } from 'ask-sdk';
 import { IntentRequest, Response } from 'ask-sdk-model';
-import { IHandler } from './IHandler';
+import { IHandler } from './iHandler';
 
 export class RadioRequestHandler implements RequestHandler {
     public static builder() : RadioRequestHandlerBuilder {
