@@ -30,13 +30,47 @@ let fr = {
     startJingle: 'https://s3-eu-west-1.amazonaws.com/alexa.maxi80.com/assets/jingle.m4a'
 };
 
+let it = {
+    card: {
+        title: 'La Mia Radio',
+        text: 'Meno parlare, più musica',
+        image: {
+            image: {
+                largeImageUrl: 'https://alexademo.ninja/skills/logo-512.png',
+                smallImageUrl: 'https://alexademo.ninja/skills/logo-108.png'
+            }
+    
+        }
+    },
+    url: 'https://audio1.maxi80.com',
+    startJingle: 'https://s3-eu-west-1.amazonaws.com/alexa.maxi80.com/assets/jingle.m4a'
+};
+
+let es = {
+    card: {
+        title: 'Mia Radio',
+        text: 'Menos conversación, más música',
+        image: {
+            image: {
+                largeImageUrl: 'https://alexademo.ninja/skills/logo-512.png',
+                smallImageUrl: 'https://alexademo.ninja/skills/logo-108.png'
+            }
+    
+        }
+    },
+    url: 'https://audio1.maxi80.com',
+    startJingle: 'https://s3-eu-west-1.amazonaws.com/alexa.maxi80.com/assets/jingle.m4a'
+};
+
 let globalAudioData = {
         'en-US': en,
         'en-GB': en,
         'en-CA': en,
         'en-IN': en,
         'en-AU': en,
-        'fr-FR': fr
+        'fr-FR': fr,
+        'it-IT': it,
+        'es-ES': es,
 };
 
 export function audioData(request : Request) {
