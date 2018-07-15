@@ -48,7 +48,7 @@ let it = {
 
 let es = {
     card: {
-        title: 'Mia Radio',
+        title: 'Mi Radio',
         text: 'Menos conversación, más música',
         image: {
             image: {
