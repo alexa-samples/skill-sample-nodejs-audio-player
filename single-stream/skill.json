@@ -90,8 +90,8 @@
         "fr-FR": {
           "summary": "Ecoutez Ma Radio, moins de bla bla, plus de la la la.",
           "examplePhrases": [
-            "Alexa, ouvre My Radio",
-            "Alexa, lance My Radio",
+            "Alexa, ouvre Ma Radio",
+            "Alexa, lance Ma Radio",
             "Alexa, demande à Ma Radio de démarrer"
           ],
           "keywords": [
@@ -101,6 +101,39 @@
           ],
           "name": "Ma Radio",
           "description": "Ecoutez Ma Radio, moins de bla bla, plus de la la la\n\nMa Radio vous donne le meilleur son, 24h sur 24h\n\nPour démarrer, dites juste : \"Alexa, lance Ma Radio\" ou \"Alexa, démarre ma radio\"\".\n\nA n'importe quel moment, vous pouvez dire \"Alexa, stop\" pour arrêter.",
+          "smallIconUri": "https://alexademo.ninja/skills/logo-108.png",
+          "largeIconUri": "https://alexademo.ninja/skills/logo-512.png"
+        },
+        "es-ES": {
+          "summary": "Escucha Mi Radio",
+          "examplePhrases": [
+            "Alexa, abre mi radio",
+            "Alexa, pide a mi radio poner la radio",
+            "Alexa, pide a mi radio reproducir"          ],
+          "keywords": [
+            "música",
+            "reproducir radio",
+            "radio"
+          ],
+          "name": "Mi Radio",
+          "description": "Escucha Mi Radio.\n\nPara empezar, solo tienes que decir \"Alexa, abre mi radio\" or \"Alexa, pide a mi radio poner la radio\".\n\nEn cualquier momento, tu puedes parar la radio diciendo \"Alexa, para\"",
+          "smallIconUri": "https://alexademo.ninja/skills/logo-108.png",
+          "largeIconUri": "https://alexademo.ninja/skills/logo-512.png"
+        },
+        "it-IT": {
+          "summary": "Ascolta la mia radio.",
+          "examplePhrases": [
+            "Alexa, apri la mia radio",
+            "Alexa, chiedi a la mia radio di avviare la radio",
+            "Alexa, chiedi a la mia radio di giocare"
+          ],
+          "keywords": [
+            "musica",
+            "live",
+            "radio"
+          ],
+          "name": "La Mia Radio",
+          "description": "Ascolta La Mia Radio.\n\nPer iniziare, basta dire \"Alexa, apri La Mia Radio\" or \"Alexa, chiedi a la mia radio di avviare la radio\".\n\nIn qualsiasi momento, puoi interrompere la radio dicendo \"Alexa, basta\"",
           "smallIconUri": "https://alexademo.ninja/skills/logo-108.png",
           "largeIconUri": "https://alexademo.ninja/skills/logo-512.png"
         }
