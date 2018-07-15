@@ -114,12 +114,13 @@ class Util {
 
 
     export const IntentHandler: IHandler = {
+        // launch request and play intent have the same handler
         'LaunchRequest': async function (input: HandlerInput): Promise<Response> {
             return this['PlayAudio'](input);
         },
         'PlayAudio': async function (input: HandlerInput): Promise<Response> {
 
-            const user_id = input.requestEnvelope.session.user.userId;
+            const user_id = input.requestEnvelope.context.System.user.userId;
             const request = input.requestEnvelope.request;
             const locale = input.requestEnvelope.request.locale;
 
@@ -206,13 +207,18 @@ class Util {
 
         /*
          *  All Requests are received using a Remote Control. Calling corresponding handlers for each of them.
+         *  https://developer.amazon.com/docs/custom-skills/playback-controller-interface-reference.html#requests 
          */
-        'PlayCommandIssued': async function (input: HandlerInput): Promise<Response> {
-            const request = input.requestEnvelope.request;
-            const msg = i18n.S(request, 'WELCOME_MSG', audioData(request).card.title);
-            return Promise.resolve(audio.play(audioData(request).url, 0, msg, audioData(request).card));
+        'PlaybackController.PlayCommandIssued': async function (input: HandlerInput): Promise<Response> {
+            return this['PlayAudio'](input);
         },
-        'PauseCommandIssued': async function (input: HandlerInput): Promise<Response> {
+        'PlaybackController.PauseCommandIssued': async function (input: HandlerInput): Promise<Response> {
             return this['AMAZON.StopIntent'](input);
+        },
+        'PlaybackController.NextCommandIssued': async function (input: HandlerInput): Promise<Response> {
+            return this['AMAZON.NextIntent'](input);
+        },
+        'PlaybackController.PreviousCommandIssued': async function (input: HandlerInput): Promise<Response> {
+            return this['AMAZON.PreviousIntent'](input);            
         }
     }

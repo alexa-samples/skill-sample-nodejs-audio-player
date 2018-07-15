@@ -1,0 +1,32 @@
+{
+    "version": "1.0",
+    "context": {
+        "AudioPlayer": {
+            "offsetInMilliseconds": 0,
+            "token": "https://audio1.maxi80.com",
+            "playerActivity": "PLAYING"
+        },
+        "System": {
+            "application": {
+                "applicationId": "amzn1.ask.skill.123"
+            },
+            "user": {
+                "userId": "amzn1.ask.account.123"
+            },
+            "device": {
+                "deviceId": "amzn1.ask.device.123",
+                "supportedInterfaces": {
+                    "AudioPlayer": {}
+                }
+            },
+            "apiEndpoint": "https://api.eu.amazonalexa.com",
+            "apiAccessToken": "123"
+        }
+    },
+    "request": {
+        "type": "PlaybackController.PlayCommandIssued",
+        "requestId": "amzn1.echo-api.request.123",
+        "timestamp": "2018-07-15T08:29:01Z",
+        "locale": "en-GB"
+    }
+}
