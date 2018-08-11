@@ -116,7 +116,7 @@
             "radio"
           ],
           "name": "Mi Radio",
-          "description": "Escucha Mi Radio.\n\nPara empezar, solo tienes que decir \"Alexa, abre mi radio\" or \"Alexa, pide a mi radio poner la radio\".\n\nEn cualquier momento, tu puedes parar la radio diciendo \"Alexa, para\"",
+          "description": "Escucha Mi Radio.\n\nPara empezar, solo tienes que decir \"Alexa, abre mi radio\" o \"Alexa, pide a mi radio poner la radio\".\n\nEn cualquier momento, tu puedes parar la radio diciendo \"Alexa, para\"",
           "smallIconUri": "https://alexademo.ninja/skills/logo-108.png",
           "largeIconUri": "https://alexademo.ninja/skills/logo-512.png"
         },
@@ -133,7 +133,7 @@
             "radio"
           ],
           "name": "La Mia Radio",
-          "description": "Ascolta La Mia Radio.\n\nPer iniziare, basta dire \"Alexa, apri La Mia Radio\" or \"Alexa, chiedi a la mia radio di avviare la radio\".\n\nIn qualsiasi momento, puoi interrompere la radio dicendo \"Alexa, basta\"",
+          "description": "Ascolta La Mia Radio.\n\nPer iniziare, basta dire \"Alexa, apri La Mia Radio\" o \"Alexa, chiedi a la mia radio di avviare la radio\".\n\nIn qualsiasi momento, puoi interrompere la radio dicendo \"Alexa, basta\"",
           "smallIconUri": "https://alexademo.ninja/skills/logo-108.png",
           "largeIconUri": "https://alexademo.ninja/skills/logo-512.png"
         }
