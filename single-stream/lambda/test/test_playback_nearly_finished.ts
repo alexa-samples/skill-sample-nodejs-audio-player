@@ -47,6 +47,6 @@ describe('Audio Player Test : Playback Nearly Finished', function () {
   }),
 
   it('it responses with play directive ', () => {
-    A.checkAudioPlayDirective(skill_response);
+    A.checkAudioPlayDirective(skill_response, false);
   });
 });

@@ -98,7 +98,7 @@ export class Assertion {
         expect(r).to.not.have.property("reprompt");
     }
 
-    checkAudioPlayDirective(response : ResponseEnvelope) : void {
+    checkAudioPlayDirective(response : ResponseEnvelope, replace: Boolean = true) : void {
         let r = response.response;
         expect(r).to.have.property("directives");
         expect(r.directives).to.have.lengthOf(1);
@@ -109,7 +109,11 @@ export class Assertion {
   
         let app = <interfaces.audioplayer.PlayDirective>d;
         expect(app).to.have.property("playBehavior");
-        expect(app.playBehavior).to.be.equal("REPLACE_ALL");
+        if (replace) {
+            expect(app.playBehavior).to.be.equal("REPLACE_ALL");
+        } else {
+            expect(app.playBehavior).to.be.equal("REPLACE_ENQUEUED");
+        }
         expect(app).to.have.property("audioItem");
         expect(app.audioItem).to.have.property("stream");
         expect(app.audioItem.stream).to.have.property("url");

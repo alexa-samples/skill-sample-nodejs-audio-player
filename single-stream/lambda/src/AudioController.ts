@@ -70,7 +70,7 @@ class AudioController {
          */
         const result = ResponseFactory.init();
         result
-            .addAudioPlayerPlayDirective('REPLACE_ALL', url, url, 0)
+            .addAudioPlayerPlayDirective('REPLACE_ENQUEUED', url, url, 0)
             .withShouldEndSession(true);
 
         // add support for radio meta data.  
