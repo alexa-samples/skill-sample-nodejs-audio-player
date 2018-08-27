@@ -4,6 +4,8 @@
   "description": "NodeJS SDKv2 Audio Sample Skill",
   "main": "index.ts",
   "scripts": {
+    "clean": "rm -rf dist/*",
+    "build": "tsc",    
     "test": "AWS_REGION=us-east-1 /usr/local/bin/mocha -r ts-node/register test/test*.ts"
   },
   "keywords": [
