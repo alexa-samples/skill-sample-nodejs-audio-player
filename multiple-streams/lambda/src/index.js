@@ -473,6 +473,7 @@ const controller = {
     const playBehavior = 'REPLACE_ALL';
     const podcast = constants.audioData[playOrder[index]];
     const token = playOrder[index];
+    playbackInfo.nextStreamEnqueued = false;
 
     responseBuilder
       .speak(`This is ${podcast.title}`)
