@@ -1,0 +1,73 @@
+{
+    "interactionModel": {
+      "languageModel": {
+        "invocationName": "ma radio",
+        "intents": [
+          {
+            "name": "PlayAudio",
+            "samples": [
+              "joue",
+              "jouer",
+              "démarre",
+              "démarrer",
+              "joue le direct",
+              "jouer le direct",
+              "joue le direct s'il te plait",
+              "lance le direct",
+              "lancer le direct",
+              "lance le direct s'il te plait",
+              "lance la radio",
+              "lancer la radio",
+              "lance la radio s'il te plait",
+              "joue la radio",
+              "jouer la radio",
+              "joue la radio s'il te plait",
+              "lance le son",
+              "lancer le son",
+              "lance le son s'il te plait",
+              "joue le son",
+              "jouer le son",
+              "joue le son s'il te plait",
+              "lance la musique",
+              "lancer la musique",
+              "lance la musique s'il te plait",
+              "joue la musique",
+              "jouer la musique",
+              "joue la musique s'il te plait"
+            ]
+          },
+          {
+            "name": "AMAZON.PauseIntent"
+          },
+          {
+            "name": "AMAZON.ResumeIntent"
+          },
+          {
+            "name": "AMAZON.HelpIntent",
+            "samples": [
+              "aide moi s'il te plait",
+              "que dois je faire",
+              "et ensuite",
+              "comment est ce que je peux écouter le direct",
+              "comment écouter la musique",
+              "dis moi comment arrêter",
+              "comment on arrête",
+              "comment arrêter",
+              "comment ca s'arrête",
+              "je ne comprends pas"
+            ]
+          },
+          {
+            "name": "AMAZON.StopIntent"
+          },
+          {
+            "name": "AMAZON.CancelIntent"
+          },
+          {
+            "name": "AMAZON.StartOverIntent"
+          }
+        ]
+      }
+    }
+  }
+  

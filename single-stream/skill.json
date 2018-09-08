@@ -104,6 +104,23 @@
           "smallIconUri": "https://alexademo.ninja/skills/logo-108.png",
           "largeIconUri": "https://alexademo.ninja/skills/logo-512.png"
         },
+        "fr-CA": {
+          "summary": "Ecoutez Ma Radio, moins de bla bla, plus de la la la.",
+          "examplePhrases": [
+            "Alexa, ouvre Ma Radio",
+            "Alexa, lance Ma Radio",
+            "Alexa, demande à Ma Radio de démarrer"
+          ],
+          "keywords": [
+            "musique",
+            "direct",
+            "radio"
+          ],
+          "name": "Ma Radio",
+          "description": "Ecoutez Ma Radio, moins de bla bla, plus de la la la\n\nMa Radio vous donne le meilleur son, 24h sur 24h\n\nPour démarrer, dites juste : \"Alexa, lance Ma Radio\" ou \"Alexa, démarre ma radio\"\".\n\nA n'importe quel moment, vous pouvez dire \"Alexa, stop\" pour arrêter.",
+          "smallIconUri": "https://alexademo.ninja/skills/logo-108.png",
+          "largeIconUri": "https://alexademo.ninja/skills/logo-512.png"
+        },
         "es-ES": {
           "summary": "Escucha Mi Radio",
           "examplePhrases": [
