@@ -2,7 +2,9 @@
     "compileOnSave": true,
     "compilerOptions": {
         "alwaysStrict" : true,
-        "target": "es2015",
+        "resolveJsonModule": true,
+        "esModuleInterop": true,
+        "target": "es2017",
         "module": "commonjs",
         "moduleResolution": "node",
         "sourceMap": true,

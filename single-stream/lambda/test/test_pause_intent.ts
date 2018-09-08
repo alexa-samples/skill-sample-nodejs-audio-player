@@ -5,7 +5,7 @@ import { expect } from 'chai';
 import { RequestEnvelope, ResponseEnvelope } from 'ask-sdk-model';
 import { handler as skill } from '../src/index';
 
-import * as r from './request/pause_intent.json'; // tslint:disable-line
+import r from './request/pause_intent.json'; // tslint:disable-line
 const request: RequestEnvelope = <RequestEnvelope>r;
 
 import { Assertion } from './utils/Assertion';

@@ -9,7 +9,7 @@ import { handler as skill } from '../src/index';
 import { ddb } from './utils/DDBController';
 import { audioData } from '../src/AudioAssets';
 
-import * as r from './request/launch_request.json'; // tslint:disable-line
+import r from './request/launch_request.json'; // tslint:disable-line
 const request: RequestEnvelope = <RequestEnvelope>r;
 
 import { Assertion } from './utils/Assertion';
