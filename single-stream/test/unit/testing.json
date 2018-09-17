@@ -1,0 +1,10 @@
+{
+  "handler": "../../lambda/dist/index.js",
+  "trace": false,
+  "jest": {
+    "silent": false,
+    "collectCoverageFrom": [
+      "**/lambda/dist/*.js"
+    ]
+  }
+}
