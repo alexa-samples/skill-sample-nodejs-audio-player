@@ -57,5 +57,6 @@ export const strings = {
     "fr-FR": FrenchStrings,
     "fr-CA": FrenchStrings,
     "it-IT": ItalianStrings,
-    "es-ES": SpanishStrings
+    "es-ES": SpanishStrings,
+    "es-MX": SpanishStrings
 };

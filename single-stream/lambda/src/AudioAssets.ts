@@ -72,6 +72,7 @@ let globalAudioData = {
         'fr-CA': fr,
         'it-IT': it,
         'es-ES': es,
+        'es-MX': es
 };
 
 export function audioData(request : Request) {
