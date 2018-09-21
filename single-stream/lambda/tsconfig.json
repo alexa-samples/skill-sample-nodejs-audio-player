@@ -10,7 +10,8 @@
         "sourceMap": true,
         "outDir": "dist/",
         "noUnusedLocals": false,
-        "noUnusedParameters": false        
+        "noUnusedParameters": false,
+        "allowSyntheticDefaultImports": true      
     },    
     "include": [
         "src/**/*.ts"

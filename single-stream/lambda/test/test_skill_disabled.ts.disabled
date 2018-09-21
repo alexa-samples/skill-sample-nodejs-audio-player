@@ -1,3 +1,6 @@
+// temporary remove the skill disabled test because of 
+// https://github.com/alexa/alexa-skills-kit-sdk-for-nodejs/issues/469
+
 'use strict';
 
 import 'mocha';
