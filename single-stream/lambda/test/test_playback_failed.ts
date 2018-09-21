@@ -46,6 +46,16 @@ describe('Audio Player Test : Playback Failed', function () {
 
   }),
 
+  // as per https://developer.amazon.com/docs/custom-skills/audioplayer-interface-reference.html#playbackfailed
+  it('it responses with no card ', () => {
+
+    expect(skill_response).to.have.property("response");
+    let r = skill_response.response;
+
+    expect(r).to.not.have.property("card");
+
+  }),
+  
   it('it responses with an audio directive ', () => {
 
     A.checkAudioPlayDirective(skill_response);

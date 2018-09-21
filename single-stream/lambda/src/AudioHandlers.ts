@@ -54,6 +54,6 @@ export const AudioHandler: IHandler = {
          */
         const request = <interfaces.audioplayer.PlaybackFailedRequest>input.requestEnvelope.request;
         console.log("Playback Failed : " + JSON.stringify(request.error, null, 2));
-        return Promise.resolve(audio.play(audioData(request).url, 0, null, audioData(request).card));
+        return Promise.resolve(audio.play(audioData(request).url, 0, null, null));
     }
 };
