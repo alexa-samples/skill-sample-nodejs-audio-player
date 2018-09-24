@@ -33,8 +33,8 @@ describe('Audio Player Test : Remote Controller Pause', function () {
     A.checkResponseStructure(skill_response);
   }),
 
-  it('it responses with output speech ', () => {
-    A.checkOutputSpeach(skill_response);
+  it('it responses with no output speech ', () => {
+    A.checkNoOutputSpeach(skill_response);
   }),
   it('it responses with STOP directive ', () => {
     let r = skill_response.response;

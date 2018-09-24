@@ -206,19 +206,20 @@ class Util {
         },
 
         /*
-         *  All Requests are received using a Remote Control. Calling corresponding handlers for each of them.
+         *  All Requests are received using a Remote Control. 
          *  https://developer.amazon.com/docs/custom-skills/playback-controller-interface-reference.html#requests 
          */
-        'PlaybackController.PlayCommandIssued': async function (input: HandlerInput): Promise<Response> {
-            return this['PlayAudio'](input);
+        'PlaybackController.PlayCommandIssued': async function (input : HandlerInput): Promise<Response> {
+            const request = input.requestEnvelope.request;
+            return Promise.resolve(audio.play(audioData(request).url, 0, null, null));
         },
-        'PlaybackController.PauseCommandIssued': async function (input: HandlerInput): Promise<Response> {
-            return this['AMAZON.StopIntent'](input);
+        'PlaybackController.NextCommandIssued': async function (input : HandlerInput): Promise<Response> {
+            return Promise.resolve(input.responseBuilder.getResponse());
         },
-        'PlaybackController.NextCommandIssued': async function (input: HandlerInput): Promise<Response> {
-            return this['AMAZON.NextIntent'](input);
+        'PlaybackController.PreviousCommandIssued': async function (input : HandlerInput): Promise<Response> {
+            return Promise.resolve(input.responseBuilder.getResponse());
         },
-        'PlaybackController.PreviousCommandIssued': async function (input: HandlerInput): Promise<Response> {
-            return this['AMAZON.PreviousIntent'](input);            
-        }
+        'PlaybackController.PauseCommandIssued': async function (input : HandlerInput): Promise<Response> {
+            return Promise.resolve(audio.stop(null));
+        }       
     }

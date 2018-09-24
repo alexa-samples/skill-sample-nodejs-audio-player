@@ -33,12 +33,8 @@ describe('Audio Player Test : Remote Controller Play', function () {
     A.checkResponseStructure(skill_response);
   }),
 
-    it('it responses with output speech ', () => {
-      A.checkOutputSpeach(skill_response);
-    }),
-
-    it('it closes the session ', () => {
-      A.checkSessionStatus(skill_response, true);
+    it('it responses with no output speech ', () => {
+      A.checkNoOutputSpeach(skill_response);
     }),
 
     it('it responses with AudioPlayer.Play directive ', () => {

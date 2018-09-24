@@ -36,14 +36,11 @@ describe('Audio Player Test : Remote Controller Next Intent', function () {
       A.checkResponseStructure(skill_response);
     }),
 
-    it('it responses with output speech ', () =>  {
+    it('it responses with no output speech ', () =>  {
 
-      A.checkOutputSpeach(skill_response);
+      A.checkNoOutputSpeach(skill_response);
     }),
 
-    it('it closes the session ', () => {
-      A.checkSessionStatus(skill_response, true);
-    }),
 
     it('it responses with no directive ', () => {
 

@@ -27,6 +27,15 @@ export class Assertion {
         expect(os.ssml).to.match(/<\/speak>$/); //.endWith('</speak>');
     }
 
+    checkNoOutputSpeach(response: ResponseEnvelope): void {
+
+        expect(response).to.have.property("response");
+        let r = response.response;
+
+        expect(r).to.not.have.property("outputSpeech");
+
+    }
+
     checkOutputSpeachContains(response: ResponseEnvelope, text: string): void {
 
         expect(response).to.have.property("response");
@@ -124,4 +133,20 @@ export class Assertion {
         expect(app.audioItem.stream.offsetInMilliseconds).to.equal(0);
           
     }
+
+    checkAudioStopDirective(response : ResponseEnvelope, replace: Boolean = true) : void {
+        let r = response.response;
+        expect(r).to.have.property("directives");
+        expect(r.directives).to.have.lengthOf(1);
+  
+        let d = r.directives[0];
+        expect(d).to.have.property("type");
+        expect(d.type).to.equal("AudioPlayer.Stop");
+            
+    }
+
+    checkNoAudioDirective(response : ResponseEnvelope, replace: Boolean = true) : void {
+        let r = response.response;
+        expect(r).to.not.have.property("directives");            
+    }    
 }

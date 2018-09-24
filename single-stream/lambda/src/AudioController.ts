@@ -85,9 +85,11 @@ class AudioController {
          *  Attributes already stored when AudioPlayer.Stopped request received.
          */
         const result = ResponseFactory.init();
-        result
-            .addAudioPlayerStopDirective()
-            .speak(text);
+        result.addAudioPlayerStopDirective();
+
+        if (text) {
+            result.speak(text);
+        }
 
         return result.getResponse();
     }
