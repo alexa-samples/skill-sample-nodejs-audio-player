@@ -120,9 +120,7 @@ class Util {
         },
         'PlayAudio': async function (input: HandlerInput): Promise<Response> {
 
-            const user_id = input.requestEnvelope.context.System.user.userId;
             const request = input.requestEnvelope.request;
-            const locale = input.requestEnvelope.request.locale;
 
             //is the jingle URL defined ?
             if (audioData(request).startJingle) {
