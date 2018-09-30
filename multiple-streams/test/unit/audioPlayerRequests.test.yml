@@ -1,0 +1,27 @@
+#=====================================================================================================================
+#     ______    _ ____  ______        __  _
+#    / __/ /__ (_) / / /_  __/__ ___ / /_(_)__  ___ _
+#   _\ \/  '_// / / /   / / / -_|_-</ __/ / _ \/ _ `/
+#  /___/_/\_\/_/_/_/   /_/  \__/___/\__/_/_//_/\_, /
+#                                             /___/
+#
+# Created by Bespoken
+# Learn more at https://read.bespoken.io/unit-testing/getting-started/
+#
+# Skill name: "Audio Player Multiple Streams" by Amazon
+# Test scope: AudioPlayer.PlaybackNearlyFinished, AudioPlayer.PlaybackFinished
+# Description: Tests an AudioPlayer skill with multiple streams, with previous and next
+#=====================================================================================================================
+---
+configuration:
+  locale: en-US
+  dynamo: mock
+  userId: mockUserID
+
+---
+- test: Test PlaybackNearlyFinished and PlaybackFinished
+- LaunchRequest: Welcome to the AWS Podcast. you can ask to play the audio to begin the podcast.
+- PlayAudio:
+  - $..audioItem.stream.url: "https://feeds.soundcloud.com/stream/274166909-amazon-web-services-306355661-aws-podcast-episode-139.mp3"
+- AudioPlayer.PlaybackNearlyFinished
+- AudioPlayer.PlaybackFinished

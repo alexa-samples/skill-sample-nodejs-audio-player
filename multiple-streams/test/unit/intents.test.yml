@@ -1,0 +1,119 @@
+#=====================================================================================================================
+#     ______    _ ____  ______        __  _
+#    / __/ /__ (_) / / /_  __/__ ___ / /_(_)__  ___ _
+#   _\ \/  '_// / / /   / / / -_|_-</ __/ / _ \/ _ `/
+#  /___/_/\_\/_/_/_/   /_/  \__/___/\__/_/_//_/\_, /
+#                                             /___/
+#
+# Created by Bespoken
+# Learn more at https://read.bespoken.io/unit-testing/getting-started/
+#
+# Skill name: Audio Player Multiple Streams by Amazon
+# Test scope: LaunchRequest, AMAZON.PauseIntent, AMAZON.ResumeIntent, AMAZON.HelpIntent
+#             AMAZON.CancelIntent, AMAZON.StopIntent, AMAZON.StartOverIntent
+#             AMAZON.NextIntent, AMAZON.PreviousIntent
+# Description: Tests an AudioPlayer skill with multiple streams, with previous and next
+#=====================================================================================================================
+
+---
+configuration:
+  locale: en-US
+  dynamo: mock
+  userId: mockUserID
+
+---
+- test: Launch request, no further interaction.
+- LaunchRequest:
+  - response.outputSpeech.ssml: Welcome to the AWS Podcast. you can ask to play the audio to begin the podcast.
+  - response.reprompt.outputSpeech.ssml: You can say, play the audio, to begin.
+  - response.shouldEndSession: false
+- AMAZON.StopIntent: Goodbye!
+
+---
+- test: Launch request and start playing audio.
+- PlayAudio:
+  - response.outputSpeech.ssml: This is Episode 139
+  - response.directives[0].type: AudioPlayer.Play # this is equivalent to $..type JSONPath
+  - $..playBehavior: REPLACE_ALL
+  - $..audioItem.stream.url: "https://feeds.soundcloud.com/stream/274166909-amazon-web-services-306355661-aws-podcast-episode-139.mp3"
+  - response.shouldEndSession: true
+- AMAZON.StopIntent:
+  - response.directives[0].type: AudioPlayer.Stop
+- AMAZON.ResumeIntent: This is Episode 139
+
+---
+- test: Pause audio and resume.
+- LaunchRequest: You were listening to Episode 139. Would you like to resume?
+- PlayAudio
+- AMAZON.PauseIntent # No output is returned
+- AMAZON.ResumeIntent: This is Episode 139
+- AMAZON.StopIntent:
+  - response.directives[0].type: AudioPlayer.Stop
+
+--- # This sequence works fine with an echo device, resume after cancel fails with skill-tester
+- test: Cancel.
+- LaunchRequest: You were listening to Episode 139. Would you like to resume?
+- PlayAudio
+- AMAZON.CancelIntent: # No output is returned, but given the code it should say Goodbye!
+  - response.directives[0].type: AudioPlayer.Stop
+- AMAZON.ResumeIntent: This is Episode 139
+- AMAZON.StopIntent:
+  - response.directives[0].type: AudioPlayer.Stop
+
+---
+- test: Start audio, next track, previous track, stop.
+- LaunchRequest: You were listening to Episode 139. Would you like to resume?
+- PlayAudio
+- AMAZON.NextIntent: This is Episode 140
+- AMAZON.PreviousIntent: This is Episode 139
+- AMAZON.NextIntent: This is Episode 140
+- AMAZON.StopIntent:
+  - response.directives[0].type: AudioPlayer.Stop
+
+---
+- test: Persistence with DynamoDB.
+- LaunchRequest: You were listening to Episode 140. Would you like to resume?
+- PlayAudio:
+  - $..audioItem.stream.url: "https://feeds.soundcloud.com/stream/275202399-amazon-web-services-306355661-amazon-web-services.mp3"
+- AMAZON.NextIntent:
+  - response.outputSpeech.ssml: You have reached the end of the playlist
+  - response.shouldEndSession: undefined
+  - response.directives[0].type: AudioPlayer.Stop
+
+---
+- test: Handles AMAZON.ShuffleOnIntent.
+- LaunchRequest
+- PlayAudio
+- AMAZON.ShuffleOnIntent: This is Episode
+
+---
+- test: Handles AMAZON.ShuffleOffIntent.
+- LaunchRequest
+- PlayAudio
+- AMAZON.ShuffleOffIntent: This is Episode
+
+---
+- test: Handles AMAZON.LoopOnIntent.
+- LaunchRequest
+- PlayAudio
+- AMAZON.LoopOnIntent: Sorry, this is not a valid command.
+
+---
+- test: Handles AMAZON.LoopOffIntent.
+- LaunchRequest
+- PlayAudio
+- AMAZON.LoopOffIntent: Sorry, this is not a valid command.
+
+---
+- test: Start audio, previous track till the beginning of the list
+- LaunchRequest
+- PlayAudio
+- AMAZON.PreviousIntent
+- AMAZON.PreviousIntent: You have reached the start of the playlist
+
+---
+- test: Start audio, next track till the end of the list
+- LaunchRequest
+- PlayAudio
+- AMAZON.NextIntent
+- AMAZON.NextIntent: You have reached the end of the playlist
