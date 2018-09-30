@@ -26,7 +26,7 @@ This is a NodeJS Lambda function and skill definition to be used by [ASK CLI](ht
 
 ```bash
 $ pip install awscli
-$ aws configure // https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-started.html
+$ aws configure # https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-started.html
 ```
 
 2. You need to install and to initialize [ASK CLI](https://developer.amazon.com/docs/smapi/quick-start-alexa-skills-kit-command-line-interface.html) with 
