@@ -197,7 +197,7 @@ const LoopOnHandler = {
       request.intent.name === 'AMAZON.LoopOnIntent';
   },
   async handle(handlerInput) {
-    const playbackSetting = await handlerInput.attributesManager.getPersistentAttributes().playbackSettings;
+    const playbackSetting = await handlerInput.attributesManager.getPersistentAttributes().playbackSetting;
 
     playbackSetting.loop = true;
 
