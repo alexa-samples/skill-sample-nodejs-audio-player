@@ -286,7 +286,7 @@ const StartOverHandler = {
       request.intent.name === 'AMAZON.StartOverIntent';
   },
   async handle(handlerInput) {
-    const playbackInfo = await handlerInput.attributesManager.getPersistentAttributes().playbackInfo;
+    const playbackInfo = await getPlaybackInfo(handlerInput);
 
     playbackInfo.offsetInMilliseconds = 0;
 
