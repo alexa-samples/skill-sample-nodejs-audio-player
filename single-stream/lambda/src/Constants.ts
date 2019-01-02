@@ -8,7 +8,7 @@ export const Constants = {
     useLocalDB : false, 
 
     // when defined, it tries to read / write DynamoDB to save the last time Jingle was played for that user
-    // this allows to avoid to repaet the jingle at each invocation 
+    // this allows to avoid to repeat the jingle at each invocation 
     jingle : {
         databaseTable : "my_radio",
         playOnceEvery : 1000 /*ms*/ * 60 * 60 * 24 // 24 hours
