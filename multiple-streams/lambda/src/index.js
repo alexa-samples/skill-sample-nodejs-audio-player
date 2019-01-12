@@ -301,8 +301,8 @@ const YesHandler = {
 
     return !playbackInfo.inPlaybackSession && request.type === 'IntentRequest' && request.intent.name === 'AMAZON.YesIntent';
   },
-  handle(handleInput) {
-    return controller.play(handleInput);
+  handle(handlerInput) {
+    return controller.play(handlerInput);
   },
 };
 
