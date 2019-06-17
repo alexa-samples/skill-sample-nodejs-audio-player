@@ -197,7 +197,7 @@ const LoopOnHandler = {
       request.intent.name === 'AMAZON.LoopOnIntent';
   },
   async handle(handlerInput) {
-    const playbackSetting = await handlerInput.attributesManager.getPersistentAttributes().playbackSettings;
+    const playbackSetting = await handlerInput.attributesManager.getPersistentAttributes().playbackSetting;
 
     playbackSetting.loop = true;
 
@@ -286,7 +286,7 @@ const StartOverHandler = {
       request.intent.name === 'AMAZON.StartOverIntent';
   },
   async handle(handlerInput) {
-    const playbackInfo = await handlerInput.attributesManager.getPersistentAttributes().playbackInfo;
+    const playbackInfo = await getPlaybackInfo(handlerInput);
 
     playbackInfo.offsetInMilliseconds = 0;
 
