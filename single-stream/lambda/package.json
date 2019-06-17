@@ -14,7 +14,7 @@
     "audio player"
   ],
   "author": "Sébastien Stormacq",
-  "license": "See license in ../../LICENSE.txt",
+  "license": "../../LICENSE.txt",
   "dependencies": {
     "ask-sdk": "^2.0.10"
   },
