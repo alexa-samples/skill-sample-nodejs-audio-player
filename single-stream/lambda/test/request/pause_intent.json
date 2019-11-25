@@ -14,7 +14,7 @@
         "AudioPlayer": {
             "offsetInMilliseconds": 3768,
             "token": "https://audio1.maxi80.com",
-            "playerActivity": "STOPPED"
+            "playerActivity": "PLAYING"
         },
         "System": {
             "application": {

@@ -488,10 +488,28 @@ const controller = {
 
     return responseBuilder.getResponse();
   },
-  stop(handlerInput) {
-    return handlerInput.responseBuilder
-      .addAudioPlayerStopDirective()
-      .getResponse();
+  async stop(handlerInput) {
+
+    // Get the token of what was playing last
+    const playbackInfo = await getPlaybackInfo(handlerInput);
+    const {
+      playOrder,
+      offsetInMilliseconds,
+      index
+    } = playbackInfo;
+    const token = playOrder[index];
+
+    // Stop and say goodbye only if this skill is playing audio
+    if (handlerInput.requestEnvelope.context
+      && handlerInput.requestEnvelope.context.AudioPlayer 
+      && handlerInput.requestEnvelope.context.AudioPlayer.playerActivity === "PLAYING"
+      && handlerInput.requestEnvelope.context.AudioPlayer.token === token) {
+      return handlerInput.responseBuilder
+        .addAudioPlayerStopDirective()
+        .getResponse();
+    } else {
+      return handlerInput.responseBuilder.getResponse();
+    }
   },
   async playNext(handlerInput) {
     const {
