@@ -177,7 +177,15 @@ class Util {
             return this['AMAZON.StopIntent'](input);
         },
         'AMAZON.StopIntent': async function (input: HandlerInput): Promise<Response> {
-            return Promise.resolve(audio.stop(i18n.S(input.requestEnvelope.request, 'STOP_MSG')));
+            // Stop and say goodbye only if this skill is playing audio
+            if (input.requestEnvelope.context
+            && input.requestEnvelope.context.AudioPlayer 
+            && input.requestEnvelope.context.AudioPlayer.playerActivity === "PLAYING"
+            && input.requestEnvelope.context.AudioPlayer.token === audioData(input.requestEnvelope.request).url) {
+                return Promise.resolve(audio.stop(i18n.S(input.requestEnvelope.request, 'STOP_MSG')));
+            } else {
+                return Promise.resolve(input.responseBuilder.getResponse());
+            }
         },
 
         'AMAZON.ResumeIntent': async function (input: HandlerInput): Promise<Response> {
