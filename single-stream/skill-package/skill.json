@@ -126,7 +126,8 @@
           "examplePhrases": [
             "Alexa, abre mi radio",
             "Alexa, pide a mi radio poner la radio",
-            "Alexa, pide a mi radio reproducir"          ],
+            "Alexa, pide a mi radio reproducir"
+          ],
           "keywords": [
             "música",
             "reproducir radio",
@@ -142,7 +143,8 @@
           "examplePhrases": [
             "Alexa, abre mi radio",
             "Alexa, pide a mi radio poner la radio",
-            "Alexa, pide a mi radio reproducir"          ],
+            "Alexa, pide a mi radio reproducir"
+          ],
           "keywords": [
             "música",
             "reproducir radio",
@@ -178,9 +180,6 @@
     },
     "apis": {
       "custom": {
-        "endpoint": {
-          "sourceDir": "lambda"
-        },
         "interfaces": [
           {
             "type": "AUDIO_PLAYER"
