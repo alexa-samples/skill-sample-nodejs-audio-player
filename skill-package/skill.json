@@ -1,0 +1,34 @@
+{
+  "manifest": {
+    "apis": {
+      "custom": {
+        "endpoint": {
+          "uri": ""
+        },
+        "interfaces": [
+          {
+            "type": "AUDIO_PLAYER"
+          }
+        ]
+      }
+    },
+    "manifestVersion": "1.0",
+    "publishingInformation": {
+      "category": "MUSIC_AND_AUDIO_ACCESSORIES",
+      "distributionCountries": [],
+      "isAvailableWorldwide": true,
+      "locales": {
+        "en-US": {
+          "description": "Sample skill using the AudioPlayer interface",
+          "examplePhrases": [
+            "Alexa open audio player sample"
+          ],
+          "keywords": [],
+          "name": "Audioplayer sample",
+          "summary": "Sample Short Description"
+        }
+      },
+      "testingInstructions": "Sample Testing Instructions."
+    }
+  }
+}

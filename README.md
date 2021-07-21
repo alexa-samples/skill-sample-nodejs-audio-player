@@ -1,9 +1,21 @@
-# Skill Sample NodeJS Audio Player
+# Build An Alexa Skill with the Audio Player Interface (Node.js)
 
-This project demonstrates the use of Alexa Audio Player for skills.
+This Alexa sample skill is a template for using the AudioPlayer interface for Alexa-hosted skills.
+Note that as this code is set up so that you can directly import this skill into your hosted skill.
+Check out the Documentation below for links on how to import this skill directly from the Alexa
+developer console.
 
-- Multiple-streams folder contains an example skill to play multiple, pre-recorded audio streams, such as a basic podcast skill.
+## Skill Architecture
+The skill consists of an inteface model and logic of the skill. This sample contains a sample skill that plays a single audio stream,
+along with handlers for all of the AudioPlayer events, touch controls and error handling.
+The skill also uses DynamoDB to keep track of current playback information.
 
-- Single-stream folder contains an example skill to play a single stream, such as a live radio skill.
+## Additional Resources
 
-- NEW (04/20/2018) : This code is using the [Alexa Skill Kit SDK for NodeJS v2](https://github.com/alexa/alexa-skills-kit-sdk-for-nodejs).  To access the old code using Alexa Skill Kit SDK for NodeJS v1, check this [release](https://github.com/alexa/skill-sample-nodejs-audio-player/releases)
+### Documentation
+* [AudioPlayer Interface](https://developer.amazon.com/docs/alexa/custom-skills/audioplayer-interface-reference.html)
+* [Audio stream/file requirements](https://developer.amazon.com/docs/alexa/custom-skills/audioplayer-interface-reference.html#audio-stream-requirements)
+* [Import a skill from a Git repository](https://developer.amazon.com/docs/alexa/hosted-skills/alexa-hosted-skills-git-import.html)
+
+### Other Samples
+* [Previous AudioPlayer samples (ASK CLI v1, ASK SDK v1)](https://github.com/alexa/skill-sample-nodejs-audio-player/releases)
