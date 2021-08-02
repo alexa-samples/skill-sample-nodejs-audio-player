@@ -1,0 +1,22 @@
+{
+  "askcliResourcesVersion": "2020-03-31",
+  "profiles": {
+    "default": {
+      "skillMetadata": {
+        "src": "./skill-package"
+      },
+      "code": {
+        "default": {
+          "src": "./lambda"
+        }
+      },
+      "skillInfrastructure": {
+        "type": "@ask-cli/lambda-deployer",
+        "userConfig": {
+          "runtime": "nodejs12.x",
+          "handler": "index.handler"
+        }
+      }
+    }
+  }
+}

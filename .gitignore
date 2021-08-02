@@ -1,9 +1,0 @@
-**/.idea
-**/.vscode
-**/node_modules
-**/*.zip
-**/dist
-**/package-lock.json
-sync_upstream.sh
-podcast/**
-coverage
